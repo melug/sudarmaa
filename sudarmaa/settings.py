@@ -152,6 +152,7 @@ INSTALLED_APPS = [
     # Pinax
     
     # project
+    "books",
 ]
 
 FIXTURE_DIRS = [

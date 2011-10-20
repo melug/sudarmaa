@@ -10,6 +10,7 @@ handler500 = "pinax.views.server_error"
 
 
 urlpatterns = patterns("",
+    url(r"^$", include('books.urls')),
     url(r"^$", direct_to_template, {
         "template": "homepage.html",
     }, name="home"),
