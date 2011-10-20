@@ -1,0 +1,11 @@
+{% extends "site_base.html" %}
+{% block body %}
+    <div class='row'>
+        {% for book in book_list %}
+        <div class='span3'>
+            <img src='{{ book.icon.url }}'>
+            <div>{{ book.title }}</div>
+        </div>
+        {% endfor %}
+    </div>
+{% endblock %}
