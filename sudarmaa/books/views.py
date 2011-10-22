@@ -6,6 +6,11 @@ class CommonContextView(TemplateView):
     
     def get_context_data(self, **kwargs):
         context = super(CommonContextView, self).get_context_data()
-        context['book_list'] = Book.objects.all()
+        context.update({
+            'new_books' : Book.objects.all()[:4],
+            'picked_books': Book.objects.filter(
+                pick__isnull=False).order_by('pick__order_number')[:4],
+            'categories' : Category.objects.all()
+        })
         return context
 

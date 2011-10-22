@@ -1,11 +1,45 @@
 {% extends "site_base.html" %}
+{% block extra_head %}
+    <style type="text/css">
+        ul.clean-grid li {
+            display: inline;
+        }
+        ul.clean-grid a {
+            margin: 0px;
+            border: 0px;
+        }
+        .media-grid a img {
+            margin-left: auto;
+            margin-right: auto;
+        }
+        a {
+            font-size: 12px;
+        }
+        a.more {
+            text-decoration: underline;
+        }
+    </style>
+{% endblock %}
 {% block body %}
     <div class='row'>
-        {% for book in book_list %}
-        <div class='span3'>
-            <img src='{{ book.icon.url }}'>
-            <div>{{ book.title }}</div>
+        <div class='span12'>
+            <h4> New books <a href="#" class="more">more ></a> </h4>
+            {% with new_books as book_list %}
+                {% include "books/front_books_list.html" %}
+            {% endwith %}
+            <h4> Staff picks <a href="#" class="more">more ></a> </h4>
+            {% with picked_books as book_list %}
+                {% include "books/front_books_list.html" %}
+            {% endwith %}
+            <h4> Categories </h4>
+            <ul class="clean-grid">
+            {% for category in categories %}
+                <li class='span3'><a href="#">{{ category.title }}</a></li>
+            {% endfor %}
+            </ul>
         </div>
-        {% endfor %}
+        <div class='span4'>
+            Facebook, like me! :D
+        </div>
     </div>
 {% endblock %}

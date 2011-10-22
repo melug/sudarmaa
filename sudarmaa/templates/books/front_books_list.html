@@ -1,0 +1,12 @@
+<ul class='media-grid'>
+{% for book in book_list %}
+    <li>
+        <div class='span3'>
+            <a href='#'>
+                <img src='{{ book.icon.url }}' height='100px;'>
+                <div>{{ book.title|truncatewords:3 }}</div>
+            </a>
+        </div>
+    </li>
+{% endfor %}
+</ul>
