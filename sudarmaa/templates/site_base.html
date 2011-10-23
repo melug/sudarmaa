@@ -3,13 +3,14 @@
 {% block account_bar %}{% endblock %}
 
 {% block nav %}
-    <ul class="nav">
-        <li><a href='#'> Hi </a></li>
-        <li><a href='#'> Hi, again </a></li>
-    </ul>
-    <form class="pull-right">
-        <input type="text">
+    <form class="pull-left">
+        <input type="text" placeholder="Search">
     </form>
+    {% if user.is_authenticated %}
+        {% include "registration/drop_menu.html" %}
+    {% else %}
+        <ul class='pull-right' style="left: none;"><li><a href='{% url login %}'> Login </a></li></ul>
+    {% endif %}
 {% endblock %}
 
 {% block footer %}

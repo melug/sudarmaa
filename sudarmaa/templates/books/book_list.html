@@ -1,0 +1,10 @@
+{% extends "site_base.html" %}
+{% block body %}
+    <ul>
+    {% for book in my_books %}
+        <li><a href="#">{{ book.title }}</a></li>
+    {% empty %}
+        <li> You don't have books, <a href="#">create one?</a></li>
+    {% endfor %}
+    </ul>
+{% endblock %}

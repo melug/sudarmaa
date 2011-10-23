@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 class Category(models.Model):
-    title = models.CharField(max_length=200)
+    title = models.CharField(max_length=255)
 
     def __unicode__(self):
         return self.title
@@ -12,10 +12,21 @@ class Category(models.Model):
         verbose_name_plural = 'Categories'
 
 class Book(models.Model):
-    title = models.CharField(max_length=200)
+    title = models.CharField(max_length=255)
     category = models.ForeignKey(Category)
     icon = models.ImageField(upload_to='book_icons')
+    creator = models.ForeignKey(User, null=True)
 
+    def __unicode__(self):
+        return self.title
+
+class Page(models.Model):
+    parent_page = models.ForeignKey('self', related_name='subpages')
+    book = models.ForeignKey(Book)
+    title = models.CharField(max_length=255)
+    content = models.TextField()
+    siblings_order = models.IntegerField()
+    
     def __unicode__(self):
         return self.title
 
@@ -25,6 +36,5 @@ class Pick(models.Model):
     order_number = models.IntegerField(default=0)
 
     def __unicode__(self):
-        return '%s %s, %s' % (self.user.username,
-            self.book.title, self.order_number)
+        return '%s. %s' % (self.order_number, self.book.title)
 

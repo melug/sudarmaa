@@ -11,9 +11,14 @@ handler500 = "pinax.views.server_error"
 
 urlpatterns = patterns("",
     url(r"^$", include('books.urls')),
-    url(r"^$", direct_to_template, {
-        "template": "homepage.html",
-    }, name="home"),
+    # accounts
+    url(r'^accounts/login/$', 'django.contrib.auth.views.login', {
+        'template_name': 'registration/login.html',
+    }, name='login'),
+    url(r'^accounts/logout/$', 'django.contrib.auth.views.logout', {
+        'next_page': '/'
+    }, name='logout'),
+    # admin
     url(r"^admin/", include(admin.site.urls)),
 )
 

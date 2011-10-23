@@ -1,0 +1,11 @@
+<ul class='nav secondary-nav'>
+    <li class='dropdown'>
+        <a href='#' class='dropdown-toggle'> Profile </a>
+        <ul class='dropdown-menu'>
+            <li><a href='#'> Hello, {{ user.username }} </a></li>
+            <li><a href='{% url my-books %}'> My books </a></li>
+            <li><a href='#'> My bookmarks </a></li>
+            <li><a href='{% url logout %}'> Logout </a></li>
+        </ul>
+    </li>
+</ul>
