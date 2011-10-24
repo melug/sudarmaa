@@ -1,4 +1,17 @@
 {% extends "site_base.html" %}
+{% block extra_head %}
+    <style type='text/css'>
+        div.book-item {
+            margin-top: 30px;
+        }
+        div.book-description {
+            padding-left: 30px;
+        }
+        div.book-description h4 {
+            line-height: 20px;
+        }
+    </style>
+{% endblock %}
 {% block body %}
     <div class='row'>
         <div class='span4'>
@@ -9,24 +22,31 @@
             </ul>
         </div>
         <div class='span8'>
-            <div class="pagination">
-                <span class='step-links'>
-                    {% if page_obj.has_previous %}
-                        <a href="?page={{ page_obj.previous_page_number }}{% if cat %}&amp;cat={{ cat }}{% endif %}"> previous </a>
-                    {% endif %}
-                    <span class="current">
-                        Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
-                    </span>
-                    {% if page_obj.has_next %}
-                        <a href="?page={{ page_obj.next_page_number }}{% if cat %}&amp;cat={{ cat }}{% endif %}"> next </a>
-                    {% endif %}
-                </span>
+            <div class='row'>
+                <div class="pull-right">
+                        {% if page_obj.has_previous %}
+                            <a href="?page={{ page_obj.previous_page_number }}{% if cat %}&amp;cat={{ cat }}{% endif %}"> previous </a>
+                        {% endif %}
+                        <span class="current">{{ page_obj.number }}</span>
+                        {% if page_obj.has_next %}
+                            <a href="?page={{ page_obj.next_page_number }}{% if cat %}&amp;cat={{ cat }}{% endif %}"> next </a>
+                        {% endif %}
+                </div>
             </div>
-            <ul>
+            <div class="row">
                 {% for book in books %}
-                <li><a href="#">{{ book.title }}</a></li>
+                <div class='row book-item'>
+                    <div class="span2">
+                        <a href="#">
+                            <img src="{{ book.icon.url }}" style="height:150px;">
+                        </a>
+                    </div>
+                    <div class="span6">
+                        <div class="book-description"> <h4><a href="#">{{ book.title }}</a></h4> </div>
+                    </div>
+                </div>
                 {% endfor %}
-            </ul>
+            </div>
         </div>
     </div>
 {% endblock %}

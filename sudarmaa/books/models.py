@@ -21,10 +21,10 @@ class Book(models.Model):
         return self.title
 
 class Page(models.Model):
-    parent_page = models.ForeignKey('self', related_name='subpages')
+    parent_page = models.ForeignKey('self', related_name='subpages', null=True)
     book = models.ForeignKey(Book)
     title = models.CharField(max_length=255)
-    content = models.TextField()
+    content = models.TextField(blank=True)
     siblings_order = models.IntegerField()
     
     def __unicode__(self):
