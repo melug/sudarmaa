@@ -1,0 +1,32 @@
+{% extends "site_base.html" %}
+{% block body %}
+    <div class='row'>
+        <div class='span4'>
+            <ul>
+                {% for category in categories %}
+                <li><a href="?cat={{ category.id }}">{{ category.title }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class='span8'>
+            <div class="pagination">
+                <span class='step-links'>
+                    {% if page_obj.has_previous %}
+                        <a href="?page={{ page_obj.previous_page_number }}{% if cat %}&amp;cat={{ cat }}{% endif %}"> previous </a>
+                    {% endif %}
+                    <span class="current">
+                        Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                    </span>
+                    {% if page_obj.has_next %}
+                        <a href="?page={{ page_obj.next_page_number }}{% if cat %}&amp;cat={{ cat }}{% endif %}"> next </a>
+                    {% endif %}
+                </span>
+            </div>
+            <ul>
+                {% for book in books %}
+                <li><a href="#">{{ book.title }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+{% endblock %}
