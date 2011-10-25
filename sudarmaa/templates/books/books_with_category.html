@@ -24,13 +24,25 @@
         <div class='span8'>
             <div class='row'>
                 <div class="pull-right">
-                        {% if page_obj.has_previous %}
-                            <a href="?page={{ page_obj.previous_page_number }}{% if cat %}&amp;cat={{ cat }}{% endif %}"> previous </a>
-                        {% endif %}
-                        <span class="current">{{ page_obj.number }}</span>
-                        {% if page_obj.has_next %}
-                            <a href="?page={{ page_obj.next_page_number }}{% if cat %}&amp;cat={{ cat }}{% endif %}"> next </a>
-                        {% endif %}
+                    {% if page_obj.has_previous %}
+                        <div>
+                        <a href="?page={{ page_obj.previous_page_number }}{% if cat %}&amp;cat={{ cat }}{% endif %}"> previous </a>
+                        </div>
+                    {% else %}
+                        <div>
+                        <span> previous </span>
+                        </div>
+                    {% endif %}
+                        <div style="text-align:center;"> {{ page_obj.number }}/{{ page_obj.paginator.num_pages }} </div>
+                    {% if page_obj.has_next %}
+                        <div>
+                        <a href="?page={{ page_obj.next_page_number }}{% if cat %}&amp;cat={{ cat }}{% endif %}"> next </a>
+                        </div>
+                    {% else %}
+                        <div>
+                        <span> next </span>
+                        </div>
+                    {% endif %}
                 </div>
             </div>
             <div class="row">

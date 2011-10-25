@@ -23,7 +23,7 @@ class MyBooksView(ListView):
 
 class BooksInCategory(ListView):
     context_object_name = 'books'
-    paginate_by = 5
+    paginate_by = 3
 
     def get_queryset(self):
         category_id = self.request.GET.get('cat', None)
