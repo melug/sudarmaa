@@ -1,0 +1,10 @@
+{% extends "site_base.html" %}
+
+{% block body %}
+    <h3> Create new book </h3>
+    <form enctype="multipart/form-data" action='' method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type='submit' value='Save'>
+    </form>
+{% endblock %}

@@ -16,12 +16,13 @@ class Book(models.Model):
     category = models.ForeignKey(Category)
     icon = models.ImageField(upload_to='book_icons')
     creator = models.ForeignKey(User, null=True)
+    description = models.TextField(blank=True)
 
     def __unicode__(self):
         return self.title
 
 class Page(models.Model):
-    parent_page = models.ForeignKey('self', related_name='subpages', null=True)
+    parent_page = models.ForeignKey('self', related_name='subpages', null=True, blank=True)
     book = models.ForeignKey(Book)
     title = models.CharField(max_length=255)
     content = models.TextField(blank=True)

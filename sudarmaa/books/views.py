@@ -1,6 +1,9 @@
 # Create your views here.
-from django.views.generic import TemplateView, ListView
+from django.core.urlresolvers import reverse
+from django.views.generic import TemplateView, ListView, CreateView, DetailView
+
 from books.models import Book, Category, Pick
+from books.forms import BookForm
 
 class HomeView(TemplateView):
     
@@ -41,4 +44,21 @@ class BooksInCategory(ListView):
         category_id = self.request.GET.get('cat', None)
         if category_id: context.update({ 'cat' : category_id })
         return context
+
+class CreateBook(CreateView):
+    template_name = 'books/book_form.html'
+    form_class = BookForm
+
+    def get_success_url(self):
+        book = self.object
+        book.creator = self.request.user
+        book.save()
+        return reverse('my-books-show', kwargs={'pk':book.id})
+
+class ShowMyBook(DetailView):
+    context_object_name = 'book'
+    template_name = 'books/my_book.html'
+
+    def get_queryset(self):
+        return Book.objects.filter(creator=self.request.user)
 
