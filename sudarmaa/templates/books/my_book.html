@@ -1,4 +1,15 @@
 {% extends "site_base.html" %}
 {% block body %}
-    {{ book.title }}
+    <div class='row'>
+        <div class='span8'>
+            <h4>{{ book.title }}</h4>
+            <p>{{ book.description }}</p>
+        </div>
+        <div class='offset1 span6'>
+            <h4> Table of Content editor: </h4>
+            {% with book.top_pages as pages %}
+                {% include "books/subpages.html" %}
+            {% endwith %}
+        </div>
+    </div>
 {% endblock %}

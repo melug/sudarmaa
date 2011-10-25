@@ -18,6 +18,9 @@ class Book(models.Model):
     creator = models.ForeignKey(User, null=True)
     description = models.TextField(blank=True)
 
+    def top_pages(self):
+        return self.page_set.filter(parent_page__isnull=True).order_by('siblings_order')
+
     def __unicode__(self):
         return self.title
 
