@@ -1,8 +1,13 @@
 # Create your views here.
-from django.core.urlresolvers import reverse
-from django.views.generic import TemplateView, ListView, CreateView, DetailView
+import json
 
-from books.models import Book, Category, Pick
+from django.db.models import Max
+from django.core.urlresolvers import reverse
+from django.http import HttpResponse
+from django.views.generic import TemplateView, ListView, CreateView, DetailView, View
+from django.shortcuts import get_object_or_404
+
+from books.models import Book, Category, Pick, Page
 from books.forms import BookForm
 
 class HomeView(TemplateView):
@@ -62,3 +67,22 @@ class ShowMyBook(DetailView):
     def get_queryset(self):
         return Book.objects.filter(creator=self.request.user)
 
+class EditPage(View):
+    
+    def post(self, request):
+        action = request.POST.get('action', None)
+        if action == 'addpage':
+            parent_id, book_id, title = request.POST.get('parent_page', None), request.POST.get('book_id'), request.POST.get('title')
+            book = get_object_or_404(Book, creator=self.request.user, pk=book_id)
+            if parent_id:
+                parent_page = get_object_or_404(Page, book=book, pk=parent_id)
+                max_order = parent_page.subpages.aggregate(Max('siblings_order'))['siblings_order__max'] or 0
+                response_context = { 'parent_id': parent_id }
+            else:
+                parent_page = None
+                max_order = book.page_set.aggregate(Max('siblings_order'))['siblings_order__max'] or 0
+                response_context = { 'parent_id': None }
+            page = Page.objects.create(parent_page=parent_page, book=book, title=title, siblings_order=max_order+1)
+            response_context.update({'page_id': page.id, 'title': page.title })
+            return HttpResponse(json.dumps(response_context))
+        

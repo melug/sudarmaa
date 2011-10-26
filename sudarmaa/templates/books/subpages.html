@@ -1,10 +1,10 @@
 <ul>
 {% for page in pages %}
-    <li>
+    <li pageid="{{ page.id }}">
         {{ page.title }}
-        {% with "books/subpages.html" as file_name %}
-            {% include file_name with pages=page.subpages.all %}
-        {% endwith %}
     </li>
+    {% with "books/subpages.html" as file_name %}
+        {% include file_name with pages=page.subpages.all %}
+    {% endwith %}
 {% endfor %}
 </ul>

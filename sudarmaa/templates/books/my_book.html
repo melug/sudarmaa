@@ -1,15 +1,124 @@
 {% extends "site_base.html" %}
+{% block extra_head %}
+<style type='text/css'>
+    div.toc li {
+        color: black;
+    }
+    div.addpage div {
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+</style>
+<script type='text/javascript'>
+    var current_li;
+    jQuery.fn.swap = function(b) {
+        b = jQuery(b)[0];
+        var a = this[0];
+        var t = a.parentNode.insertBefore(document.createTextNode(""), a);
+        b.parentNode.insertBefore(a, b);
+        t.parentNode.insertBefore(b, t);
+        t.parentNode.removeChild(t);
+        return this;
+    };
+    $(function() {
+        $('div.toc li').click(page_clicked);
+    });
+    function page_clicked() {
+        if(current_li!=null) {
+            current_li.css('color', 'black');
+            if(current_li.attr('pageid')==$(this).attr('pageid')) {
+                current_li = null;
+                page_unavailable();
+            } else {
+                current_li = $(this)
+                current_li.css('color', 'green');
+                page_available();
+            }
+        } else {
+            current_li = $(this)
+            current_li.css('color', 'green');
+            page_available();
+        }
+    }
+    function page_unavailable() {
+        $("input.move-button").attr("disabled", "disabled");
+    };
+    function page_available() {
+        $("input.move-button").attr("disabled", "");
+    };
+    function move_up() {
+        next = current_li.prevAll('li:first');
+        if (next.length!=0) {
+            current_ul = current_li.next();
+            next_ul = next.next();
+            current_li.swap(next);
+            current_ul.swap(next_ul);
+        }
+    };
+    function move_down() {
+        next = current_li.nextAll('li:first');
+        if (next.length!=0) {
+            current_ul = current_li.next();
+            next_ul = next.next();
+            current_li.swap(next);
+            current_ul.swap(next_ul);
+        }
+    };
+    function add_page() {
+        title = $("#page_name").val();
+        if(current_li != null) {
+            $.post("{% url add-page %}", {
+                action: 'addpage',
+                parent_page: current_li.attr('pageid'),
+                book_id: {{ book.id }},
+                title: title
+            }, insert_element_succeeded)
+        } else {
+            $.post("{% url add-page %}", {
+                action: 'addpage',
+                book_id: {{ book.id }},
+                title: title
+            }, insert_element_succeeded)
+        }
+    };
+    function insert_element_succeeded(html) {
+        e = eval('(' + html + ')');
+        if (e.parent_id==null) {
+            parent = $('div.toc-list > ul');
+        } else {
+            parent = $('div.toc-list li[pageid=' + e.parent_id + '] ul:first');
+        }
+        alert(parent.html());
+        new_page = $('<li pageid=' + e.page_id + '>' + e.title + '</li><ul></ul>');
+        parent.append(new_page);
+        parent.find('li[pageid=' + e.page_id + ']').click(page_clicked);
+    }
+    function ajax_swap_pages(page1, page2) {
+    };
+</script>
+{% endblock %}
 {% block body %}
     <div class='row'>
         <div class='span8'>
             <h4>{{ book.title }}</h4>
             <p>{{ book.description }}</p>
         </div>
-        <div class='offset1 span6'>
+        <div class='offset1 span6 toc'>
             <h4> Table of Content editor: </h4>
+            <div class='addpage'>
+                <div>
+                    Page name: <input id="page_name" type='text' value=''><input onclick="add_page();" type='button' value='Add'>
+                </div>
+                <div>
+                    <input disabled="disabled" onclick="move_up();" class="move-button" type='button' value="Move Up">
+                    <input disabled="disabled" onclick="move_down();" class="move-button" type='button' value="Move Down">
+                </div>
+            </div>
+            <div class='toc-list'>
             {% with book.top_pages as pages %}
                 {% include "books/subpages.html" %}
             {% endwith %}
+            </div>
         </div>
     </div>
 {% endblock %}
