@@ -1,5 +1,6 @@
 {% extends "site_base.html" %}
 {% block extra_head %}
+    <link rel="stylesheet" href="{{ STATIC_URL }}book_style.css">
     <style type='text/css'>
         div.row {
             margin-top: 30px;
@@ -13,19 +14,39 @@
             margin-right: 20px;
         }
     </style>
+    <script type='text/javascript'>
+        function preview() {
+            txt = $('form textarea').val()
+            $.post('{% url page-preview %}', {
+                page: txt
+            }, function(html) {
+                $('div.preview').html(html);
+            });
+        }
+    </script>
 {% endblock %}
 {% block body %}
-    <a href="{% url my-books-show pk=form.instance.book.id %}">Go to TOC</a>
+    <div class='row'>
+        <div class='pull-left'>
+            <a href="{% url my-books-show pk=form.instance.book.id %}">Go to TOC</a>
+        </div>
+        <div class='pull-right'>
+            <a href="http://www.bbcode.org/reference.php" target="_blank" title="What is BBcode?">We support BBCode</a>
+        </div>
+    </div>
     <form action='' method='POST'>
         {% csrf_token %}
         <div class='row title offset5'>
             <h5> Title </h5>{{ form.title }}
         </div>
-        <div class='row offset2'>
+        <div class='row offset1'>
             {{ form.content }}
         </div>
-        <div class='row offset6'>
+        <div class='row offset4'>
             <input class='span4' type='submit' value='Save'>
+            <input class='span4' type='button' value='Preview' onclick='preview();'>
+        </div>
+        <div class='row preview span14 offset1 book-style'>
         </div>
     </form>
 {% endblock %}

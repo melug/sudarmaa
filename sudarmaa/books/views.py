@@ -115,3 +115,19 @@ class EditPageContent(UpdateView):
     def get_success_url(self):
         page = self.object
         return reverse('edit-page-content', kwargs={'pk':page.id})
+
+class PagePreview(TemplateView):
+    context_object_name = 'page'
+    template_name = 'books/page_view.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(PagePreview, self).get_context_data(**kwargs)
+        data = self.request.POST.get('page', '')
+        for t, r in (('>', '&gt;'),('<', '&lt;')):
+            data = data.replace(t, r)
+        context.update({'content': data})
+        return context
+
+    def post(self, request, *args, **kwargs):
+        return self.get(request, *args, **kwargs)
+

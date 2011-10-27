@@ -11,7 +11,7 @@ class PageForm(forms.ModelForm):
         model = Page
         fields = ('title', 'content',)
         widgets = {
-            'content': forms.Textarea(attrs={'cols': 120, 'rows': 40, 'class':'span12'}),
+            'content': forms.Textarea(attrs={'rows': 25, 'class':'span14'}),
             'title': forms.TextInput(attrs={'class': 'span6'})
         }
 
