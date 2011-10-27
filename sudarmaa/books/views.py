@@ -4,11 +4,12 @@ import json
 from django.db.models import Max
 from django.core.urlresolvers import reverse
 from django.http import HttpResponse
-from django.views.generic import TemplateView, ListView, CreateView, DetailView, View
+from django.contrib import messages
+from django.views.generic import TemplateView, ListView, CreateView, DetailView, View, UpdateView
 from django.shortcuts import get_object_or_404
 
 from books.models import Book, Category, Pick, Page
-from books.forms import BookForm
+from books.forms import BookForm, PageForm
 
 class HomeView(TemplateView):
     
@@ -71,7 +72,7 @@ class EditPage(View):
     
     def post(self, request):
         action = request.POST.get('action', None)
-        if action == 'addpage':
+        if action=='addpage':
             parent_id, book_id, title = request.POST.get('parent_page', None), request.POST.get('book_id'), request.POST.get('title')
             book = get_object_or_404(Book, creator=self.request.user, pk=book_id)
             if parent_id:
@@ -85,4 +86,32 @@ class EditPage(View):
             page = Page.objects.create(parent_page=parent_page, book=book, title=title, siblings_order=max_order+1)
             response_context.update({'page_id': page.id, 'title': page.title })
             return HttpResponse(json.dumps(response_context))
-        
+        elif action=='deletepage':
+            page_id = request.POST.get('page_id', None)
+            page = get_object_or_404(Page, pk=page_id, book__creator=self.request.user)
+            page.subpages.all().delete()
+            page.delete()
+            return HttpResponse(json.dumps(page_id))
+        elif action=='swappages':
+            page1_id, page2_id = request.POST.get('page1_id', None), request.POST.get('page2_id', None)
+            page1 = get_object_or_404(Page, pk=page1_id, book__creator=self.request.user)
+            page2 = get_object_or_404(Page, pk=page2_id, book__creator=self.request.user)
+            page1.siblings_order, page2.siblings_order = page2.siblings_order, page1.siblings_order
+            page1.save()
+            page2.save()
+            return HttpResponse(json.dumps({'page1_id': page1.id, 'page2_id': page2.id}))
+
+class EditPageContent(UpdateView):
+    form_class = PageForm
+
+    def get_queryset(self):
+        return Page.objects.filter(book__creator=self.request.user)
+
+    def form_valid(self, form):
+        f = super(EditPageContent, self).form_valid(form)
+        messages.info(self.request, 'Page updated')
+        return f
+
+    def get_success_url(self):
+        page = self.object
+        return reverse('edit-page-content', kwargs={'pk':page.id})

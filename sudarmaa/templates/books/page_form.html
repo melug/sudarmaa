@@ -1,0 +1,31 @@
+{% extends "site_base.html" %}
+{% block extra_head %}
+    <style type='text/css'>
+        div.row {
+            margin-top: 30px;
+        }
+        div.alert-message {
+            float: right;
+            width: 200px;
+        }
+        div.title h5 {
+            display: inline;
+            margin-right: 20px;
+        }
+    </style>
+{% endblock %}
+{% block body %}
+    <a href="{% url my-books-show pk=form.instance.book.id %}">Go to TOC</a>
+    <form action='' method='POST'>
+        {% csrf_token %}
+        <div class='row title offset5'>
+            <h5> Title </h5>{{ form.title }}
+        </div>
+        <div class='row offset2'>
+            {{ form.content }}
+        </div>
+        <div class='row offset6'>
+            <input class='span4' type='submit' value='Save'>
+        </div>
+    </form>
+{% endblock %}

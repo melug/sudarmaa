@@ -41,60 +41,90 @@
         }
     }
     function page_unavailable() {
-        $("input.move-button").attr("disabled", "disabled");
+        $("div.buttons-holder input").attr("disabled", "disabled");
     };
     function page_available() {
-        $("input.move-button").attr("disabled", "");
+        $("div.buttons-holder input").attr("disabled", "");
     };
     function move_up() {
         next = current_li.prevAll('li:first');
         if (next.length!=0) {
-            current_ul = current_li.next();
-            next_ul = next.next();
-            current_li.swap(next);
-            current_ul.swap(next_ul);
+            swap_pages(current_li.attr('pageid'), next.attr('pageid'));
         }
     };
     function move_down() {
         next = current_li.nextAll('li:first');
         if (next.length!=0) {
-            current_ul = current_li.next();
-            next_ul = next.next();
-            current_li.swap(next);
-            current_ul.swap(next_ul);
+            swap_pages(current_li.attr('pageid'), next.attr('pageid'));
         }
     };
     function add_page() {
         title = $("#page_name").val();
         if(current_li != null) {
-            $.post("{% url add-page %}", {
+            $.post("{% url edit-page %}", {
                 action: 'addpage',
                 parent_page: current_li.attr('pageid'),
                 book_id: {{ book.id }},
                 title: title
             }, insert_element_succeeded)
         } else {
-            $.post("{% url add-page %}", {
+            $.post("{% url edit-page %}", {
                 action: 'addpage',
                 book_id: {{ book.id }},
                 title: title
             }, insert_element_succeeded)
         }
+        $("#page_name").val('');
     };
+    function delete_page() {
+        $.post("{% url edit-page %}", {
+            action: 'deletepage',
+            page_id: current_li.attr('pageid')
+        }, delete_element_succeeded);
+    };
+    function delete_element_succeeded(html) {
+        page_id = html;
+        page_li = $('div.toc-list li[pageid=' + page_id + ']');
+        page_ul = page_li.next();
+        if(current_li.attr('pageid')==page_li.attr('pageid')) {
+            page_unavailable();
+            current_li = null;
+        }
+        page_li.remove()
+        page_ul.remove()
+    }
     function insert_element_succeeded(html) {
         e = eval('(' + html + ')');
         if (e.parent_id==null) {
             parent = $('div.toc-list > ul');
         } else {
-            parent = $('div.toc-list li[pageid=' + e.parent_id + '] ul:first');
+            parent = $('div.toc-list li[pageid=' + e.parent_id + ']').next();
         }
-        alert(parent.html());
         new_page = $('<li pageid=' + e.page_id + '>' + e.title + '</li><ul></ul>');
         parent.append(new_page);
         parent.find('li[pageid=' + e.page_id + ']').click(page_clicked);
     }
-    function ajax_swap_pages(page1, page2) {
+    function swap_pages(page1, page2) {
+        $.post('{% url edit-page %}', {
+            action: 'swappages',
+            page1_id: page1,
+            page2_id: page2
+        }, swap_pages_succeeded)
     };
+    function swap_pages_succeeded(html) {
+        e = eval('(' + html + ')');
+        page1_li = $('div.toc-list li[pageid=' + e.page1_id + ']');
+        page2_li = $('div.toc-list li[pageid=' + e.page2_id + ']');
+        page1_ul = page1_li.next();
+        page2_ul = page2_li.next();
+        page1_li.swap(page2_li);
+        page1_ul.swap(page2_ul);
+    }
+    function edit_page() {
+        if(current_li!=null) {
+            window.location.href='{% url edit-page %}' + current_li.attr('pageid') + '/';
+        }
+    }
 </script>
 {% endblock %}
 {% block body %}
@@ -109,9 +139,11 @@
                 <div>
                     Page name: <input id="page_name" type='text' value=''><input onclick="add_page();" type='button' value='Add'>
                 </div>
-                <div>
-                    <input disabled="disabled" onclick="move_up();" class="move-button" type='button' value="Move Up">
-                    <input disabled="disabled" onclick="move_down();" class="move-button" type='button' value="Move Down">
+                <div class='buttons-holder'>
+                    <input disabled="disabled" onclick="move_up();" type='button' value="Move Up">
+                    <input disabled="disabled" onclick="move_down();" type='button' value="Move Down">
+                    <input disabled="disabled" onclick="delete_page();" type='button' value="Delete Page">
+                    <input disabled="disabled" onclick="edit_page();" type='button' value="Edit Page">
                 </div>
             </div>
             <div class='toc-list'>
