@@ -49,12 +49,12 @@
                 {% for book in books %}
                 <div class='row book-item'>
                     <div class="span2">
-                        <a href="#">
+                        <a href='{% url book-detail pk=book.id %}'>
                             <img src="{{ book.icon.url }}" style="height:150px;">
                         </a>
                     </div>
                     <div class="span6">
-                        <div class="book-description"> <h4><a href="#">{{ book.title }}</a></h4> </div>
+                        <div class="book-description"> <h4><a href='{% url book-detail pk=book.id %}'>{{ book.title }}</a></h4> </div>
                     </div>
                 </div>
                 {% endfor %}
