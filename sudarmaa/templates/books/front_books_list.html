@@ -2,7 +2,7 @@
 {% for book in book_list %}
     <li>
         <div class='span3'>
-            <a href='#'>
+            <a href='{% url book-detail pk=book.id %}'>
                 <img src='{{ book.icon.url }}' height='100px;'>
                 <div>{{ book.title|truncatewords:4 }}</div>
             </a>

@@ -1,0 +1,32 @@
+{% extends "site_base.html" %}
+{% block body %}
+    <h4> {{ object.title }} </h4>
+     by <a href="#"> author </a>
+    <div class='row'>
+        <div class='span4'>
+            <img src='{{ book.icon.url }}' class='span4'>
+        </div>
+        <div class='span8'> 
+        {% if object.description|length > 0%}
+        {{ object.description }} 
+        {% else %}
+            No description.
+        {% endif %}
+        </div>
+        <div class='span4'>
+            <div><a href="#"> Share </a></div>
+            <div><a href="#"> Download as epub </a></div>
+            <div><a href="#"> Read </a></div>
+            <h4> In this category: </h4>
+            <ul>
+                {% for book in books_in_category %}
+                <li><a href="{% url book-detail pk=book.id %}">{{ book.title }}</a></li>
+                {% endfor %}
+            </ul>
+            <div>
+                <a href="{% url books-in-category %}?cat={{ category.id }}">
+                more in "{{ category.title }}" </a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
