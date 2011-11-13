@@ -1,7 +1,7 @@
 {% extends "site_base.html" %}
 {% block body %}
     <h4> {{ object.title }} </h4>
-     by <a href="#"> author </a>
+     by <a href="#" title="{{ book.creator.first_name }} {{ book.creator.last_name }}"> {{ book.creator.first_name }}. {{ book.creator.last_name|slice:":1" }} </a>
     <div class='row'>
         <div class='span4'>
             <img src='{{ book.icon.url }}' class='span4'>
@@ -16,7 +16,7 @@
         <div class='span4'>
             <div><a href="#"> Share </a></div>
             <div><a href="#"> Download as epub </a></div>
-            <div><a href="#"> Read </a></div>
+            <div><a href="{% url book-toc pk=object.id %}"> Read </a></div>
             <h4> In this category: </h4>
             <ul>
                 {% for book in books_in_category %}

@@ -1,0 +1,42 @@
+{% extends "books/base_reader.html" %}
+{% block extra_head %}
+<style type='text/css'>
+    div.book-navi {
+        display: inline;
+        position: fixed;
+        top: auto;
+        bottom: auto;
+        height: 100%;
+    }
+    div.book-navi {
+        height: 100%;
+    }
+    div.next {
+        right: 0px;
+        margin-right: 20px;
+    }
+    div.prev {
+        left: 0px;
+        margin-left: 20px;
+    }
+</style>
+{% endblock %}
+{% load bbcode %}
+{% block book_page %}
+    <h4>{{ page.title }}</h4>
+    {% if page.next_page %}
+    <div class='book-navi next'>
+        <a href="{% url read-page pk=page.next_page.id %}">Next page</a>
+    </div>
+    {% endif %}
+    {% if page.prev_page %}
+    <div class='book-navi prev'>
+        <a href="{% url read-page pk=page.prev_page.id %}">Previous page</a>
+    </div>
+    {% endif %}
+    <div class='row'>
+    {% autoescape off %}
+        {{ page.content|linebreaksbr|bbcode }}
+    {% endautoescape %}
+    </div>
+{% endblock %}

@@ -14,7 +14,7 @@ class Category(models.Model):
 class Book(models.Model):
     title = models.CharField(max_length=255)
     category = models.ForeignKey(Category)
-    icon = models.ImageField(upload_to='book_icons')
+    icon = models.ImageField(upload_to='book_icons', null=True)
     creator = models.ForeignKey(User, null=True)
     description = models.TextField(blank=True)
 
@@ -30,7 +30,31 @@ class Page(models.Model):
     title = models.CharField(max_length=255)
     content = models.TextField(blank=True)
     siblings_order = models.IntegerField()
+
+    def next_page(self):
+        ''' returns next page in the section or None if not available '''
+        if self.parent_page is not None:
+            sibling_pages = self.parent_page.subpages
+        else:
+            sibling_pages = self.book.page_set
+        try:
+            return sibling_pages.filter(siblings_order__gt=self.siblings_order).\
+                order_by('siblings_order')[0]
+        except IndexError:
+            return None
     
+    def prev_page(self):
+        ''' returns prev page in the section or None if not available '''
+        if self.parent_page is not None:
+            sibling_pages = self.parent_page.subpages
+        else:
+            sibling_pages = self.book.page_set
+        try:
+            return sibling_pages.filter(siblings_order__lt=self.siblings_order).\
+                order_by('-siblings_order')[0]
+        except IndexError:
+            return None
+
     def __unicode__(self):
         return self.title
 

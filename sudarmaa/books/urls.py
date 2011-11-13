@@ -2,7 +2,8 @@ from django.conf.urls.defaults import *
 from django.views.generic.simple import direct_to_template
 from django.contrib.auth.decorators import login_required
 from books.views import (HomeView, MyBooksView, BooksInCategory, BookDetail,
-    CreateBook, ShowMyBook, EditPage, EditPageContent, PagePreview)
+    CreateBook, ShowMyBook, EditPage, EditPageContent, PagePreview, 
+    BookTOC, ReadPage)
 
 urlpatterns = patterns("",
     url(r"^$", HomeView.as_view(template_name="books/home.html"), name="home"),
@@ -18,5 +19,9 @@ urlpatterns = patterns("",
 urlpatterns += patterns("", 
     url(r"^book/detail/(?P<pk>\d+)/$", login_required(BookDetail.as_view()),
     name="book-detail"),
+    url(r"^book/toc/(?P<pk>\d+)/$", login_required(BookTOC.as_view()),
+    name="book-toc"),
+    url(r"^book/read/(?P<pk>\d+)/$", login_required(ReadPage.as_view()),
+    name="read-page"),
 )
 
