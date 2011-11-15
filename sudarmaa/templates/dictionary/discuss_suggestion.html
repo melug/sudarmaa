@@ -1,0 +1,26 @@
+{% extends "site_base.html" %}
+{% load comments %}
+
+{% block body %}
+    {{ object.word }} - {{ object.explanation }}
+    {% get_comment_form for object as form %}
+    <table>
+        <form action="{% comment_form_target %}" method="post">
+            {% csrf_token %}
+            {{ form }}
+            <tr>
+                <td colspan="2">
+                <input type="submit" name="submit"
+                value="Post">
+                <input type="submit" name="preview"
+                value="Preview">
+                </td>
+            </tr>
+        </form>
+    </table>
+    {% get_comment_list for object as comment_list %}
+    {% for comment in comment_list %}
+        <h5>{{ comment.user_name }}</h5>
+        <p>{{ comment.comment }}</p>
+    {% endfor %}
+{% endblock %}
