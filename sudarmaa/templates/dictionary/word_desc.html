@@ -1,0 +1,11 @@
+{% if status == 'found' %}<span>{{ word.word }}</span><p>{{ word.explanation }}</p>{% endif %}
+{% if status == 'suggestion' %}
+    <table class='prettyprint'>
+    {% for word in suggestions %}
+        <tr>
+            <td>{{ word.word }}</td><td>{{ word.explanation }}</td>
+        </tr>
+    {% endfor %}
+    </table>
+{% endif %}
+{% if status == 'notfound' %} Word did not found, you may <a href="#">contribute</a> {% endif %}

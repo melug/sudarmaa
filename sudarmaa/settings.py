@@ -155,6 +155,7 @@ INSTALLED_APPS = [
     
     # project
     "books",
+    "dictionary",
 ]
 
 FIXTURE_DIRS = [

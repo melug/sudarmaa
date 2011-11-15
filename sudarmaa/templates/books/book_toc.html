@@ -1,4 +1,9 @@
 {% extends "books/base_reader.html" %}
+
+{% block topbar %}
+    <h3><a href="{% url book-toc pk=book.id %}"> {{ book.title }} </a></h3>
+{% endblock %}
+
 {% block book_page %}
     <h4>{{ book.title }}</h4>
     <ul>

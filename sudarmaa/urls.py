@@ -11,6 +11,7 @@ handler500 = "pinax.views.server_error"
 
 urlpatterns = patterns("",
     url(r"^", include('books.urls')),
+    url(r"^", include('dictionary.urls')),
     # accounts
     url(r'^accounts/login/$', 'django.contrib.auth.views.login', {
         'template_name': 'registration/login.html',

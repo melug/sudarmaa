@@ -30,4 +30,11 @@ class ReadPage(DetailView):
     context_object_name = 'page'
     template_name = 'books/read_page.html'
     model = Page
+
+    def get_context_data(self, *args, **kw):
+        data = super(ReadPage, self).get_context_data(*args, **kw)
+        data.update({
+            'book': self.object.book
+        })
+        return data
         

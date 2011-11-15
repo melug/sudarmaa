@@ -1,10 +1,10 @@
 {% extends "books/base_reader.html" %}
+{% load bbcode %}
 {% block extra_head %}
 <style type='text/css'>
     div.book-navi {
         display: inline;
         position: fixed;
-        top: 0px;
         bottom: 0px;
         background-color: #DEDEDE;
         vertical-align: middle;
@@ -20,12 +20,43 @@
         left: 0px;
         margin-left: 0px;
     }
+    div.topbar * {
+        color: white;
+        font-weight: 200;
+    }
+    div.dictionary {
+        display: inline;
+        position: fixed;
+        top: 100px;
+        right: 0px;
+        background-color: white;
+        padding: 10px;
+    }
+    div.dictionary img {
+        vertical-align: middle;
+    }
+    div.dictionary-result {
+        max-width: 300px;
+    }
 </style>
 <script type='text/javascript' src='{{ STATIC_URL }}js/reader.js'> </script>
+<script type='text/javascript' src='{{ STATIC_URL }}js/dictionary.js'> </script>
+<script type='text/javascript'>
+    dictionary_url = "{% url get-word %}";
+</script>
 {% endblock %}
-{% load bbcode %}
+
+{% block topbar %}
+    <h3><a href="{% url book-toc pk=book.id %}"> Table of Contents: </a></h3>
+    <h4> {{ page.title }} </h4>
+{% endblock %}
+
 {% block book_page %}
-    <h4>{{ page.title }}</h4>
+    <div class='dictionary'>
+        <img src="{{ STATIC_URL }}Dictionary_48.png" alt="Dictionary"/><input type='text'>
+        <div class='dictionary-result'>
+        </div>
+    </div>
     {% if page.next_page %}
         <a href="{% url read-page pk=page.next_page.id %}"><div class='book-navi next span2'> Next page </div></a>
     {% endif %}
