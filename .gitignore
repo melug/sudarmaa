@@ -1,5 +1,6 @@
-my-util
 *.pyc
 *.swp
 *.swo
 tags
+env/
+Sudarmaa.egg-info/
