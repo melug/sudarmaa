@@ -1,9 +1,8 @@
+pinax-theme-bootstrap was quite unstable and does not have PyPI index. So it is
+included
 
 First:
     $ python manage.py develop
-
-Pinax theme bootstrap is not registered at PyPi, so issue this command:
-    $ pip install -e git+http://github.com/pinax/pinax-theme-bootstrap.git#egg=pinax-theme-bootstrap
 
 PIL library requires python-dev, 
     $ apt-get install python-dev

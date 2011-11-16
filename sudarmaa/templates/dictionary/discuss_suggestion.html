@@ -1,26 +1,40 @@
 {% extends "site_base.html" %}
+{% block extra_head %}
+    <style type='text/css'>
+        form.comment-form tr {
+            display: none;
+        }
+        textarea {
+            width: 300px;
+            height: 100px;
+        }
+    </style>
+    <script type='text/javascript' src='{{ STATIC_URL }}js/contrib-word.js'> </script>
+{% endblock %}
 {% load comments %}
 
 {% block body %}
+    <div>
     {{ object.word }} - {{ object.explanation }}
+    </div>
+    <div id='comments'>
+        {% get_comment_list for object as comment_list %}
+        {% for comment in comment_list %}
+            <h5>{% if comment.user %}{{ comment.user.username }}{% else %}{{ comment.user_name }}{% endif %}</h5>
+            <p>{{ comment.comment }}</p>
+        {% endfor %}
+    </div>
     {% get_comment_form for object as form %}
-    <table>
-        <form action="{% comment_form_target %}" method="post">
-            {% csrf_token %}
-            {{ form }}
-            <tr>
-                <td colspan="2">
-                <input type="submit" name="submit"
-                value="Post">
-                <input type="submit" name="preview"
-                value="Preview">
-                </td>
+    <form action="{% comment_form_target %}" class='comment-form' method="post">
+        <table>
+        {% csrf_token %}
+        {{ form.as_table }}
+            <tr style='display: block;'>
+            <td colspan="2">
+            <input type='hidden' name='next' value='{% url discuss-word pk=object.id %}'>
+            <input type="submit" name="submit" value="Post">
+            </td>
             </tr>
-        </form>
-    </table>
-    {% get_comment_list for object as comment_list %}
-    {% for comment in comment_list %}
-        <h5>{{ comment.user_name }}</h5>
-        <p>{{ comment.comment }}</p>
-    {% endfor %}
+        </table>
+    </form>
 {% endblock %}

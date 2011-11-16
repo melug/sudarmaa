@@ -1,7 +1,7 @@
 # Create your views here.
 from django.core.urlresolvers import reverse
 from django.http import HttpResponse
-from django.views.generic import TemplateView, CreateView, DetailView
+from django.views.generic import TemplateView, CreateView, DetailView, ListView
 from django.shortcuts import redirect
 
 from dictionary.models import Word, Suggestion
@@ -56,4 +56,11 @@ class DiscussWord(DetailView):
 
 class ThanksContribution(TemplateView):
     template_name = 'dictionary/thanks_contrib.html'
+
+class ContributionList(ListView):
+    context_object_name = 'suggestions'
+    paginate_by = 20
+
+    def get_queryset(self):
+        return Suggestion.objects.all().order_by('-date_added')
 

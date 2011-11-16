@@ -1,0 +1,24 @@
+{% extends "site_base.html" %}
+{% load comments %}
+{% block body %}
+    <table>
+    {% for suggestion in suggestions %}
+        <tr>
+            <td>
+                <a href="{% url discuss-word pk=suggestion.id %}">
+                {{ suggestion.word }}
+                </a>
+            </td>
+            <td>
+                {{ suggestion.explanation }}
+            </td>
+            {% get_comment_count for suggestion as comment_count %}
+            <td>
+                <a href="{% url discuss-word pk=suggestion.id %}#comments">
+                    Comments: {{ comment_count }}
+                </a>
+            </td>
+        </tr>
+    {% endfor %}
+    </table>
+{% endblock %}
