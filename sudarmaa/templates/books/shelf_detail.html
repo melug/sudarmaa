@@ -1,0 +1,21 @@
+{% extends "site_base.html" %}
+{% block extra_head %}
+    <style type='text/css'>
+        li.active a {
+            color: gray;
+        }
+    </style>
+{% endblock %}
+{% block body %}
+<div class='row'>
+    <div class='span4'>
+    <ul>
+    {% for sshelf in user.shelves.all %}
+        <li{% if sshelf == shelf %} class="active"{% endif %}><a href="{% url shelf-detail pk=sshelf.id %}">{{ sshelf.title }}</a></li>
+    {% endfor %}
+    </ul>
+    </div>
+    <div class='span12'>
+    </div>
+</div>
+{% endblock %}

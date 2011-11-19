@@ -1,7 +1,9 @@
 # Create your views here.
-from django.views.generic import TemplateView, ListView
+from django.views.generic import TemplateView, ListView, DetailView, View
+from django.shortcuts import redirect
+from django.core.urlresolvers import reverse
 
-from books.models import Book, Category
+from books.models import Book, Category, Shelf
 
 class HomeView(TemplateView):
     
@@ -42,4 +44,24 @@ class BooksInCategory(ListView):
         category_id = self.request.GET.get('cat', None)
         if category_id: context.update({ 'cat' : category_id })
         return context
+
+class ShelfView(DetailView):
+    template_name = 'books/shelf_detail.html'
+    context_object_name = 'shelf'
+    
+    def get_queryset(self):
+        return Shelf.objects.filter(is_public=True)
+
+    def get_context_data(self, *args, **kw):
+        data = super(ShelfView, self).get_context_data(*args, **kw)
+        data.update({
+            'books' : self.object.books
+        })
+        return data
+
+class ShelfList(View):
+
+    def dispatch(self, request, *args, **kw):
+        default_shelf = request.user.shelves.get(title='read')
+        return redirect(reverse('shelf-detail', kwargs={ 'pk' : default_shelf.id }))
 

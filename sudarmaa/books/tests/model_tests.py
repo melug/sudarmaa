@@ -7,7 +7,7 @@ Replace this with more appropriate tests for your application.
 
 from django.test import TestCase
 from django.contrib.auth.models import User
-from books.models import Page, Book, Category
+from books.models import Page, Book, Category, DEFAULT_SHELVES
 
 class UserMix(TestCase):
     
@@ -41,4 +41,11 @@ class PageTests(UserMix):
 
         self.assertEqual(self.page3.prev_page(), None)
         self.assertEqual(self.page3.next_page(), None)
+
+class ShelfTests(UserMix):
+    
+    def test_shelf_created(self):
+        self.assertEqual(self.user.shelves.count(), 3)
+        for shelf, title in zip(self.user.shelves.order_by('title'), sorted(DEFAULT_SHELVES)):
+            self.assertEqual(shelf.title, title)
 

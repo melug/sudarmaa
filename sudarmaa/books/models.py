@@ -31,26 +31,24 @@ class Page(models.Model):
     content = models.TextField(blank=True)
     siblings_order = models.IntegerField()
 
+    def sibling_pages(self):
+        if self.parent_page is not None:
+            return self.parent_page.subpages
+        else:
+            return self.book.page_set
+
     def next_page(self):
         ''' returns next page in the section or None if not available '''
-        if self.parent_page is not None:
-            sibling_pages = self.parent_page.subpages
-        else:
-            sibling_pages = self.book.page_set
         try:
-            return sibling_pages.filter(siblings_order__gt=self.siblings_order).\
+            return self.sibling_pages().filter(siblings_order__gt=self.siblings_order).\
                 order_by('siblings_order')[0]
         except IndexError:
             return None
     
     def prev_page(self):
         ''' returns prev page in the section or None if not available '''
-        if self.parent_page is not None:
-            sibling_pages = self.parent_page.subpages
-        else:
-            sibling_pages = self.book.page_set
         try:
-            return sibling_pages.filter(siblings_order__lt=self.siblings_order).\
+            return self.sibling_pages().filter(siblings_order__lt=self.siblings_order).\
                 order_by('-siblings_order')[0]
         except IndexError:
             return None
@@ -65,4 +63,31 @@ class Pick(models.Model):
 
     def __unicode__(self):
         return '%s. %s' % (self.order_number, self.book.title)
+
+class Shelf(models.Model):
+    title = models.CharField(max_length=255)
+    user = models.ForeignKey(User, related_name='shelves')
+    books = models.ManyToManyField(Book)
+    is_public = models.BooleanField(default=True)
+
+    def __unicode__(self):
+        return self.user.username + ':' + self.title
+
+    class Meta:
+        verbose_name_plural = 'Shelves'
+
+#########################################
+#               Signals                 #
+#########################################
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+
+DEFAULT_SHELVES = ('read', 'to-read', 'currently-reading')
+
+@receiver(post_save, sender=User)
+def create_default_shelves(sender, **kwargs):
+    user, created = kwargs['instance'], kwargs['created']
+    if created:
+        for shelve_title in DEFAULT_SHELVES:
+            Shelf.objects.create(title=shelve_title, user=user)
 
