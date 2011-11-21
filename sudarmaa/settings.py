@@ -151,6 +151,7 @@ INSTALLED_APPS = [
     "staticfiles",
     "compressor",
     "debug_toolbar",
+    "djangoratings",
     
     # Pinax
     

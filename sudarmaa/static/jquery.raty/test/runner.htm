@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>jQuery Test Runner</title>
+
+		<link rel="stylesheet" type="text/css" href="lib/jasmine.css">
+
+		<script type="text/javascript" charset="utf-8" src="../js/jquery.min.js"></script>
+		<script type="text/javascript" charset="utf-8" src="../js/jquery.raty.js"></script>
+
+		<script type="text/javascript" charset="utf-8" src="lib/jasmine.js"></script>
+		<script type="text/javascript" charset="utf-8" src="lib/jasmine-html.js"></script>
+		<script type="text/javascript" charset="utf-8" src="lib/jasmine-jquery.js"></script>
+	</head>
+	<body>
+		<script type="text/javascript">
+		describe('', function() {
+
+			beforeEach(function() {
+				$('body').append('<div id="star"></div>'); // path: '../img', 
+			});
+
+			it('should use range icons and apply not found icons default', function() {
+				// given
+				var $star = $('#star');
+
+				// when
+				$star.raty({path: '../img', 
+					iconRange: [
+			            { range: 2, off: 'face-a-off.png' },
+			            { range: 3, off: 'face-b-off.png' },
+			            { range: 4, on: 'face-c.png', off: 'face-c-off.png' },
+			            { range: 5 }
+					]
+				});
+
+				var $imgs = $star.children('img').eq(3).mouseover();
+
+				// then
+			    expect($imgs.eq(0)).toHaveAttr('src', '../img/star-on.png');
+			    expect($imgs.eq(1)).toHaveAttr('src', '../img/star-on.png');
+			    expect($imgs.eq(2)).toHaveAttr('src', '../img/star-on.png');
+			    expect($imgs.eq(3)).toHaveAttr('src', '../img/face-c.png');
+			    expect($imgs.eq(4)).toHaveAttr('src', '../img/starOff.png');
+
+			    console.log($imgs.eq(0));
+			    console.log($imgs.eq(1));
+			    console.log($imgs.eq(2));
+			    console.log($imgs.eq(3));
+			    console.log($imgs.eq(4));
+			});
+
+		}); // USING CHECKBOX AND RADIO
+
+			jasmine.getEnv().addReporter(new jasmine.TrivialReporter());
+			jasmine.getEnv().execute();
+		</script>
+	</body>
+</html>

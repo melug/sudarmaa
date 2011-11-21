@@ -1,10 +1,22 @@
 {% extends "site_base.html" %}
+{% block extra_head %}
+    <script type="text/javascript" src="{{ STATIC_URL }}jquery.raty/js/jquery.min.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}jquery.raty/js/jquery.raty.min.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/rating.js"></script>
+    <script type="text/javascript">
+        var static_root = "{{ STATIC_URL }}";
+    </script>
+{% endblock %}
 {% block body %}
     <h4> {{ object.title }} </h4>
      by <a href="#" title="{{ book.creator.first_name }} {{ book.creator.last_name }}"> {{ book.creator.first_name }}. {{ book.creator.last_name|slice:":1" }} </a>
     <div class='row'>
         <div class='span4'>
-            <img src='{{ book.icon.url }}' class='span4'>
+            <div class='row'><img src='{{ book.icon.url }}' class='span4'></div>
+            <div class='row'>
+                {{ book.rating.get_rating }}
+                <div class='star'></div>
+            </div>
         </div>
         <div class='span8'> 
         {% if object.description|length > 0%}

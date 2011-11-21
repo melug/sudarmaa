@@ -1,13 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User, Group, Permission
-
-def get_publisher_group():
-    group, created = Group.objects.get_or_create(name='Publishers')
-    if created:
-        group.permissions.add(Permission.objects.get(codename='add_book'))
-    return group
-
-get_publisher_group()
+from djangoratings.fields import RatingField
 
 # Create your models here.
 class Category(models.Model):
@@ -25,6 +18,7 @@ class Book(models.Model):
     icon = models.ImageField(upload_to='book_icons', null=True)
     creator = models.ForeignKey(User, null=True)
     description = models.TextField(blank=True)
+    rating = RatingField(range=5)
 
     def top_pages(self):
         return self.page_set.filter(parent_page__isnull=True).order_by('siblings_order')
