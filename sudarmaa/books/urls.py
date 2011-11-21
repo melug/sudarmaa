@@ -3,7 +3,7 @@ from django.views.generic.simple import direct_to_template
 from django.contrib.auth.decorators import login_required
 from books.views import (HomeView, MyBooksView, BooksInCategory, BookDetail,
     CreateBook, ShowMyBook, EditPage, EditPageContent, PagePreview, 
-    BookTOC, ReadPage, ShelfView, ShelfList)
+    BookTOC, ReadPage, ShelfView, ShelfList, ShelfCreate)
 
 urlpatterns = patterns("",
     url(r"^$", HomeView.as_view(template_name="books/home.html"), 
@@ -29,6 +29,8 @@ urlpatterns += patterns("",
     name="shelf-detail"),
     url(r"^shelf/$", login_required(ShelfList.as_view()),
     name="shelf-index"),
+    url(r"^shelf/create/$", login_required(ShelfCreate.as_view()),
+    name="shelf-create"),
 )
 
 urlpatterns += patterns("", 

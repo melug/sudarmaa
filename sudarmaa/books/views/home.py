@@ -1,9 +1,11 @@
 # Create your views here.
-from django.views.generic import TemplateView, ListView, DetailView, View
+from django.views.generic import TemplateView, ListView, DetailView, View, CreateView
 from django.shortcuts import redirect
 from django.core.urlresolvers import reverse
+from django.http import HttpResponse
 
 from books.models import Book, Category, Shelf
+from books.forms import ShelfForm
 
 class HomeView(TemplateView):
     
@@ -55,7 +57,8 @@ class ShelfView(DetailView):
     def get_context_data(self, *args, **kw):
         data = super(ShelfView, self).get_context_data(*args, **kw)
         data.update({
-            'books' : self.object.books
+            'books' : self.object.books,
+            'shelf_form': ShelfForm()
         })
         return data
 
@@ -64,4 +67,14 @@ class ShelfList(View):
     def dispatch(self, request, *args, **kw):
         default_shelf = request.user.shelves.get(title='read')
         return redirect(reverse('shelf-detail', kwargs={ 'pk' : default_shelf.id }))
+
+class ShelfCreate(View):
+
+    def post(self, request, *args, **kw):
+        title = request.POST['title']
+        try:
+            shelf = Shelf.objects.create(title=title, user=self.request.user)
+            return HttpResponse('OK')
+        except:
+            return HttpResponse('Fail')
 

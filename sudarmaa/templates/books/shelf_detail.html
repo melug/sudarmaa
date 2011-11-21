@@ -4,7 +4,17 @@
         li.active a {
             color: gray;
         }
+        li.create-shelf-form {
+            display: none;
+        }
+        li.create-shelf-form input {
+            display: inline;
+        }
     </style>
+    <script type='text/javascript' src='{{ STATIC_URL }}js/shelf.js'> </script>
+    <script type='text/javascript'>
+        shelf_create_url = "{% url shelf-create %}";
+    </script>
 {% endblock %}
 {% block body %}
 <div class='row'>
@@ -13,6 +23,12 @@
     {% for sshelf in user.shelves.all %}
         <li{% if sshelf == shelf %} class="active"{% endif %}><a href="{% url shelf-detail pk=sshelf.id %}">{{ sshelf.title }}</a></li>
     {% endfor %}
+        <li class='create-shelf-text'><a href="#">create shelf</a></li>
+        <li class='create-shelf-form'>
+            <div class='row'>
+                <input type='text' class='span3'><input type='button' value='create'>
+            </div>
+        </li>
     </ul>
     </div>
     <div class='span12'>

@@ -1,5 +1,5 @@
 from django import forms
-from books.models import Book, Page
+from books.models import Book, Page, Shelf
 
 class BookForm(forms.ModelForm):
     class Meta:
@@ -14,4 +14,9 @@ class PageForm(forms.ModelForm):
             'content': forms.Textarea(attrs={'rows': 25, 'class':'span14'}),
             'title': forms.TextInput(attrs={'class': 'span6'})
         }
+
+class ShelfForm(forms.ModelForm):
+    class Meta:
+        model = Shelf
+        exclude = ('is_public', 'books')
 
