@@ -1,5 +1,13 @@
 from django.db import models
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, Group, Permission
+
+def get_publisher_group():
+    group, created = Group.objects.get_or_create(name='Publishers')
+    if created:
+        group.permissions.add(Permission.objects.get(codename='add_book'))
+    return group
+
+get_publisher_group()
 
 # Create your models here.
 class Category(models.Model):

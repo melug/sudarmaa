@@ -4,10 +4,13 @@
         <ul class='dropdown-menu'>
             <li><a href='#'> Hello, {{ user.username }} </a></li>
             <li><a href='#'> My bookmarks </a></li>
+            <li><a href='#'> Settings </a></li>
             <li><a href='{% url shelf-index %}'> My books </a></li>
             <li class='divider'></li>
-            <li><a href='{% url published-books %}'> Published books </a></li>
+            {% if perms.books.add_book %}
+            <li><a href='{% url published-books %}'> Publish </a></li>
             <li class='divider'></li>
+            {% endif %}
             <li><a href='{% url logout %}'> Logout </a></li>
         </ul>
     </li>
