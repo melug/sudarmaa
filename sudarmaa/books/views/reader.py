@@ -24,7 +24,7 @@ class BookTOC(DetailView):
         return data
     
     def get_queryset(self):
-        return Book.objects.all()
+        return Book.publish.all()
 
 class ReadPage(DetailView):
     context_object_name = 'page'

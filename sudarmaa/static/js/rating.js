@@ -1,9 +1,7 @@
-
 $(function() {
   return $("div.star").raty({
     path: "" + static_root + "raty/img",
     start: start_rating,
-    half: true,
     click: function(score, evt) {
       $.get("" + this_url + "rate/" + score + "/", function(data) {
         var count;

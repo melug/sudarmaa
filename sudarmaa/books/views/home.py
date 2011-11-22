@@ -12,8 +12,8 @@ class HomeView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super(HomeView, self).get_context_data(**kwargs)
         context.update({
-            'new_books' : Book.objects.all()[:4],
-            'picked_books': Book.objects.filter(
+            'new_books' : Book.publish.all()[:4],
+            'picked_books': Book.publish.filter(
                 pick__isnull=False).order_by('pick__order_number')[:4],
             'categories' : Category.objects.all()
         })
@@ -33,9 +33,9 @@ class BooksInCategory(ListView):
     def get_queryset(self):
         category_id = self.request.GET.get('cat', None)
         if category_id:
-            query_set = Book.objects.filter(category__id=category_id)
+            query_set = Book.publish.filter(category__id=category_id)
         else:
-            query_set = Book.objects.all()
+            query_set = Book.publish.all()
         return query_set
 
     def get_context_data(self, **kwargs):

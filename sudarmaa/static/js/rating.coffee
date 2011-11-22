@@ -2,7 +2,6 @@ $ ->
     $("div.star").raty({
         path: "#{static_root}raty/img"
         start: start_rating
-        half: true
         click: (score, evt) ->
             $.get "#{this_url}rate/#{score}/", (data) ->
                 count = parseInt($("#rating-count").html())

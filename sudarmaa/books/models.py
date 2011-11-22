@@ -4,6 +4,14 @@ from django.contrib.contenttypes.models import ContentType
 from djangoratings.fields import RatingField
 from djangoratings.models import Vote
 
+#########################################
+#             BookManager               #
+#########################################
+class PublishManager(models.Manager):
+    
+    def get_query_set(self):
+        return super(PublishManager, self).get_query_set().filter(status=2)
+
 # Create your models here.
 class Category(models.Model):
     title = models.CharField(max_length=255)
@@ -14,13 +22,23 @@ class Category(models.Model):
     class Meta:
         verbose_name_plural = 'Categories'
 
+STATUS_CHOICES = (
+    (1, 'Draft'),
+    (2, 'Published'),
+    (3, 'Violates terms')
+)
+
 class Book(models.Model):
     title = models.CharField(max_length=255)
     category = models.ForeignKey(Category)
     icon = models.ImageField(upload_to='book_icons', null=True)
     creator = models.ForeignKey(User, null=True)
     description = models.TextField(blank=True)
+    status = models.IntegerField(choices=STATUS_CHOICES, default=1)
     rating = RatingField(range=5)
+    
+    objects = models.Manager()
+    publish = PublishManager()
 
     def top_pages(self):
         return self.page_set.filter(parent_page__isnull=True).order_by('siblings_order')
