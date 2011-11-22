@@ -7,7 +7,7 @@
         div.book-description {
             padding-left: 30px;
         }
-        div.book-description h4 {
+        div.book-description h5 {
             line-height: 20px;
         }
     </style>
@@ -54,7 +54,10 @@
                         </a>
                     </div>
                     <div class="span6">
-                        <div class="book-description"> <h4><a href='{% url book-detail pk=book.id %}'>{{ book.title }}</a></h4> </div>
+                        <div class="book-description"> 
+                            <h5><a href='{% url book-detail pk=book.id %}'>{{ book.title }}</a></h5> 
+                            <p> {{ book.description|truncatewords:50 }} <a href="{% url book-detail pk=book.id %}"> more </a></p>
+                        </div>
                     </div>
                 </div>
                 {% endfor %}

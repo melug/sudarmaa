@@ -39,13 +39,20 @@ urlpatterns += patterns("",
     name="shelf-create"),
 )
 
-# reading through books
+from djangoratings.views import AddRatingFromModel
+
+# reading through books, rating etc...
 urlpatterns += patterns("", 
-    url(r"^book/detail/(?P<pk>\d+)/$", BookDetail.as_view(),
+    url(r"^book/(?P<pk>\d+)/$", BookDetail.as_view(),
     name="book-detail"),
-    url(r"^book/toc/(?P<pk>\d+)/$", login_required(BookTOC.as_view()),
+    url(r"^book/(?P<pk>\d+)/toc/$", login_required(BookTOC.as_view()),
     name="book-toc"),
-    url(r"^book/read/(?P<pk>\d+)/$", login_required(ReadPage.as_view()),
+    url(r"^book/(?P<pk>\d+)/read/$", login_required(ReadPage.as_view()),
     name="read-page"),
+    url(r"^book/(?P<object_id>\d+)/rate/(?P<score>\d+)/$", login_required(AddRatingFromModel()), {
+        'app_label': 'books',
+        'model': 'book',
+        'field_name': 'rating'
+    }, name="book-rate"),
 )
 

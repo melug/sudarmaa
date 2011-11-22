@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User, Group, Permission
+from django.contrib.contenttypes.models import ContentType
 from djangoratings.fields import RatingField
+from djangoratings.models import Vote
 
 # Create your models here.
 class Category(models.Model):
@@ -22,6 +24,11 @@ class Book(models.Model):
 
     def top_pages(self):
         return self.page_set.filter(parent_page__isnull=True).order_by('siblings_order')
+
+    def count_rating(self):
+        book_type = ContentType.objects.get_for_model(self)
+        return Vote.objects.filter(content_type__pk=book_type.id, 
+            object_id=self.id).count()
 
     def __unicode__(self):
         return self.title
