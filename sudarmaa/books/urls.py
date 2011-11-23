@@ -3,7 +3,7 @@ from django.views.generic.simple import direct_to_template
 from django.contrib.auth.decorators import login_required, permission_required
 from books.views import (HomeView, MyBooksView, BooksInCategory, BookDetail,
     CreateBook, ShowMyBook, EditPage, EditPageContent, PagePreview, 
-    BookTOC, ReadPage, ShelfView, ShelfList, ShelfCreate)
+    BookTOC, ReadPage, ShelfView, ShelfList, ShelfCreate, AddRating)
 
 # general use case
 urlpatterns = patterns("",
@@ -39,8 +39,6 @@ urlpatterns += patterns("",
     name="shelf-create"),
 )
 
-from djangoratings.views import AddRatingFromModel
-
 # reading through books, rating etc...
 urlpatterns += patterns("", 
     url(r"^book/(?P<pk>\d+)/$", BookDetail.as_view(),
@@ -49,10 +47,6 @@ urlpatterns += patterns("",
     name="book-toc"),
     url(r"^book/(?P<pk>\d+)/read/$", login_required(ReadPage.as_view()),
     name="read-page"),
-    url(r"^book/(?P<object_id>\d+)/rate/(?P<score>\d+)/$", login_required(AddRatingFromModel()), {
-        'app_label': 'books',
-        'model': 'book',
-        'field_name': 'rating'
-    }, name="book-rate"),
+    url(r"^book/(?P<object_id>\d+)/rate/(?P<score>\d+)/$", AddRating.as_view(), name="book-rate"),
 )
 

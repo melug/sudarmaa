@@ -1,4 +1,9 @@
-from django.views.generic import DetailView
+import json
+
+from django.views.generic import DetailView, View
+from django.http import HttpResponse
+from djangoratings.views import AddRatingFromModel
+
 from books.models import Book, Page
 
 class BookDetail(DetailView):
@@ -38,3 +43,20 @@ class ReadPage(DetailView):
         })
         return data
         
+class AddRating(View):
+    
+    def post(self, request, *args, **kwargs):
+        params = {
+            'app_label': 'books',
+            'model': 'book',
+            'field_name': 'rating'
+        }
+        params.update(kwargs)
+        response = AddRatingFromModel()(request, **params)
+        if response.status_code == 200:
+            return HttpResponse(json.dumps({'message': response.content}))
+        return HttpResponse(json.dumps({'error': 9, 'message': response.content}))
+
+    def get(self, request, *args, **kwargs):
+        return self.post(request, *args, **kwargs)
+
