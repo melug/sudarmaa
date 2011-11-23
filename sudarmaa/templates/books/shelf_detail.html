@@ -21,7 +21,7 @@
     <div class='span4'>
     <ul>
     {% for sshelf in user.shelves.all %}
-        <li{% if sshelf == shelf %} class="active"{% endif %}><a href="{% url shelf-detail pk=sshelf.id %}">{{ sshelf.title }}</a></li>
+        <li{% if sshelf == shelf %} class="active"{% endif %}><a href="{% url shelf-detail pk=sshelf.id %}">{{ sshelf.title }}({{ sshelf.books_count }})</a></li>
     {% endfor %}
         <li class='create-shelf-text'><a href="#">create shelf</a></li>
         <li class='create-shelf-form'>
@@ -32,6 +32,14 @@
     </ul>
     </div>
     <div class='span12'>
+    <ul class="media-grid">
+        <li>
+            <a href="#"> <img class="thumbnail" src="http://placehold.it/120x180" alt=""> </a>
+        </li>
+        <li>
+            <a href="#"> <img class="thumbnail" src="http://placehold.it/120x180" alt=""> </a>
+        </li>
+    </ul>
     </div>
 </div>
 {% endblock %}

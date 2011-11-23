@@ -103,6 +103,12 @@ class Shelf(models.Model):
     def __unicode__(self):
         return self.user.username + ':' + self.title
 
+    def books_count(self):
+        return self.books.filter(status=2).count()
+
+    def books_published(self):
+        return self.books.filter(status=2)
+
     class Meta:
         verbose_name_plural = 'Shelves'
 
