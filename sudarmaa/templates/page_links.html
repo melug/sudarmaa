@@ -1,0 +1,23 @@
+<div class='row'>
+    <div class="pull-right">
+        {% if page_obj.has_previous %}
+            <div>
+            <a href="?page={{ page_obj.previous_page_number }}{% if cat %}&amp;cat={{ cat }}{% endif %}"> previous </a>
+            </div>
+        {% else %}
+            <div>
+            <span> previous </span>
+            </div>
+        {% endif %}
+            <div style="text-align:center;"> {{ page_obj.number }}/{{ page_obj.paginator.num_pages }} </div>
+        {% if page_obj.has_next %}
+            <div>
+            <a href="?page={{ page_obj.next_page_number }}{% if cat %}&amp;cat={{ cat }}{% endif %}"> next </a>
+            </div>
+        {% else %}
+            <div>
+            <span> next </span>
+            </div>
+        {% endif %}
+    </div>
+</div>
