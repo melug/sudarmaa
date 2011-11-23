@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required, permission_required
 from books.views import (HomeView, MyBooksView, BooksInCategory, BookDetail,
     CreateBook, ShowMyBook, EditPage, EditPageContent, PagePreview, 
     BookTOC, ReadPage, ShelfView, ShelfList, ShelfCreate, AddRating,
-    PublishBook)
+    PublishBook, AddBookToShelf)
 
 # general use case
 urlpatterns = patterns("",
@@ -40,6 +40,8 @@ urlpatterns += patterns("",
     name="shelf-index"),
     url(r"^shelf/create/$", login_required(ShelfCreate.as_view()),
     name="shelf-create"),
+    url(r"^shelf/add/book/$", login_required(AddBookToShelf.as_view()),
+    name="shelf-add-book"),
 )
 
 # reading through books, rating etc...

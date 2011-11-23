@@ -32,14 +32,9 @@
     </ul>
     </div>
     <div class='span12'>
-    <ul class="media-grid">
-        <li>
-            <a href="#"> <img class="thumbnail" src="http://placehold.it/120x180" alt=""> </a>
-        </li>
-        <li>
-            <a href="#"> <img class="thumbnail" src="http://placehold.it/120x180" alt=""> </a>
-        </li>
-    </ul>
+    {% with shelf.books_published as book_list %}
+        {% include "books/front_books_list.html" %}
+    {% endwith %}
     </div>
 </div>
 {% endblock %}

@@ -1,4 +1,6 @@
 # Create your views here.
+import json
+
 from django.views.generic import TemplateView, ListView, DetailView, View, CreateView
 from django.shortcuts import redirect
 from django.core.urlresolvers import reverse
@@ -77,4 +79,20 @@ class ShelfCreate(View):
             return HttpResponse('OK')
         except:
             return HttpResponse('Fail')
+
+class AddBookToShelf(View):
+
+    def post(self, request, *args, **kw):
+        try:
+            book_id = int(request.REQUEST.get('b', 0))
+            book = Book.objects.get(status=2, pk=book_id)
+            shelf_id = int(request.REQUEST.get('s', 0))
+            shelf = Shelf.objects.get(user=request.user, pk=shelf_id)
+            if shelf.books.filter(pk=book.id).count() == 0:
+                shelf.books.add(book)
+                return HttpResponse(json.dumps({'status': 'ok'}))
+            else:
+                return HttpResponse(json.dumps({'status': 'duplicated'}))
+        except (ValueError, Book.DoesNotExist):
+            return HttpResponse(json.dumps({'error': 9}))
 
