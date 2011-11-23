@@ -1,9 +1,25 @@
 {% extends "site_base.html" %}
+{% block extra_head %}
+    <script type='text/javascript' src='{{ STATIC_URL }}js/publish.js'> </script>
+    <script type='text/javascript'>
+        publish_url = "{% url publish-book %}";
+    </script>
+{% endblock %}
 {% block body %}
-    <ul>
+    <table>
+        <tr>
+            <th>Books:</th><th>Publish?</th>
+        </tr>
     {% for book in my_books %}
-        <li><a href="{% url my-books-show pk=book.id %}">{{ book.title }}</a></li>
+        <tr class='books'>
+            <td><a href="{% url my-books-show pk=book.id %}">{{ book.title }}</a></td>
+            <td><input type='checkbox' value='{{ book.id }}' {% if book.is_published %}checked="true"{% endif %}><span style="display:none;" id="notification-{{ book.id }}"></span></td>
+        </tr>
+    {% empty %}
+        <tr>
+            <td colspan="2">You have no books published</a>
+        </tr>
     {% endfor %}
-    </ul>
+    </table>
     <a href="{% url my-books-create %}"> create one? </a>
 {% endblock %}

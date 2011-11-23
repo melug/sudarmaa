@@ -40,6 +40,9 @@ class Book(models.Model):
     objects = models.Manager()
     publish = PublishManager()
 
+    def is_published(self):
+        return self.status == 2
+
     def top_pages(self):
         return self.page_set.filter(parent_page__isnull=True).order_by('siblings_order')
 

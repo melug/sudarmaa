@@ -3,7 +3,8 @@ from django.views.generic.simple import direct_to_template
 from django.contrib.auth.decorators import login_required, permission_required
 from books.views import (HomeView, MyBooksView, BooksInCategory, BookDetail,
     CreateBook, ShowMyBook, EditPage, EditPageContent, PagePreview, 
-    BookTOC, ReadPage, ShelfView, ShelfList, ShelfCreate, AddRating)
+    BookTOC, ReadPage, ShelfView, ShelfList, ShelfCreate, AddRating,
+    PublishBook)
 
 # general use case
 urlpatterns = patterns("",
@@ -15,6 +16,8 @@ urlpatterns = patterns("",
 
 # for publishers
 urlpatterns += patterns("",
+    url(r"^publisher/book/publish/$", permission_required('books.add_book')(PublishBook.as_view()), 
+    name="publish-book"),
     url(r"^publisher/book/$", permission_required('books.add_book')(MyBooksView.as_view()), 
     name="published-books"),
     url(r"^publisher/book/create/$", permission_required('books.add_book')(CreateBook.as_view()), 

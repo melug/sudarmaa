@@ -3,7 +3,7 @@ import json
 
 from django.db.models import Max
 from django.core.urlresolvers import reverse
-from django.http import HttpResponse
+from django.http import HttpResponse, Http404
 from django.contrib import messages
 from django.views.generic import TemplateView, CreateView, DetailView, View, UpdateView
 from django.shortcuts import get_object_or_404
@@ -90,4 +90,31 @@ class PagePreview(TemplateView):
 
     def post(self, request, *args, **kwargs):
         return self.get(request, *args, **kwargs)
+
+class PublishBook(View):
+    
+    def post(self, request, *args, **kwargs):
+        try:
+            pk = int(request.REQUEST.get('pk', None))
+            pu = int(request.REQUEST.get('pu', None))
+            print pk, pu
+            if pk:
+                book = Book.objects.get(creator=request.user, pk=pk)
+                if pu:
+                    book.status = 2
+                else:
+                    book.status = 1
+                book.save()
+                return HttpResponse(json.dumps({
+                    'status': 'OK',
+                    'book_id': book.id
+                }))
+        except (ValueError, Book.DoesNotExist):
+            pass
+        return HttpResponse(json.dumps({
+            'error': 9
+        }))
+
+    def get(self, request, *args, **kwargs):
+        raise Http404()
 
