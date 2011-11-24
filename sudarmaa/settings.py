@@ -14,6 +14,13 @@ TEMPLATE_DEBUG = DEBUG
 # tells Pinax to serve media through the staticfiles app.
 SERVE_MEDIA = DEBUG
 
+# social auth
+SOCIAL_AUTH_ENABLED_BACKENDS = ('twitter', 'facebook',)
+TWITTER_CONSUMER_KEY         = 'A33CojjdDLqeq4TBkR4Inw'
+TWITTER_CONSUMER_SECRET      = 'GNyT2rEQ2uZPuvpW7KBnHWKYkYCwhKMNAXhmK1A30oU'
+FACEBOOK_APP_ID              = '193797717371698'
+FACEBOOK_API_SECRET          = '3ed13d2a5b228be2ce48a30d9bd9818a'
+
 # django-compressor is turned off by default due to deployment overhead for
 # most users. See <URL> for more information
 COMPRESS = False
@@ -152,6 +159,7 @@ INSTALLED_APPS = [
     "compressor",
     "debug_toolbar",
     "djangoratings",
+    "social_auth",
     
     # Pinax
     
@@ -159,6 +167,11 @@ INSTALLED_APPS = [
     "books",
     "dictionary",
 ]
+
+AUTHENTICATION_BACKENDS = (
+    'social_auth.backends.twitter.TwitterBackend',
+    'django.contrib.auth.backends.ModelBackend',
+)
 
 FIXTURE_DIRS = [
     os.path.join(PROJECT_ROOT, "fixtures"),

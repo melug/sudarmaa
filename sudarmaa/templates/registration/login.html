@@ -21,6 +21,8 @@
 
 <input type="submit" value="login" />
 <input type="hidden" name="next" value="{{ next }}" />
+<a href="{% url socialauth_begin backend='twitter' %}">login with twitter</a>
+<a href="{% url socialauth_begin backend='facebook' %}">login with facebook</a>
 </form>
 
 {% endblock %}

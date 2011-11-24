@@ -10,14 +10,16 @@ handler500 = "pinax.views.server_error"
 
 
 urlpatterns = patterns("",
-    url(r"^", include('books.urls')),
-    url(r"^", include('dictionary.urls')),
-    url(r'^comments/', include('django.contrib.comments.urls')),
+    url(r"", include('books.urls')),
+    url(r"", include('dictionary.urls')),
+    url(r'comments/', include('django.contrib.comments.urls')),
+    # social auth
+    url(r"", include('social_auth.urls')),
     # accounts
-    url(r'^accounts/login/$', 'django.contrib.auth.views.login', {
+    url(r'accounts/login/$', 'django.contrib.auth.views.login', {
         'template_name': 'registration/login.html',
     }, name='login'),
-    url(r'^accounts/logout/$', 'django.contrib.auth.views.logout', {
+    url(r'accounts/logout/$', 'django.contrib.auth.views.logout', {
         'next_page': '/'
     }, name='logout'),
     # admin

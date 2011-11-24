@@ -19,5 +19,6 @@ setup(
         'django_compressor',
         'django_staticfiles',
         'PIL',
+        'django-social-auth',
     ],
 )
