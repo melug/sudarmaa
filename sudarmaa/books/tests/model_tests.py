@@ -13,8 +13,6 @@ from books.models import Page, Book, Category, Shelf, DEFAULT_SHELVES
 
 class UserMix(TestCase):
     
-    fixtures = []
-    
     def setUp(self):
         self.user = User.objects.create_user('testuser', 'test@test.mn', 'testuser')
         self.category = Category.objects.create(title='Test category')
@@ -78,3 +76,28 @@ class ShelfTests(UserMix):
         r = self.c.post(url, data=data)
         j = json.loads(r.content)
         return j
+        
+class BookmarkTests(UserMix):
+
+    def setUp(self):
+        super(BookmarkTests, self).setUp()
+        self.c = client.Client()
+
+    def test_bookmark(self):
+        self.assertTrue(self.c.login(username='testuser', password='testuser'))
+        r = self.send_receive_json(reverse('bookmark-add', kwargs={'page_id':self.page1.id}), {})
+        self.assertEqual(r['status'], 'ok')
+        r = self.send_receive_json(reverse('bookmark-add', kwargs={'page_id':self.page1.id}), {})
+        self.assertEqual(r['status'], 'already created')
+        r = self.send_receive_json(reverse('bookmark-add', kwargs={'page_id':99999}), {})
+        self.assertEqual(r['error'], 10)
+        r = self.send_receive_json(reverse('bookmark-remove', kwargs={'page_id':self.page1.id}), {})
+        self.assertEqual(r['status'], 'deleted')
+        r = self.send_receive_json(reverse('bookmark-remove', kwargs={'page_id':self.page1.id}), {})
+        self.assertEqual(r['error'], 10)
+
+    def send_receive_json(self, url, data):
+        r = self.c.post(url, data=data)
+        j = json.loads(r.content)
+        return j
+

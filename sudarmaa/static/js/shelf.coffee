@@ -27,6 +27,6 @@ $ ->
                 alert 'error on server'
             else
                 current_counter.html(parseInt(current_counter.html())-1)
-                parent.hide()
+                parent.fadeOut(1000)
         , 'json'
 

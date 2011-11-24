@@ -94,6 +94,14 @@ class Pick(models.Model):
     def __unicode__(self):
         return '%s. %s' % (self.order_number, self.book.title)
 
+class Bookmark(models.Model):
+    user = models.ForeignKey(User)
+    added = models.DateTimeField(auto_now_add=True)
+    page = models.ForeignKey(Page)
+
+    def __unicode__(self):
+        return user.username + ":" + page.title
+
 class Shelf(models.Model):
     title = models.CharField(max_length=255)
     user = models.ForeignKey(User, related_name='shelves')

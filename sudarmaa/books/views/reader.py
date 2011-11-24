@@ -4,7 +4,7 @@ from django.views.generic import DetailView, View
 from django.http import HttpResponse
 from djangoratings.views import AddRatingFromModel
 
-from books.models import Book, Page
+from books.models import Book, Page, Bookmark
 
 class BookDetail(DetailView):
 
@@ -59,4 +59,35 @@ class AddRating(View):
 
     def get(self, request, *args, **kwargs):
         return self.post(request, *args, **kwargs)
+
+class BookmarkAdd(View):
+
+    def post(self, request, *args, **kwargs):
+        try:
+            page_id = int(kwargs['page_id'])
+            page = Page.objects.get(pk=page_id)
+            book = page.book
+            if book.status == 2:
+                bookmarks = Bookmark.objects.filter(user=request.user, page=page)
+                if bookmarks.count() == 0:
+                    bookmark = Bookmark.objects.create(user=request.user, page=page)
+                    return HttpResponse(json.dumps({'status': 'ok'}))
+                else:
+                    return HttpResponse(json.dumps({'status': 'already created'}))
+            else:
+                return HttpResponse(json.dumps({'error': 9}))
+        except Exception, e:
+            return HttpResponse(json.dumps({'error': 10}))
+
+class BookmarkRemove(View):
+
+    def post(self, request, *args, **kwargs):
+        try:
+            page_id = int(kwargs['page_id'])
+            page = Page.objects.get(pk=page_id)
+            bookmark = Bookmark.objects.get(user=request.user, page=page)
+            bookmark.delete()
+            return HttpResponse(json.dumps({'status': 'deleted'}))
+        except:
+            return HttpResponse(json.dumps({'error': 10}))
 
