@@ -1,3 +1,4 @@
+
 $(function() {
   $('#add-to-shelf').click(function() {
     return $("ul.shelf-list").slideDown(300);
@@ -7,7 +8,8 @@ $(function() {
     shelf_id = $(this).attr('shelf-id');
     return $.post(add_book, {
       s: shelf_id,
-      b: book_id
+      b: book_id,
+      a: 'add'
     }, function(data) {
       if (data.error != null) {
         return alert('error');

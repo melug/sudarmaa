@@ -125,5 +125,5 @@ def create_default_shelves(sender, **kwargs):
     user, created = kwargs['instance'], kwargs['created']
     if created:
         for shelve_title in DEFAULT_SHELVES:
-            Shelf.objects.create(title=shelve_title, user=user)
+            shelf = Shelf.objects.create(title=shelve_title, user=user)
 

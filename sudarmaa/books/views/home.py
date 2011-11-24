@@ -80,19 +80,26 @@ class ShelfCreate(View):
         except:
             return HttpResponse('Fail')
 
-class AddBookToShelf(View):
+class BookShelfAction(View):
 
     def post(self, request, *args, **kw):
         try:
+            action = request.REQUEST.get('a', '')
             book_id = int(request.REQUEST.get('b', 0))
             book = Book.objects.get(status=2, pk=book_id)
             shelf_id = int(request.REQUEST.get('s', 0))
             shelf = Shelf.objects.get(user=request.user, pk=shelf_id)
-            if shelf.books.filter(pk=book.id).count() == 0:
-                shelf.books.add(book)
-                return HttpResponse(json.dumps({'status': 'ok'}))
-            else:
-                return HttpResponse(json.dumps({'status': 'duplicated'}))
-        except (ValueError, Book.DoesNotExist):
+            if action == 'add':
+                if shelf.books.filter(pk=book.id).count() == 0:
+                    shelf.books.add(book)
+                    return HttpResponse(json.dumps({'status': 'ok'}))
+                return HttpResponse(json.dumps({'status': 'already added'}))
+            elif action == 'remove':
+                if shelf.books.filter(pk=book.id).count != 0:
+                    shelf.books.remove(book)
+                    return HttpResponse(json.dumps({'status': 'ok'}))
+                return HttpResponse(json.dumps({'status': 'not in the shelf'}))
+        except (ValueError, Book.DoesNotExist), e:
             return HttpResponse(json.dumps({'error': 9}))
+        return HttpResponse('')
 
