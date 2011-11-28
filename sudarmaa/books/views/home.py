@@ -26,7 +26,7 @@ class MyBooksView(ListView):
     paginate_by = 10
 
     def get_queryset(self):
-        return self.request.user.book_set.all()
+        return self.request.user.book_set.order_by('status')
 
 class BooksInCategory(ListView):
     context_object_name = 'books'

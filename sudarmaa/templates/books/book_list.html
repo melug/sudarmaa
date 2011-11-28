@@ -4,6 +4,11 @@
     <script type='text/javascript'>
         publish_url = "{% url publish-book %}";
     </script>
+    <style type='text/css'>
+        tr.books td.publish-status {
+            max-width: 100px;
+        }
+    </style>
 {% endblock %}
 {% block body %}
     <table>
@@ -12,8 +17,13 @@
         </tr>
     {% for book in my_books %}
         <tr class='books'>
+            {% if book.status != 3 %}
             <td><a href="{% url my-books-show pk=book.id %}">{{ book.title }}</a></td>
-            <td><input type='checkbox' value='{{ book.id }}' {% if book.is_published %}checked="true"{% endif %}><span style="display:none;" id="notification-{{ book.id }}"></span></td>
+            <td class='publish-status'><input type='checkbox' value='{{ book.id }}' {% if book.is_published %}checked="true"{% endif %}><span style="display:none;" id="notification-{{ book.id }}"></span></td>
+            {% else %}
+            <td><a href="{% url my-books-show pk=book.id %}">{{ book.title }}</a></td>
+            <td class='warning publish-status'> You can't publish this book. It has violated <a href="#">Agreement terms</a>. Please contact administrator.</td>
+            {% endif %}
         </tr>
     {% empty %}
         <tr>
