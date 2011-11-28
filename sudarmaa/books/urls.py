@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required, permission_required
 from books.views import (HomeView, MyBooksView, BooksInCategory, BookDetail,
     CreateBook, ShowMyBook, EditPage, EditPageContent, PagePreview, 
     BookTOC, ReadPage, ShelfView, ShelfList, ShelfCreate, AddRating,
-    PublishBook, BookShelfAction, BookmarkAdd, BookmarkRemove)
+    PublishBook, BookShelfAction, BookmarkAdd, BookmarkRemove, BookmarksView)
 
 # general use case
 urlpatterns = patterns("",
@@ -62,4 +62,6 @@ urlpatterns += patterns("",
     name='bookmark-add'),
     url(r"^bookmark/remove/(?P<page_id>\d+)/", login_required(BookmarkRemove.as_view()),
     name='bookmark-remove'),
+    url(r"^bookmark/", login_required(BookmarksView.as_view()),
+    name='bookmark-index'),
 )

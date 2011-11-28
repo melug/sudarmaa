@@ -100,7 +100,7 @@ class Bookmark(models.Model):
     page = models.ForeignKey(Page)
 
     def __unicode__(self):
-        return user.username + ":" + page.title
+        return self.user.username + ":" + self.page.title
 
 class Shelf(models.Model):
     title = models.CharField(max_length=255)

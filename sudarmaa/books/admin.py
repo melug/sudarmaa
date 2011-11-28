@@ -1,5 +1,5 @@
 from django.contrib import admin
-from books.models import Category, Book, Pick, Page, Shelf
+from books.models import Category, Book, Pick, Page, Shelf, Bookmark
 
 def make_published(modeladmin, request, queryset):
     queryset.update(status=2)
@@ -23,3 +23,4 @@ admin.site.register(Category)
 admin.site.register(Pick)
 admin.site.register(Page)
 admin.site.register(Shelf)
+admin.site.register(Bookmark)

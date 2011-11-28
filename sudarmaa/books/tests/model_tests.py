@@ -1,30 +1,9 @@
-"""
-This file demonstrates writing tests using the unittest module. These will pass
-when you run "manage.py test".
-
-Replace this with more appropriate tests for your application.
-"""
 import json
 
 from django.test import TestCase, client
-from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
 from books.models import Page, Book, Category, Shelf, DEFAULT_SHELVES
-
-class UserMix(TestCase):
-    
-    def setUp(self):
-        self.user = User.objects.create_user('testuser', 'test@test.mn', 'testuser')
-        self.category = Category.objects.create(title='Test category')
-        self.book = Book.objects.create(title='Title - 1', \
-            category=self.category, icon=None, creator=self.user, \
-            description='Test description', status=2)
-        self.page1 = Page.objects.create(parent_page=None, book=self.book,
-        title='Chapter-1', content='Content - 1', siblings_order=1)
-        self.page2 = Page.objects.create(parent_page=None, book=self.book,
-        title='Chapter-2', content='Content - 2', siblings_order=2)
-        self.page3 = Page.objects.create(parent_page=self.page1, book=self.book,
-        title='Chapter-3', content='Content - 3', siblings_order=1)
+from books.tests.user_mix import UserMix
 
 class PageTests(UserMix):
 
@@ -77,27 +56,3 @@ class ShelfTests(UserMix):
         j = json.loads(r.content)
         return j
         
-class BookmarkTests(UserMix):
-
-    def setUp(self):
-        super(BookmarkTests, self).setUp()
-        self.c = client.Client()
-
-    def test_bookmark(self):
-        self.assertTrue(self.c.login(username='testuser', password='testuser'))
-        r = self.send_receive_json(reverse('bookmark-add', kwargs={'page_id':self.page1.id}), {})
-        self.assertEqual(r['status'], 'ok')
-        r = self.send_receive_json(reverse('bookmark-add', kwargs={'page_id':self.page1.id}), {})
-        self.assertEqual(r['status'], 'already created')
-        r = self.send_receive_json(reverse('bookmark-add', kwargs={'page_id':99999}), {})
-        self.assertEqual(r['error'], 10)
-        r = self.send_receive_json(reverse('bookmark-remove', kwargs={'page_id':self.page1.id}), {})
-        self.assertEqual(r['status'], 'deleted')
-        r = self.send_receive_json(reverse('bookmark-remove', kwargs={'page_id':self.page1.id}), {})
-        self.assertEqual(r['error'], 10)
-
-    def send_receive_json(self, url, data):
-        r = self.c.post(url, data=data)
-        j = json.loads(r.content)
-        return j
-

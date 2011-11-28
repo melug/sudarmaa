@@ -42,13 +42,22 @@
 <script type='text/javascript' src='{{ STATIC_URL }}js/reader.js'> </script>
 <script type='text/javascript' src='{{ STATIC_URL }}js/dictionary.js'> </script>
 <script type='text/javascript'>
-    dictionary_url = "{% url get-word %}";
+    dictionary_url = "{% url get-word %}", page_id = {{ page.id }}, bookmark_url = "{% url bookmark-add page_id=page.id %}";
 </script>
 {% endblock %}
 
 {% block topbar %}
     <h3><a href="{% url book-toc pk=book.id %}"> Table of Contents: </a></h3>
-    <h4> {{ page.title }} </h4>
+    <h4 style='display:inline;'> {{ page.title }} </h4>
+    <ul class='nav secondary-nav'>
+        <li class='dropdown'>
+            <a href='#' class='dropdown-toggle'>Controls</a>
+            <ul class='dropdown-menu'>
+                <li>Font size <input type='button' value='+'><input type='button' value='-'></li>
+                <li><a id='add-to-bookmark' href="#">Add to bookmark</a></li>
+            </ul>
+        </li>
+    </ul>
 {% endblock %}
 
 {% block book_page %}

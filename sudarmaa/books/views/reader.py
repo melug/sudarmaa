@@ -1,6 +1,6 @@
 import json
 
-from django.views.generic import DetailView, View
+from django.views.generic import DetailView, View, ListView
 from django.http import HttpResponse
 from djangoratings.views import AddRatingFromModel
 
@@ -18,7 +18,7 @@ class BookDetail(DetailView):
         return data
     
     def get_queryset(self):
-        return Book.objects.all()
+        return Book.publish.all()
 
 class BookTOC(DetailView):
     context_object_name = 'book'
@@ -73,7 +73,7 @@ class BookmarkAdd(View):
                     bookmark = Bookmark.objects.create(user=request.user, page=page)
                     return HttpResponse(json.dumps({'status': 'ok'}))
                 else:
-                    return HttpResponse(json.dumps({'status': 'already created'}))
+                    return HttpResponse(json.dumps({'error': 'already created'}))
             else:
                 return HttpResponse(json.dumps({'error': 9}))
         except Exception, e:
@@ -90,4 +90,9 @@ class BookmarkRemove(View):
             return HttpResponse(json.dumps({'status': 'deleted'}))
         except:
             return HttpResponse(json.dumps({'error': 10}))
+
+class BookmarksView(ListView):
+    
+    def get_queryset(self, *args, **kw):
+        return Bookmark.objects.filter(user=self.request.user)
 
