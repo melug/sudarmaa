@@ -18,6 +18,10 @@
             <td>{{ b.page.book.title }}</td>
             <td><input onclick='_remove_bookmark(this, "{% url bookmark-remove page_id=b.page.id %}");' type='button' value='delete'></td>
         </tr>
+    {% empty %}
+        <tr>
+            <td> You have no bookmarks yet </td>
+        </tr>
     {% endfor %}
     </table>
 {% endblock %}
