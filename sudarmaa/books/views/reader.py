@@ -38,8 +38,13 @@ class ReadPage(DetailView):
 
     def get_context_data(self, *args, **kw):
         data = super(ReadPage, self).get_context_data(*args, **kw)
+        try:
+            bookmark = Bookmark.objects.get(user=self.request.user, page=self.object)
+        except Bookmark.DoesNotExist:
+            bookmark = None
         data.update({
-            'book': self.object.book
+            'book': self.object.book,
+            'bookmark': bookmark
         })
         return data
         

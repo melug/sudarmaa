@@ -40,9 +40,13 @@
     }
 </style>
 <script type='text/javascript' src='{{ STATIC_URL }}js/reader.js'> </script>
+<script type='text/javascript' src='{{ STATIC_URL }}js/bookmark.js'> </script>
 <script type='text/javascript' src='{{ STATIC_URL }}js/dictionary.js'> </script>
 <script type='text/javascript'>
-    dictionary_url = "{% url get-word %}", page_id = {{ page.id }}, bookmark_url = "{% url bookmark-add page_id=page.id %}";
+    var dictionary_url = "{% url get-word %}", 
+        page_id = {{ page.id }},
+        add_bookmark_url = "{% url bookmark-add page_id=page.id %}", 
+        remove_bookmark_url = "{% url bookmark-remove page_id=page.id %}";
 </script>
 {% endblock %}
 
@@ -54,7 +58,7 @@
             <a href='#' class='dropdown-toggle'>Controls</a>
             <ul class='dropdown-menu'>
                 <li>Font size <input type='button' value='+'><input type='button' value='-'></li>
-                <li><a id='add-to-bookmark' href="#">Add to bookmark</a></li>
+                <li>Bookmark <input id='bookmark' type='checkbox'{% if bookmark %} checked="true"{% endif %}></li>
             </ul>
         </li>
     </ul>

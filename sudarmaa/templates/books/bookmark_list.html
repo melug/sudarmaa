@@ -2,6 +2,12 @@
 {% block extra_head %}
     <script type='text/javascript' src='{{ STATIC_URL }}js/bookmark.js'> </script>
     <script type='text/javascript'>
+    function _remove_bookmark(elem, remove_url) {
+        function callback() {
+            $(elem).parents('table.bookmark-list tr').remove();
+        }
+        remove_bookmark(remove_url, callback);
+    }
     </script>
 {% endblock %}
 {% block body %}
@@ -10,7 +16,7 @@
         <tr>
             <td><a href="{% url read-page pk=b.page.id %}">{{ b.page.title }}</a></td>
             <td>{{ b.page.book.title }}</td>
-            <td><input onclick='remove_bookmark(this, "{% url bookmark-remove page_id=b.page.id %}");' type='button' value='delete'></td>
+            <td><input onclick='_remove_bookmark(this, "{% url bookmark-remove page_id=b.page.id %}");' type='button' value='delete'></td>
         </tr>
     {% endfor %}
     </table>

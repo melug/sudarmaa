@@ -2,9 +2,10 @@ $ ->
     $("input[type=button]").click (event) ->
         event.stopPropagation();
 
-    $("#add-to-bookmark").click (event) ->
+    $("#bookmark").click (event) ->
         event.stopPropagation();
-        $.post bookmark_url, (data) ->
-            if data.error?
-                alert data.error
-        , 'json'
+        if this.checked
+            add_bookmark add_bookmark_url
+        else
+            remove_bookmark remove_bookmark_url
+

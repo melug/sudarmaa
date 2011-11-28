@@ -3,10 +3,12 @@ $(function() {
   $("input[type=button]").click(function(event) {
     return event.stopPropagation();
   });
-  return $("#add-to-bookmark").click(function(event) {
+  return $("#bookmark").click(function(event) {
     event.stopPropagation();
-    return $.post(bookmark_url, function(data) {
-      if (data.error != null) return alert(data.error);
-    }, 'json');
+    if (this.checked) {
+      return add_bookmark(add_bookmark_url);
+    } else {
+      return remove_bookmark(remove_bookmark_url);
+    }
   });
 });
