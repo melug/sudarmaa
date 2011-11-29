@@ -4,14 +4,19 @@ from django.contrib.auth.decorators import login_required, permission_required
 from books.views import (HomeView, MyBooksView, BooksInCategory, BookDetail,
     CreateBook, ShowMyBook, EditPage, EditPageContent, PagePreview, 
     BookTOC, ReadPage, ShelfView, ShelfList, ShelfCreate, AddRating,
-    PublishBook, BookShelfAction, BookmarkAdd, BookmarkRemove, BookmarksView)
+    PublishBook, BookShelfAction, BookmarkAdd, BookmarkRemove, BookmarksView,
+    StaffPicks, LatestBooks)
 
 # general use case
 urlpatterns = patterns("",
     url(r"^$", HomeView.as_view(template_name="books/home.html"), 
     name="home"),
-    url(r"^browse/$", BooksInCategory.as_view(template_name='books/books_with_category.html',), 
+    url(r"^books/$", BooksInCategory.as_view(template_name='books/books_with_category.html',), 
     name="books-in-category"),
+    url(r"^books/staff-pick/$", StaffPicks.as_view(template_name='books/books_with_category.html',), 
+    name="staff-picks"),
+    url(r"^books/latest/$", LatestBooks.as_view(template_name='books/books_with_category.html',), 
+    name="latest-books"),
 )
 
 # for publishers

@@ -17,13 +17,13 @@
         <div class='span4'>
             <ul>
                 {% for category in categories %}
-                <li><a href="?cat={{ category.id }}">{{ category.title }}</a></li>
+                <li><a href="{% url books-in-category %}?cat={{ category.id }}">{{ category.title }}</a></li>
                 {% endfor %}
             </ul>
         </div>
         <div class='span8'>
             {% with books.count as number_of_books %}
-                {% if number_of_books != 0 %} {% include "page_links.html" %} {% endif %}
+                {% if is_paginated and number_of_books != 0 %} {% include "page_links.html" %} {% endif %}
                 <div class="row">
                     {% for book in books %}
                     <div class='row book-item'>
@@ -41,7 +41,7 @@
                     </div>
                     {% endfor %}
                 </div>
-                {% if number_of_books != 0 %} {% include "page_links.html" %} {% endif %}
+                {% if is_paginated and number_of_books != 0 %} {% include "page_links.html" %} {% endif %}
             {% endwith %}
         </div>
     </div>

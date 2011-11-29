@@ -23,11 +23,11 @@
 {% block body %}
     <div class='row'>
         <div class='span12'>
-            <h4> New books <a href="#" class="more">more ></a> </h4>
+            <h4> New books <a href="{% url latest-books %}" class="more">more ></a> </h4>
             {% with new_books as book_list %}
                 {% include "books/front_books_list.html" %}
             {% endwith %}
-            <h4> Staff picks <a href="#" class="more">more ></a> </h4>
+            <h4> Staff picks <a href="{% url staff-picks %}" class="more">more ></a> </h4>
             {% with picked_books as book_list %}
                 {% include "books/front_books_list.html" %}
             {% endwith %}

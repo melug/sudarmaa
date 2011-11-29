@@ -30,10 +30,12 @@ class MyBooksView(ListView):
 
 class BooksInCategory(ListView):
     context_object_name = 'books'
-    paginate_by = 8
+    paginate_by = 4
 
     def get_queryset(self):
         category_id = self.request.GET.get('cat', None)
+        latest = self.request.GET.get('latest', None)
+        staff_pick = self.request.GET.get('staff_pick', None)
         if category_id:
             query_set = Book.publish.filter(category__id=category_id)
         else:
@@ -48,6 +50,19 @@ class BooksInCategory(ListView):
         category_id = self.request.GET.get('cat', None)
         if category_id: context.update({ 'cat' : category_id })
         return context
+
+class StaffPicks(BooksInCategory):
+    paginate_by = None
+    
+    def get_queryset(self):
+        return super(StaffPicks, self).get_queryset().filter(pick__isnull=False)
+
+class LatestBooks(BooksInCategory):
+    paginate_by = None
+    books_size = 10
+
+    def get_queryset(self):
+        return super(LatestBooks, self).get_queryset().order_by('-added')[:self.books_size]
 
 class ShelfView(DetailView):
     template_name = 'books/shelf_detail.html'

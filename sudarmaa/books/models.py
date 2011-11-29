@@ -29,13 +29,14 @@ STATUS_CHOICES = (
 )
 
 class Book(models.Model):
-    title = models.CharField(max_length=255)
+    added = models.DateTimeField(auto_now_add=True)
     category = models.ForeignKey(Category)
-    icon = models.ImageField(upload_to='book_icons', null=True)
     creator = models.ForeignKey(User, null=True)
     description = models.TextField(blank=True)
-    status = models.IntegerField(choices=STATUS_CHOICES, default=1)
+    icon = models.ImageField(upload_to='book_icons', null=True)
     rating = RatingField(range=5)
+    status = models.IntegerField(choices=STATUS_CHOICES, default=1)
+    title = models.CharField(max_length=255)
     
     objects = models.Manager()
     publish = PublishManager()
