@@ -1,0 +1,624 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-11-30 14:27+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+
+#: books/models.py:20
+msgid "name"
+msgstr ""
+
+#: books/models.py:26 books/models.py:57
+msgid "Category"
+msgstr "Каталог"
+
+#: books/models.py:27
+msgid "Categories"
+msgstr "Каталогууд"
+
+#: books/models.py:31
+msgid "first name"
+msgstr ""
+
+#: books/models.py:32
+msgid "last name"
+msgstr ""
+
+#: books/models.py:33
+msgid "e-mail address"
+msgstr ""
+
+#: books/models.py:34
+msgid "biography short"
+msgstr ""
+
+#: books/models.py:35
+msgid "biography"
+msgstr ""
+
+#: books/models.py:45
+msgid "Author"
+msgstr "Зохиолч"
+
+#: books/models.py:46
+msgid "Authors"
+msgstr "Зохиолчид"
+
+#: books/models.py:49
+msgid "Draft"
+msgstr "Ноорог"
+
+#: books/models.py:50
+msgid "Published"
+msgstr "Хэвлэгдсэн"
+
+#: books/models.py:51
+msgid "Violates terms"
+msgstr "Гэрээ зөрчсөн"
+
+#: books/models.py:56
+msgid "Added date"
+msgstr "Нэмэгдсэн огноо"
+
+#: books/models.py:58
+msgid "Sender"
+msgstr "Илгээсэн"
+
+#: books/models.py:59
+msgid "Description"
+msgstr "Тайлбар"
+
+#: pinax_theme_bootstrap/templates/404.html:5
+msgid "Not Found"
+msgstr ""
+
+#: pinax_theme_bootstrap/templates/404.html:8
+msgid "We're sorry but that page could not be found."
+msgstr ""
+
+#: pinax_theme_bootstrap/templates/500.html:5
+msgid "Server Error"
+msgstr ""
+
+#: pinax_theme_bootstrap/templates/500.html:8
+msgid ""
+"We're sorry but a server error has occurred. We've been notified and will "
+"look into it as soon as possible."
+msgstr ""
+
+#: pinax_theme_bootstrap/templates/account/base.html:13
+#: pinax_theme_bootstrap/templates/account/email.html:6
+msgid "Account"
+msgstr ""
+
+#: pinax_theme_bootstrap/templates/account/base.html:15
+#: pinax_theme_bootstrap/templates/account/email.html:9
+msgid "Email Addresses"
+msgstr ""
+
+#: pinax_theme_bootstrap/templates/account/base.html:17
+#: pinax_theme_bootstrap/templates/django_openid/associations.html:5
+msgid "OpenID Associations"
+msgstr ""
+
+#: pinax_theme_bootstrap/templates/account/base.html:20
+#: pinax_theme_bootstrap/templates/account/password_change.html:6
+#: pinax_theme_bootstrap/templates/account/password_change.html:9
+#: pinax_theme_bootstrap/templates/account/password_reset_from_key.html:5
+#: pinax_theme_bootstrap/templates/account/password_reset_from_key.html:8
+msgid "Change Password"
+msgstr ""
+
+#: pinax_theme_bootstrap/templates/account/base.html:22
+#: pinax_theme_bootstrap/templates/account/password_set.html:6
+#: pinax_theme_bootstrap/templates/account/password_set.html:9
+msgid "Set Password"
+msgstr ""
+
+#: pinax_theme_bootstrap/templates/account/base.html:25
+#: pinax_theme_bootstrap/templates/account/password_delete.html:5
+#: pinax_theme_bootstrap/templates/account/password_delete.html:8
+msgid "Delete Password"
+msgstr ""
+
+#: pinax_theme_bootstrap/templates/account/base.html:28
+#: pinax_theme_bootstrap/templates/account/language_change.html:6
+#: pinax_theme_bootstrap/templates/account/language_change.html:9
+msgid "Language"
+msgstr ""
+
+#: pinax_theme_bootstrap/templates/account/base.html:30
+#: pinax_theme_bootstrap/templates/account/timezone_change.html:6
+#: pinax_theme_bootstrap/templates/account/timezone_change.html:9
+msgid "Timezone"
+msgstr ""
+
+#: pinax_theme_bootstrap/templates/account/email.html:18
+msgid "verified"
+msgstr ""
+
+#: pinax_theme_bootstrap/templates/account/email.html:20
+msgid "primary"
+msgstr ""
+
+#: pinax_theme_bootstrap/templates/account/email.html:28
+msgid "make primary"
+msgstr ""
+
+#: pinax_theme_bootstrap/templates/account/email.html:33
+msgid "unverified"
+msgstr ""
+
+#: pinax_theme_bootstrap/templates/account/email.html:40
+msgid "re-send verification email"
+msgstr ""
+
+#: pinax_theme_bootstrap/templates/account/email.html:51
+#: pinax_theme_bootstrap/templates/django_openid/associations.html:26
+msgid "remove"
+msgstr ""
+
+#: pinax_theme_bootstrap/templates/account/email.html:59
+msgid ""
+"You should really add an email address so you can receive notifications, "
+"reset your password if you forget it, etc."
+msgstr ""
+
+#: pinax_theme_bootstrap/templates/account/email.html:63
+msgid "Add Email Address"
+msgstr ""
+
+#: pinax_theme_bootstrap/templates/account/email.html:72
+msgid "add"
+msgstr ""
+
+#: pinax_theme_bootstrap/templates/account/language_change.html:11
+msgid "This site can be used in your preferred language."
+msgstr ""
+
+#: pinax_theme_bootstrap/templates/account/language_change.html:19
+msgid "Change my language"
+msgstr ""
+
+#: pinax_theme_bootstrap/templates/account/login.html:8
+#: pinax_theme_bootstrap/templates/django_openid/login.html:8
+msgid "Login"
+msgstr ""
+
+#: pinax_theme_bootstrap/templates/account/login.html:12
+#: pinax_theme_bootstrap/templates/account/signup.html:14
+#: pinax_theme_bootstrap/templates/django_openid/login.html:20
+msgid "Log In"
+msgstr ""
+
+#: pinax_theme_bootstrap/templates/account/login.html:16
+#: pinax_theme_bootstrap/templates/account/password_reset.html:13
+#: pinax_theme_bootstrap/templates/account/password_reset_done.html:12
+msgid "Note"
+msgstr ""
+
+#: pinax_theme_bootstrap/templates/account/login.html:16
+#: pinax_theme_bootstrap/templates/account/password_reset.html:13
+#: pinax_theme_bootstrap/templates/account/password_reset_done.html:12
+#, python-format
+msgid "you are already logged in as %(user_display)s."
+msgstr ""
+
+#: pinax_theme_bootstrap/templates/account/login.html:20
+#, python-format
+msgid "Don't have an account? <a href=\"%(signup_url)s\">Sign up</a>!"
+msgstr ""
+
+#: pinax_theme_bootstrap/templates/account/login.html:23
+msgid "Forgot password?"
+msgstr ""
+
+#: pinax_theme_bootstrap/templates/account/login.html:36
+msgid "Log in"
+msgstr ""
+
+#: pinax_theme_bootstrap/templates/account/login.html:44
+#: pinax_theme_bootstrap/templates/django_openid/login.html:28
+#, python-format
+msgid ""
+"If you have any trouble logging in to your account, contact us at <a href="
+"\"mailto:%(CONTACT_EMAIL)s\">%(CONTACT_EMAIL)s</a>."
+msgstr ""
+
+#: pinax_theme_bootstrap/templates/account/logout.html:5
+msgid "Logout"
+msgstr ""
+
+#: pinax_theme_bootstrap/templates/account/logout.html:8
+msgid "You've been logged out."
+msgstr ""
+
+#: pinax_theme_bootstrap/templates/account/password_change.html:17
+#: pinax_theme_bootstrap/templates/account/password_reset_from_key.html:21
+msgid "change password"
+msgstr ""
+
+#: pinax_theme_bootstrap/templates/account/password_delete.html:10
+msgid ""
+"You may delete your password since you are currently logged in using OpenID."
+msgstr ""
+
+#: pinax_theme_bootstrap/templates/account/password_delete.html:13
+msgid "delete my password"
+msgstr ""
+
+#: pinax_theme_bootstrap/templates/account/password_delete_done.html:5
+#: pinax_theme_bootstrap/templates/account/password_delete_done.html:8
+msgid "Password Deleted"
+msgstr ""
+
+#: pinax_theme_bootstrap/templates/account/password_delete_done.html:10
+msgid "Your password has been deleted."
+msgstr ""
+
+#: pinax_theme_bootstrap/templates/account/password_reset.html:7
+#: pinax_theme_bootstrap/templates/account/password_reset.html:10
+#: pinax_theme_bootstrap/templates/account/password_reset_done.html:6
+#: pinax_theme_bootstrap/templates/account/password_reset_done.html:9
+msgid "Password Reset"
+msgstr ""
+
+#: pinax_theme_bootstrap/templates/account/password_reset.html:16
+msgid ""
+"Forgotten your password? Enter your email address below, and we'll send you "
+"an email allowing you to reset it."
+msgstr ""
+
+#: pinax_theme_bootstrap/templates/account/password_reset.html:24
+msgid "Reset my password"
+msgstr ""
+
+#: pinax_theme_bootstrap/templates/account/password_reset.html:28
+#, python-format
+msgid ""
+"If you have any trouble resetting your password, contact us at <a href="
+"\"mailto:%(CONTACT_EMAIL)s\">%(CONTACT_EMAIL)s</a>."
+msgstr ""
+
+#: pinax_theme_bootstrap/templates/account/password_reset_done.html:15
+#, python-format
+msgid ""
+"We have sent you an email. If you do not receive it within a few minutes, "
+"contact us at <a href=\"mailto:%(CONTACT_EMAIL)s\">%(CONTACT_EMAIL)s</a>."
+msgstr ""
+
+#: pinax_theme_bootstrap/templates/account/password_reset_from_key.html:8
+msgid "Bad Token"
+msgstr ""
+
+#: pinax_theme_bootstrap/templates/account/password_reset_from_key.html:12
+#, python-format
+msgid ""
+"The password reset link was invalid, possibly because it has already been "
+"used.  Please request a <a href=\"%(passwd_reset_url)s\">new password reset</"
+"a>."
+msgstr ""
+
+#: pinax_theme_bootstrap/templates/account/password_set.html:17
+msgid "set password"
+msgstr ""
+
+#: pinax_theme_bootstrap/templates/account/signup.html:6
+msgid "Signup"
+msgstr ""
+
+#: pinax_theme_bootstrap/templates/account/signup.html:9
+#: pinax_theme_bootstrap/templates/account/signup.html:25
+#: pinax_theme_bootstrap/templates/django_openid/register.html:23
+msgid "Sign Up"
+msgstr ""
+
+#: pinax_theme_bootstrap/templates/account/signup.html:12
+msgid "You are already logged in."
+msgstr ""
+
+#: pinax_theme_bootstrap/templates/account/signup.html:14
+msgid "Already have an account?"
+msgstr ""
+
+#: pinax_theme_bootstrap/templates/account/signup.html:31
+#, python-format
+msgid ""
+"By clicking \"Sign Up\", you are indicating that you have read and agree to "
+"the <a href=\"%(terms_url)s\">Terms of Use</a> and <a href=\"%(privacy_url)s"
+"\">Privacy Policy</a>."
+msgstr ""
+
+#: pinax_theme_bootstrap/templates/account/signup.html:33
+#: pinax_theme_bootstrap/templates/django_openid/register.html:32
+#, python-format
+msgid ""
+"If you have any trouble creating your account, contact us at <a href="
+"\"mailto:%(CONTACT_EMAIL)s\">%(CONTACT_EMAIL)s</a>."
+msgstr ""
+
+#: pinax_theme_bootstrap/templates/account/timezone_change.html:11
+msgid ""
+"This site can localize all times into your preferred timezone. Change your "
+"timezone below."
+msgstr ""
+
+#: pinax_theme_bootstrap/templates/account/timezone_change.html:19
+msgid "Change my timezone"
+msgstr ""
+
+#: pinax_theme_bootstrap/templates/account/verification_sent.html:5
+#: pinax_theme_bootstrap/templates/account/verification_sent.html:8
+msgid "Verify your email address"
+msgstr ""
+
+#: pinax_theme_bootstrap/templates/account/verification_sent.html:10
+#, python-format
+msgid ""
+"We have sent you an email to <b>%(email)s</b> for verification. Follow the "
+"link provided to finalize the signup process. If you do not receive it "
+"within a few minutes, contact us at <a href=\"mailto:%(CONTACT_EMAIL)s\">"
+"%(CONTACT_EMAIL)s</a>."
+msgstr ""
+
+#: pinax_theme_bootstrap/templates/django_openid/already_logged_in.html:5
+#: pinax_theme_bootstrap/templates/django_openid/already_logged_in.html:8
+msgid "Already logged in"
+msgstr ""
+
+#: pinax_theme_bootstrap/templates/django_openid/already_logged_in.html:10
+#, python-format
+msgid ""
+"You are already logged into the site. To login with a different OpenID "
+"please <a href=\"/openid/logout/?next=%(url_acct_logout)s\">logout</a> first."
+msgstr ""
+
+#: pinax_theme_bootstrap/templates/django_openid/associate.html:6
+#: pinax_theme_bootstrap/templates/django_openid/associate.html:9
+msgid "Verify this Association"
+msgstr ""
+
+#: pinax_theme_bootstrap/templates/django_openid/associations.html:8
+msgid "Manage OpenID Associations"
+msgstr ""
+
+#: pinax_theme_bootstrap/templates/django_openid/associations.html:12
+#, python-format
+msgid ""
+"You have not set a password for this user account. You are unable to remove "
+"OpenID associations until you <a href=\"%(acct_passwd_set_url)s\">set a "
+"password</a>."
+msgstr ""
+
+#: pinax_theme_bootstrap/templates/django_openid/associations.html:16
+#, python-format
+msgid ""
+"Your account is currently associated with the following OpenID %(buttons)s:"
+msgstr ""
+
+#: pinax_theme_bootstrap/templates/django_openid/associations.html:33
+msgid "To associate a new OpenID with this account, sign in with it here:"
+msgstr ""
+
+#: pinax_theme_bootstrap/templates/django_openid/associations.html:40
+msgid "Authenticate and associate with this account"
+msgstr ""
+
+#: pinax_theme_bootstrap/templates/django_openid/error.html:5
+#: pinax_theme_bootstrap/templates/django_openid/error.html:8
+msgid "Error using OpenID"
+msgstr ""
+
+#: pinax_theme_bootstrap/templates/django_openid/login.html:12
+msgid "Log In to OpenID"
+msgstr ""
+
+#: pinax_theme_bootstrap/templates/django_openid/register.html:6
+#: pinax_theme_bootstrap/templates/django_openid/register.html:9
+msgid "Choose a Username"
+msgstr ""
+
+#: pinax_theme_bootstrap/templates/django_openid/register.html:12
+msgid "Please correct the errors below:"
+msgstr ""
+
+#: pinax_theme_bootstrap/templates/django_openid/register.html:15
+msgid ""
+"Now that you have logged in with your OpenID, we need you to choose a "
+"username for this site."
+msgstr ""
+
+#: pinax_theme_bootstrap/templates/django_openid/register.html:30
+#, python-format
+msgid ""
+"<strong>Already have an account?</strong> <a href=\"%(acct_login_openid_url)s"
+"\">Log in</a> to associate your OpenID with your existing account."
+msgstr ""
+
+#: pinax_theme_bootstrap/templates/django_openid/register.html:31
+#, python-format
+msgid ""
+"By clicking &quot;Sign Up&quot;, you are indicating that you have read and "
+"agree to the <a href=\"%(terms_url)s\">Terms of Use</a> and <a href="
+"\"%(privacy_url)s\">Privacy Policy</a>."
+msgstr ""
+
+#: pinax_theme_bootstrap/templates/django_openid/registration_closed.html:5
+#: pinax_theme_bootstrap/templates/django_openid/registration_closed.html:8
+msgid "Signup closed"
+msgstr ""
+
+#: pinax_theme_bootstrap/templates/django_openid/registration_closed.html:10
+msgid ""
+"Whoops, you can't register for an account now. This site is currently closed "
+"for sign-up."
+msgstr ""
+
+#: pinax_theme_bootstrap/templates/emailconfirmation/confirm_email.html:6
+msgid "Confirm Email"
+msgstr ""
+
+#: pinax_theme_bootstrap/templates/emailconfirmation/confirm_email.html:10
+msgid "Email Confirmed"
+msgstr ""
+
+#: pinax_theme_bootstrap/templates/emailconfirmation/confirm_email.html:12
+#, python-format
+msgid ""
+"You have confirmed that %(email)s is an email address for user "
+"'%(user_display)s'."
+msgstr ""
+
+#: pinax_theme_bootstrap/templates/emailconfirmation/confirm_email.html:14
+msgid "Invalid confirmation key."
+msgstr ""
+
+#: pinax_theme_bootstrap/templates/idios/base.html:14
+msgid "Your Profile"
+msgstr ""
+
+#: pinax_theme_bootstrap/templates/idios/base.html:15
+#: pinax_theme_bootstrap/templates/idios/profiles.html:7
+#: pinax_theme_bootstrap/templates/idios/profiles.html:10
+msgid "All Profiles"
+msgstr ""
+
+#: pinax_theme_bootstrap/templates/idios/profile.html:6
+#: pinax_theme_bootstrap/templates/idios/profile.html:11
+#, python-format
+msgid "Profile for %(page_user_display)s"
+msgstr ""
+
+#: pinax_theme_bootstrap/templates/idios/profile_edit.html:5
+#: pinax_theme_bootstrap/templates/idios/profile_edit.html:9
+#: pinax_theme_bootstrap/templates/idios/profile_edit_ajax.html:5
+msgid "Edit Profile"
+msgstr ""
+
+#: pinax_theme_bootstrap/templates/idios/profile_edit_ajax_success.html:4
+msgid "Success!"
+msgstr ""
+
+#: pinax_theme_bootstrap/templates/notification/base.html:13
+#: pinax_theme_bootstrap/templates/notification/base.html:15
+#: pinax_theme_bootstrap/templates/notification/notices.html:8
+msgid "Notices"
+msgstr ""
+
+#: pinax_theme_bootstrap/templates/notification/base.html:16
+#: pinax_theme_bootstrap/templates/notification/notice_settings.html:10
+msgid "Settings"
+msgstr ""
+
+#: pinax_theme_bootstrap/templates/notification/notice_settings.html:5
+msgid "Notification Settings"
+msgstr ""
+
+#: pinax_theme_bootstrap/templates/notification/notice_settings.html:15
+msgid "Primary email"
+msgstr ""
+
+#: pinax_theme_bootstrap/templates/notification/notice_settings.html:17
+#, python-format
+msgid "change under <a href=\"%(email_url)s\">Account</a>"
+msgstr ""
+
+#: pinax_theme_bootstrap/templates/notification/notice_settings.html:21
+#, python-format
+msgid ""
+"You do not have a verified email address to which notices can be sent. You "
+"can add one by going to <a    href=\"%(email_url)s\">Account</a>."
+msgstr ""
+
+#: pinax_theme_bootstrap/templates/notification/notice_settings.html:29
+msgid "Notification Type"
+msgstr ""
+
+#: pinax_theme_bootstrap/templates/notification/notice_settings.html:47
+msgid "Change"
+msgstr ""
+
+#: pinax_theme_bootstrap/templates/notification/notices.html:15
+msgid "Mark all unseen notices seen"
+msgstr ""
+
+#: pinax_theme_bootstrap/templates/notification/notices.html:21
+msgid "MONTH_DAY_FORMAT"
+msgstr ""
+
+#: pinax_theme_bootstrap/templates/notification/notices.html:39
+msgid "No notices."
+msgstr ""
+
+#: pinax_theme_bootstrap/templates/pagination/pagination.html:8
+#: pinax_theme_bootstrap/templates/pagination/pagination.html:11
+msgid "Previous"
+msgstr ""
+
+#: pinax_theme_bootstrap/templates/pagination/pagination.html:21
+#: pinax_theme_bootstrap/templates/pagination/pagination.html:23
+msgid "Next"
+msgstr ""
+
+#: templates/_footer.html:3
+msgid "&copy; 2011 Sudarmaa"
+msgstr ""
+
+#: templates/homepage.html:5
+msgid "Welcome"
+msgstr ""
+
+#: templates/homepage.html:11
+msgid "Welcome to Pinax"
+msgstr ""
+
+#: templates/homepage.html:14
+msgid ""
+"\n"
+"        <b>Pinax</b> is a <a href=\"http://djangoproject.com/\">Django</a>\n"
+"        project intended to provide a starting point for websites. By\n"
+"        integrating numerous reusable Django apps to take care of the\n"
+"        things that many sites have in common, it lets you focus on what\n"
+"        makes your site different.\n"
+"        "
+msgstr ""
+
+#: templates/homepage.html:24
+msgid ""
+"\n"
+"        For more information about Pinax, see\n"
+"        <a href=\"http://pinaxproject.com/\">http://pinaxproject.com/</a>.\n"
+"        "
+msgstr ""
+
+#: templates/homepage.html:30
+msgid "About this project"
+msgstr ""
+
+#: templates/homepage.html:33
+msgid ""
+"\n"
+"        This project lays the foundation for all other Pinax starter "
+"projects. It\n"
+"        provides the project directory layout and some key infrastructure "
+"apps on\n"
+"        which the other starter projects are based.\n"
+"        "
+msgstr ""
+
+#~ msgid "Creator"
+#~ msgstr "Илгээсэн"

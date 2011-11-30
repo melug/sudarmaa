@@ -20,5 +20,6 @@ setup(
         'django_staticfiles',
         'PIL',
         'django-social-auth',
+        'django-rosetta',
     ],
 )
