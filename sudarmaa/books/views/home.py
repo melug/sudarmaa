@@ -6,7 +6,7 @@ from django.shortcuts import redirect
 from django.core.urlresolvers import reverse
 from django.http import HttpResponse
 
-from books.models import Book, Category, Shelf
+from books.models import Book, Category, Shelf, Author
 from books.forms import ShelfForm
 
 class HomeView(TemplateView):
@@ -117,4 +117,9 @@ class BookShelfAction(View):
         except (ValueError, Book.DoesNotExist), e:
             return HttpResponse(json.dumps({'error': 9}))
         return HttpResponse('')
+
+class AuthorView(DetailView):
+    model = Author
+    template_name = 'books/author_detail.html'
+    template_object_name = 'author'
 

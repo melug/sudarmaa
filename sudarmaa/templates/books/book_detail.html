@@ -39,7 +39,7 @@
     <h4> {{ object.title }} </h4>
      by 
      {% for author in book.authors.all %}
-     <a href="#" title="{{ author.first_name }} {{ author.last_name }}"> {{ author.first_name }} {{ author.last_name }} </a>
+     <a href="{% url author-show pk=author.id %}" title="{{ author.first_name }} {{ author.last_name }}"> {{ author.first_name }} {{ author.last_name }} </a>
      {% endfor %}
     <div class='row'>
         <div class='span4'>

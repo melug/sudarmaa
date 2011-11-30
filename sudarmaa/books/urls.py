@@ -5,7 +5,7 @@ from books.views import (HomeView, MyBooksView, BooksInCategory, BookDetail,
     CreateBook, ShowMyBook, EditPage, EditPageContent, PagePreview, 
     BookTOC, ReadPage, ShelfView, ShelfList, ShelfCreate, AddRating,
     PublishBook, BookShelfAction, BookmarkAdd, BookmarkRemove, BookmarksView,
-    StaffPicks, LatestBooks, CreateAuthor)
+    StaffPicks, LatestBooks, CreateAuthor, AuthorView)
 
 # general use case
 urlpatterns = patterns("",
@@ -17,6 +17,8 @@ urlpatterns = patterns("",
     name="staff-picks"),
     url(r"^books/latest/$", LatestBooks.as_view(template_name='books/books_with_category.html',), 
     name="latest-books"),
+    url(r"^author/(?P<pk>\d+)/$", AuthorView.as_view(), 
+    name="author-show"),
 )
 
 # for publishers

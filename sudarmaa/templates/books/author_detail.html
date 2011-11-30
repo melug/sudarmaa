@@ -1,0 +1,47 @@
+{% extends "site_base.html" %}
+{% block extra_head %}
+    <style type='text/css'>
+        p.biography-short {
+            margin-left: 30px;
+            margin-top: 20px;
+        }
+        p.biography {
+            margin: 30px;
+        }
+        .name {
+            margin-left: 50px;
+        }
+        .media-grid a img {
+            margin-left: auto;
+            margin-right: auto;
+        }
+        div.books {
+            margin-left: 10px;
+            margin-top: 100px;
+        }
+    </style>
+{% endblock %}
+{% block body %}
+    <div class='row'>
+        <div class='span4'>
+            <img src="{{ author.image.url }}" style="width:100%;">
+            <div class='row'>
+                <p class='biography-short'>{{ author.biography_short }}</p>
+            </div>
+        </div>
+        <div class='span12'>
+            <h2 class='name'>{{ author.first_name }} {{ author.last_name }}</h2>
+            <div class='row'>
+                <p class='biography'>
+                    {{ author.biography }}
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class='row books'>
+        <h5> Books: </h5>
+        {% with author.books.all as book_list %}
+            {% include "books/front_books_list.html" %}
+        {% endwith %}
+    </div>
+{% endblock %}
