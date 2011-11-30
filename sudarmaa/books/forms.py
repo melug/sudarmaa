@@ -4,7 +4,11 @@ from books.models import Book, Page, Shelf
 class BookForm(forms.ModelForm):
     class Meta:
         model = Book
-        exclude = ('creator',)
+        fields = ('title', 'category', 'icon', 'description', 'authors')
+        exclude = ('creator', 'status')
+        widgets = {
+            'description': forms.Textarea(attrs={'rows': 15, 'class':'span6'}),
+        }
 
 class PageForm(forms.ModelForm):
     class Meta:

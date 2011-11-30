@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User, Group, Permission
 from django.contrib.contenttypes.models import ContentType
+from django.utils.translation import ugettext_lazy as _
+
 from djangoratings.fields import RatingField
 from djangoratings.models import Vote
 
@@ -14,6 +16,7 @@ class PublishManager(models.Manager):
 
 # Create your models here.
 class Category(models.Model):
+
     title = models.CharField(max_length=255)
 
     def __unicode__(self):
@@ -22,6 +25,19 @@ class Category(models.Model):
     class Meta:
         verbose_name_plural = 'Categories'
 
+class Author(models.Model):
+    
+    first_name = models.CharField(_('first name'), max_length=30, blank=True)
+    last_name = models.CharField(_('last name'), max_length=30, blank=True)
+    email = models.EmailField(_('e-mail address'), blank=True)
+    biography = models.TextField(_('biography'), blank=True)
+    # the user who added author information,
+    # only the user can edit.
+    user = models.ForeignKey(User, null=True)
+
+    def __unicode__(self):
+        return self.first_name + ':' + self.last_name
+
 STATUS_CHOICES = (
     (1, 'Draft'),
     (2, 'Published'),
@@ -29,6 +45,7 @@ STATUS_CHOICES = (
 )
 
 class Book(models.Model):
+
     added = models.DateTimeField(auto_now_add=True)
     category = models.ForeignKey(Category)
     creator = models.ForeignKey(User, null=True)
@@ -37,6 +54,7 @@ class Book(models.Model):
     rating = RatingField(range=5)
     status = models.IntegerField(choices=STATUS_CHOICES, default=1)
     title = models.CharField(max_length=255)
+    authors = models.ManyToManyField(Author, related_name='books')
     
     objects = models.Manager()
     publish = PublishManager()
@@ -56,6 +74,7 @@ class Book(models.Model):
         return self.title
 
 class Page(models.Model):
+
     parent_page = models.ForeignKey('self', related_name='subpages', null=True, blank=True)
     book = models.ForeignKey(Book)
     title = models.CharField(max_length=255)
@@ -88,6 +107,7 @@ class Page(models.Model):
         return self.title
 
 class Pick(models.Model):
+
     user = models.ForeignKey(User)
     book = models.ForeignKey(Book)
     order_number = models.IntegerField(default=0)
@@ -96,6 +116,7 @@ class Pick(models.Model):
         return '%s. %s' % (self.order_number, self.book.title)
 
 class Bookmark(models.Model):
+
     user = models.ForeignKey(User)
     added = models.DateTimeField(auto_now_add=True)
     page = models.ForeignKey(Page)
@@ -104,6 +125,7 @@ class Bookmark(models.Model):
         return self.user.username + ":" + self.page.title
 
 class Shelf(models.Model):
+
     title = models.CharField(max_length=255)
     user = models.ForeignKey(User, related_name='shelves')
     books = models.ManyToManyField(Book)
