@@ -17,13 +17,14 @@ class PublishManager(models.Manager):
 # Create your models here.
 class Category(models.Model):
 
-    title = models.CharField(max_length=255)
+    title = models.CharField(_('name'), max_length=255)
 
     def __unicode__(self):
         return self.title
 
     class Meta:
-        verbose_name_plural = 'Categories'
+        verbose_name = _('Category')
+        verbose_name_plural = _('Categories')
 
 class Author(models.Model):
     
@@ -40,18 +41,22 @@ class Author(models.Model):
     def __unicode__(self):
         return self.first_name + ' ' + self.last_name
 
+    class Meta:
+        verbose_name = _('Author')
+        verbose_name_plural = _('Authors')
+
 STATUS_CHOICES = (
-    (1, 'Draft'),
-    (2, 'Published'),
-    (3, 'Violates terms')
+    (1, _('Draft')),
+    (2, _('Published')),
+    (3, _('Violates terms'))
 )
 
 class Book(models.Model):
 
-    added = models.DateTimeField(auto_now_add=True)
-    category = models.ForeignKey(Category)
-    creator = models.ForeignKey(User, null=True)
-    description = models.TextField(blank=True)
+    added = models.DateTimeField(_('Added date'), auto_now_add=True)
+    category = models.ForeignKey(Category, verbose_name=_('Category'))
+    creator = models.ForeignKey(User, null=True, verbose_name=_('Sender'))
+    description = models.TextField(_('Description'), blank=True)
     icon = models.ImageField(upload_to='book_icons', null=True)
     rating = RatingField(range=5)
     status = models.IntegerField(choices=STATUS_CHOICES, default=1)
