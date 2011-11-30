@@ -1,5 +1,5 @@
 from django import forms
-from books.models import Book, Page, Shelf
+from books.models import Book, Page, Shelf, Author
 
 class BookForm(forms.ModelForm):
     class Meta:
@@ -8,6 +8,14 @@ class BookForm(forms.ModelForm):
         exclude = ('creator', 'status')
         widgets = {
             'description': forms.Textarea(attrs={'rows': 15, 'class':'span6'}),
+        }
+
+class AuthorForm(forms.ModelForm):
+    class Meta:
+        model = Author
+        exclude = ('user',)
+        widgets = {
+            'biography': forms.Textarea(attrs={'rows': 15, 'class':'span6'}),
         }
 
 class PageForm(forms.ModelForm):

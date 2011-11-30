@@ -36,7 +36,7 @@ class Author(models.Model):
     user = models.ForeignKey(User, null=True)
 
     def __unicode__(self):
-        return self.first_name + ':' + self.last_name
+        return self.first_name + ' ' + self.last_name
 
 STATUS_CHOICES = (
     (1, 'Draft'),

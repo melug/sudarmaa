@@ -9,7 +9,7 @@ from django.views.generic import TemplateView, CreateView, DetailView, View, Upd
 from django.shortcuts import get_object_or_404
 
 from books.models import Book, Category, Pick, Page
-from books.forms import BookForm, PageForm
+from books.forms import BookForm, PageForm, AuthorForm
 
 class CreateBook(CreateView):
     template_name = 'books/book_form.html'
@@ -20,6 +20,16 @@ class CreateBook(CreateView):
         book.creator = self.request.user
         book.save()
         return reverse('my-books-show', kwargs={'pk':book.id})
+
+class CreateAuthor(CreateView):
+    template_name = 'books/author_form.html'
+    form_class = AuthorForm
+
+    def get_success_url(self):
+        author = self.object
+        author.user = self.request.user
+        author.save()
+        return reverse('my-books-create')
 
 class ShowMyBook(DetailView):
     context_object_name = 'book'

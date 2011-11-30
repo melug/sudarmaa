@@ -23,10 +23,10 @@ class HomeView(TemplateView):
 
 class MyBooksView(ListView):
     context_object_name = 'my_books'
-    paginate_by = 10
+    paginate_by = None
 
     def get_queryset(self):
-        return self.request.user.book_set.order_by('status')
+        return self.request.user.book_set.order_by('status', 'added')
 
 class BooksInCategory(ListView):
     context_object_name = 'books'

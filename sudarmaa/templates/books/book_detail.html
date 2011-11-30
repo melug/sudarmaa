@@ -37,7 +37,10 @@
 {% endblock %}
 {% block body %}
     <h4> {{ object.title }} </h4>
-     by <a href="#" title="{{ book.creator.first_name }} {{ book.creator.last_name }}"> {{ book.creator.first_name }}. {{ book.creator.last_name|slice:":1" }} </a>
+     by 
+     {% for author in book.authors.all %}
+     <a href="#" title="{{ author.first_name }} {{ author.last_name }}"> {{ author.first_name }} {{ author.last_name }} </a>
+     {% endfor %}
     <div class='row'>
         <div class='span4'>
             <div class='row thumbnail'><img src='{{ book.icon.url }}' class='span4'></div>

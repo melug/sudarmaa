@@ -17,6 +17,9 @@
                 <a href="{% url discuss-word pk=suggestion.id %}#comments">
                     Comments: {{ comment_count }}
                 </a>
+                {% if suggestion.approved %}
+                <img src="{{ STATIC_URL }}img/Tick-32.png">
+                {% endif %}
             </td>
         </tr>
     {% endfor %}

@@ -5,7 +5,7 @@ from books.views import (HomeView, MyBooksView, BooksInCategory, BookDetail,
     CreateBook, ShowMyBook, EditPage, EditPageContent, PagePreview, 
     BookTOC, ReadPage, ShelfView, ShelfList, ShelfCreate, AddRating,
     PublishBook, BookShelfAction, BookmarkAdd, BookmarkRemove, BookmarksView,
-    StaffPicks, LatestBooks)
+    StaffPicks, LatestBooks, CreateAuthor)
 
 # general use case
 urlpatterns = patterns("",
@@ -35,6 +35,8 @@ urlpatterns += patterns("",
     name="edit-page"),
     url(r"^publisher/page/edit/(?P<pk>\d+)/$", permission_required('books.add_book')(EditPageContent.as_view()), 
     name="edit-page-content"),
+    url(r"^publisher/author/create/$", permission_required('books.add_book')(CreateAuthor.as_view()), 
+    name="create-author"),
 )
 
 # maintaining shelf

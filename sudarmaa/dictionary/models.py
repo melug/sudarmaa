@@ -15,6 +15,7 @@ class Suggestion(models.Model):
     explanation = models.TextField()
     contributor = models.ForeignKey(User, null=True)
     date_added = models.DateTimeField(auto_now_add=True)
+    approved = models.BooleanField(default=False)
 
     def __unicode__(self):
         return "{0} - {1}".format(self.contributor.username, self.word)

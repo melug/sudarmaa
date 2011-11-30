@@ -1,27 +1,31 @@
 {% extends "site_base.html" %}
 {% block extra_head %}
-    <style type='text/css'>
-        table {
-            width: auto;
-        }
-        input[type=submit] {
-            float: right;
-        }
-    </style>
+<style type='text/css'>
+    table.form {
+        width: auto;
+        margin-right: auto;
+        margin-left: auto;
+        border: 0px;
+    }
+    table.form td, table.form th {
+        border: 0px;
+    }
+</style>
 {% endblock %}
 
 {% block body %}
-<div>
-    <form method='POST'>
+    <form enctype="multipart/form-data" action='' method="POST">
         {% csrf_token %}
-        <table>
-        {{ form.as_table }}
-            <tr>
-                <td colspan="2">
-                <input type='submit' value='Save'>
-                </td>
-            </tr>
-        </table>
+        <div class='form'>
+            <table class='form'>
+                {{ form.as_table }}
+                <tr>
+                    <td> </td>
+                    <td>
+                        <input type='submit' value='Create'>
+                    </td>
+                </tr>
+            </table>
+        </div>
     </form>
-</div>
 {% endblock %}
