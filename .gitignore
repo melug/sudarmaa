@@ -1,6 +1,7 @@
 *.pyc
 *.swp
 *.swo
+*.mo
 tags
 env/
 Sudarmaa.egg-info/
