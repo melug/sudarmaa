@@ -1,4 +1,5 @@
 {% extends "site_base.html" %}
+{% load i18n %}
 {% block extra_head %}
     <style type='text/css'>
         div.book-item {
@@ -35,7 +36,7 @@
                         <div class="span6">
                             <div class="book-description"> 
                                 <h5><a href='{% url book-detail pk=book.id %}'>{{ book.title }}</a></h5> 
-                                <p> {{ book.description|truncatewords:50 }} <a href="{% url book-detail pk=book.id %}"> more </a></p>
+                                <p> {{ book.description|truncatewords:50 }} <a href="{% url book-detail pk=book.id %}"> {% trans "more" %} </a></p>
                             </div>
                         </div>
                     </div>

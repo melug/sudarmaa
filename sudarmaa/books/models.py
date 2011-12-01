@@ -28,15 +28,15 @@ class Category(models.Model):
 
 class Author(models.Model):
     
-    first_name = models.CharField(_('first name'), max_length=30, blank=True)
-    last_name = models.CharField(_('last name'), max_length=30, blank=True)
-    email = models.EmailField(_('e-mail address'), blank=True)
-    biography_short = models.CharField(_('biography short'), max_length=100)
-    biography = models.TextField(_('biography'), blank=True)
-    image = models.ImageField(upload_to='author_icons')
+    first_name = models.CharField(_('First name'), max_length=30, blank=True)
+    last_name = models.CharField(_('Last name'), max_length=30, blank=True)
+    email = models.EmailField(_('E-mail address'), blank=True)
+    biography_short = models.CharField(_('Biography short'), max_length=100)
+    biography = models.TextField(_('Biography'), blank=True)
+    image = models.ImageField(_('Image'), upload_to='author_icons')
     # the user who added author information,
     # only the user can edit.
-    user = models.ForeignKey(User, null=True)
+    user = models.ForeignKey(User, null=True, verbose_name=_('User'))
 
     def __unicode__(self):
         return self.first_name + ' ' + self.last_name
@@ -51,17 +51,23 @@ STATUS_CHOICES = (
     (3, _('Violates terms'))
 )
 
+LANGUAGE_CHOICES = (
+    (1, _('Mongolia')),
+    (2, _('English')),
+)
+
 class Book(models.Model):
 
     added = models.DateTimeField(_('Added date'), auto_now_add=True)
     category = models.ForeignKey(Category, verbose_name=_('Category'))
     creator = models.ForeignKey(User, null=True, verbose_name=_('Sender'))
     description = models.TextField(_('Description'), blank=True)
-    icon = models.ImageField(upload_to='book_icons', null=True)
-    rating = RatingField(range=5)
-    status = models.IntegerField(choices=STATUS_CHOICES, default=1)
-    title = models.CharField(max_length=255)
-    authors = models.ManyToManyField(Author, related_name='books')
+    icon = models.ImageField(_('Icon'), upload_to='book_icons', null=True)
+    rating = RatingField(_('Rating'), range=5)
+    status = models.IntegerField(_('Status'), choices=STATUS_CHOICES, default=1)
+    title = models.CharField(_('Title'), max_length=255)
+    authors = models.ManyToManyField(Author, related_name='books', verbose_name=_('Authors'))
+    language = models.IntegerField(_('Language'), choices=LANGUAGE_CHOICES)
     
     objects = models.Manager()
     publish = PublishManager()
@@ -80,13 +86,17 @@ class Book(models.Model):
     def __unicode__(self):
         return self.title
 
+    class Meta:
+        verbose_name = _('Book')
+        verbose_name_plural = _('Books')
+
 class Page(models.Model):
 
     parent_page = models.ForeignKey('self', related_name='subpages', null=True, blank=True)
-    book = models.ForeignKey(Book)
-    title = models.CharField(max_length=255)
-    content = models.TextField(blank=True)
-    siblings_order = models.IntegerField()
+    book = models.ForeignKey(Book, verbose_name=_('Book'))
+    title = models.CharField(_('Title'), max_length=255)
+    content = models.TextField(_('Content'), blank=True)
+    siblings_order = models.IntegerField(_('Order'))
 
     def sibling_pages(self):
         if self.parent_page is not None:
@@ -113,30 +123,42 @@ class Page(models.Model):
     def __unicode__(self):
         return self.title
 
+    class Meta:
+        verbose_name = _('Page')
+        verbose_name_plural = _('Pages')
+
 class Pick(models.Model):
 
-    user = models.ForeignKey(User)
-    book = models.ForeignKey(Book)
-    order_number = models.IntegerField(default=0)
+    user = models.ForeignKey(User, verbose_name=_('User'))
+    book = models.ForeignKey(Book, verbose_name=_('Book'))
+    order_number = models.IntegerField(_('Order'), default=0)
 
     def __unicode__(self):
         return '%s. %s' % (self.order_number, self.book.title)
 
+    class Meta:
+        verbose_name = _('Pick')
+        verbose_name_plural = _('Picks')
+
 class Bookmark(models.Model):
 
-    user = models.ForeignKey(User)
-    added = models.DateTimeField(auto_now_add=True)
-    page = models.ForeignKey(Page)
+    user = models.ForeignKey(User, verbose_name=_('User'))
+    added = models.DateTimeField(_('Added date'), auto_now_add=True)
+    page = models.ForeignKey(Page, verbose_name=_('Page'))
 
     def __unicode__(self):
         return self.user.username + ":" + self.page.title
 
+    class Meta:
+        verbose_name = _('Bookmark')
+        verbose_name_plural = _('Bookmarks')
+
 class Shelf(models.Model):
 
-    title = models.CharField(max_length=255)
-    user = models.ForeignKey(User, related_name='shelves')
-    books = models.ManyToManyField(Book)
-    is_public = models.BooleanField(default=True)
+    title = models.CharField(_('Title'), max_length=255)
+    user = models.ForeignKey(User, related_name='shelves', verbose_name=_('User'))
+    books = models.ManyToManyField(Book, verbose_name=_('Books'))
+    is_public = models.BooleanField(default=True, verbose_name=_('Is public'))
 
     def __unicode__(self):
         return self.user.username + ':' + self.title
@@ -148,7 +170,8 @@ class Shelf(models.Model):
         return self.books.filter(status=2)
 
     class Meta:
-        verbose_name_plural = 'Shelves'
+        verbose_name = _('Shelf')
+        verbose_name_plural = _('Shelves')
 
 #########################################
 #               Signals                 #

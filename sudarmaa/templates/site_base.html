@@ -1,15 +1,16 @@
 {% extends "theme_base.html" %}
+{% load i18n %}
 
 {% block account_bar %}{% endblock %}
 
 {% block nav %}
     <form class="pull-left">
-        <input type="text" placeholder="Search">
+        <input type="text" placeholder="{% trans "Search" %}">
     </form>
     {% if user.is_authenticated %}
         {% include "registration/drop_menu.html" %}
     {% else %}
-        <ul class='pull-right' style="left: none;"><li><a href='{% url login %}'> Login </a></li></ul>
+        <ul class='pull-right' style="left: none;"><li><a href='{% url login %}'> {% trans "Login" %} </a></li></ul>
     {% endif %}
 {% endblock %}
 

@@ -1,4 +1,5 @@
 {% extends "site_base.html" %}
+{% load i18n %}
 {% load ratings %}
 {% block extra_head %}
     <script type="text/javascript" src="{{ STATIC_URL }}raty/js/jquery.raty.min.js"></script>
@@ -51,7 +52,7 @@
                 <div class='row rating-notification'>Thank you</div>
             </div>
             <div class='row'>
-                <div id='add-to-shelf'> Add to shelf </div>
+                <div id='add-to-shelf'> {% trans "Add to shelf" %} </div>
                 <ul class='shelf-list' style='display:none;'>
                     {% for shelf in user.shelves.all %}
                     <li><a href="#" shelf-id={{ shelf.id }}>{{ shelf.title }}</a></li>
