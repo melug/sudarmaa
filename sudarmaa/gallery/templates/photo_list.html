@@ -1,6 +1,9 @@
-<form action='{% url upload-image %}' method='POST'>
+<form enctype="multipart/form-data" action='{% url upload-image %}' method='POST'>
     {% csrf_token %}
-    {{ form.as_p }} <input type='submit' value='upload'>
+    <table>
+    {{ form.as_table }}
+    </table>
+    <input type='submit' value='upload'>
 </form>
 <ul>
 {% for o in object_list %}

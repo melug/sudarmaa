@@ -1,12 +1,8 @@
 from django import forms
-from photologue.models import Photo
+from gallery.models import MPhoto
 
 class PhotoForm(forms.ModelForm):
     class Meta:
-        model = Photo
+        model = MPhoto
         fields = ('title', 'image')
-
-    def clean_title_slug(self):
-        data = self.cleaned_data['title']
-        return data
 

@@ -18,6 +18,7 @@ setup(
         'django_debug_toolbar',
         'django_compressor',
         'django_staticfiles',
+        'django_extensions',
         'PIL',
         'django-social-auth',
         'django-rosetta',
