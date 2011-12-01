@@ -1,4 +1,5 @@
 {% extends "site_base.html" %}
+{% load i18n %}
 {% block extra_head %}
     <script type='text/javascript' src='{{ STATIC_URL }}js/bookmark.js'> </script>
     <script type='text/javascript'>
@@ -20,7 +21,7 @@
         </tr>
     {% empty %}
         <tr>
-            <td> You have no bookmarks yet </td>
+            <td> {% trans "You have no bookmarks yet" %} </td>
         </tr>
     {% endfor %}
     </table>

@@ -1,0 +1,9 @@
+<form action='{% url upload-image %}' method='POST'>
+    {% csrf_token %}
+    {{ form.as_p }} <input type='submit' value='upload'>
+</form>
+<ul>
+{% for o in object_list %}
+    <li><img src='{{ o.get_thumbnail_url }}'></li>
+{% endfor %}
+</ul>

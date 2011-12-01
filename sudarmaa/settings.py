@@ -168,6 +168,7 @@ INSTALLED_APPS = [
     # project
     "books",
     "dictionary",
+    "gallery",
 ]
 
 if DEBUG:

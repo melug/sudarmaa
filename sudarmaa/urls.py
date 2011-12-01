@@ -12,6 +12,7 @@ handler500 = "pinax.views.server_error"
 urlpatterns = patterns("",
     url(r"", include('books.urls')),
     url(r"", include('dictionary.urls')),
+    url(r"", include('gallery.urls')),
     url(r'comments/', include('django.contrib.comments.urls')),
     # social auth
     url(r"", include('social_auth.urls')),
