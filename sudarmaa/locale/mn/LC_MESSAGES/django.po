@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-12-01 11:57+0800\n"
+"POT-Creation-Date: 2011-12-01 13:11+0800\n"
 "PO-Revision-Date: 2011-11-30 01:34\n"
 "Last-Translator:   <ls@ls.ls>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -154,13 +154,13 @@ msgstr "Онцлох"
 msgid "Picks"
 msgstr "Онцлох"
 
-#: books/models.py:153
+#: books/models.py:153 templates/books/read_page.html:62
 msgid "Bookmark"
-msgstr "Номын тэмдэглэгээ"
+msgstr "Номын хавчуурга"
 
 #: books/models.py:154
 msgid "Bookmarks"
-msgstr "Номын тэмдэглэгээнүүд"
+msgstr "Номын хавчуурганууд"
 
 #: books/models.py:161
 msgid "Is public"
@@ -173,18 +173,6 @@ msgstr "Номын тавиур"
 #: books/models.py:174
 msgid "Shelves"
 msgstr "Номын тавиурнууд"
-
-#: books/models.py:182
-msgid "read"
-msgstr "Уншсан"
-
-#: books/models.py:182
-msgid "to-read"
-msgstr "Унших"
-
-#: books/models.py:182
-msgid "currently-reading"
-msgstr "Уншиж буй"
 
 #: dictionary/models.py:8 dictionary/models.py:15 dictionary/models.py:19
 msgid "Word"
@@ -699,13 +687,13 @@ msgstr ""
 
 #: pinax_theme_bootstrap/templates/pagination/pagination.html:8
 #: pinax_theme_bootstrap/templates/pagination/pagination.html:11
-#: templates/page_links.html:6 templates/page_links.html.py:10
+#: templates/page_links.html:16 templates/page_links.html.py:20
 msgid "Previous"
 msgstr "Өмнөх"
 
 #: pinax_theme_bootstrap/templates/pagination/pagination.html:21
 #: pinax_theme_bootstrap/templates/pagination/pagination.html:23
-#: templates/page_links.html:16 templates/page_links.html.py:20
+#: templates/page_links.html:6 templates/page_links.html.py:10
 msgid "Next"
 msgstr "Дараагийн"
 
@@ -759,9 +747,25 @@ msgstr ""
 msgid "Search"
 msgstr "Хайх"
 
+#: templates/books/book_detail.html:41
+msgid "by"
+msgstr " "
+
 #: templates/books/book_detail.html:55
 msgid "Add to shelf"
 msgstr "Тавиуртаа нэмэх"
+
+#: templates/books/book_detail.html:71
+msgid "Share"
+msgstr "Хуваалцах"
+
+#: templates/books/book_detail.html:72
+msgid "Download as epub"
+msgstr "EPUB форматаар татах"
+
+#: templates/books/book_detail.html:73
+msgid "Read"
+msgstr "Унших"
 
 #: templates/books/books_with_category.html:39 templates/books/home.html:27
 #: templates/books/home.html.py:31
@@ -775,6 +779,26 @@ msgstr "Шинэ номнууд"
 #: templates/books/home.html:31
 msgid "Staff picks"
 msgstr "Сайтын онцлох"
+
+#: templates/books/read_page.html:55
+msgid "Table of Contents"
+msgstr "Гарчиг"
+
+#: templates/books/read_page.html:59
+msgid "Controls"
+msgstr "Тохиргоо"
+
+#: templates/books/read_page.html:61
+msgid "Font size"
+msgstr "Фонтын хэмжээ"
+
+#: templates/books/read_page.html:75
+msgid "Next page"
+msgstr "Дараагийн хуудас"
+
+#: templates/books/read_page.html:78
+msgid "Previous page"
+msgstr "Өмнөх хуудас"
 
 #: templates/registration/drop_menu.html:4
 msgid "Profile"
@@ -799,6 +823,15 @@ msgstr "Хэвлэгдсэн"
 #: templates/registration/login.html:7
 msgid "Your username and password didn't match. Please try again."
 msgstr "Таны нэр, нууц үг буруу байна."
+
+#~ msgid "read"
+#~ msgstr "Уншсан"
+
+#~ msgid "to-read"
+#~ msgstr "Унших"
+
+#~ msgid "currently-reading"
+#~ msgstr "Уншиж буй"
 
 #~ msgid "Creator"
 #~ msgstr "Илгээсэн"

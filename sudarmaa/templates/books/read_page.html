@@ -1,4 +1,5 @@
 {% extends "books/base_reader.html" %}
+{% load i18n %}
 {% load bbcode %}
 {% block extra_head %}
 <style type='text/css'>
@@ -51,14 +52,14 @@
 {% endblock %}
 
 {% block topbar %}
-    <h3><a href="{% url book-toc pk=book.id %}"> Table of Contents: </a></h3>
+    <h3><a href="{% url book-toc pk=book.id %}">{% trans "Table of Contents" %}: </a></h3>
     <h4 style='display:inline;'> {{ page.title }} </h4>
     <ul class='nav secondary-nav'>
         <li class='dropdown'>
-            <a href='#' class='dropdown-toggle'>Controls</a>
+            <a href='#' class='dropdown-toggle'>{% trans "Controls" %}</a>
             <ul class='dropdown-menu'>
-                <li>Font size <input type='button' value='+'><input type='button' value='-'></li>
-                <li>Bookmark <input id='bookmark' type='checkbox'{% if bookmark %} checked="true"{% endif %}></li>
+                <li>{% trans "Font size" %} <input type='button' value='+'><input type='button' value='-'></li>
+                <li>{% trans "Bookmark" %} <input id='bookmark' type='checkbox'{% if bookmark %} checked="true"{% endif %}></li>
             </ul>
         </li>
     </ul>
@@ -71,10 +72,10 @@
         </div>
     </div>
     {% if page.next_page %}
-        <a href="{% url read-page pk=page.next_page.id %}"><div class='book-navi next span2'> Next page </div></a>
+        <a href="{% url read-page pk=page.next_page.id %}"><div class='book-navi next span2'>{% trans "Next page" %}</div></a>
     {% endif %}
     {% if page.prev_page %}
-        <a href="{% url read-page pk=page.prev_page.id %}"><div class='book-navi prev span2'> Previous page </div></a>
+        <a href="{% url read-page pk=page.prev_page.id %}"><div class='book-navi prev span2'>{% trans "Previous page" %}</div></a>
     {% endif %}
     <div class='row'>
     {% autoescape off %}
