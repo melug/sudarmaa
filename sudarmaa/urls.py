@@ -23,6 +23,7 @@ urlpatterns = patterns("",
         'next_page': '/'
     }, name='logout'),
     # admin
+    url(r'^photologue/', include('photologue.urls')),
     url(r"^admin/", include(admin.site.urls)),
 )
 

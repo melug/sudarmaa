@@ -21,5 +21,6 @@ setup(
         'PIL',
         'django-social-auth',
         'django-rosetta',
+        'django-photologue',
     ],
 )

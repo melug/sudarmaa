@@ -55,7 +55,7 @@ TIME_ZONE = "US/Eastern"
 
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
-LANGUAGE_CODE = "en-us"
+LANGUAGE_CODE = "mn"
 
 SITE_ID = 1
 
@@ -160,6 +160,8 @@ INSTALLED_APPS = [
     "debug_toolbar",
     "djangoratings",
     "social_auth",
+    "django_extensions",
+    "photologue",
     
     # Pinax
     
@@ -167,6 +169,9 @@ INSTALLED_APPS = [
     "books",
     "dictionary",
 ]
+
+if DEBUG:
+    INSTALLED_APPS.append('rosetta')
 
 AUTHENTICATION_BACKENDS = (
     'social_auth.backends.twitter.TwitterBackend',
