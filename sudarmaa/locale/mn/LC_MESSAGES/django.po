@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-12-01 15:28+0800\n"
+"POT-Creation-Date: 2011-12-06 01:49-0500\n"
 "PO-Revision-Date: 2011-12-01 00:48\n"
 "Last-Translator:   <ls@ls.ls>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -56,7 +56,7 @@ msgid "Image"
 msgstr "Зураг"
 
 #: books/models.py:39 books/models.py:132 books/models.py:145
-#: books/models.py:159
+#: books/models.py:159 gallery/models.py:10
 msgid "User"
 msgstr "Хэрэглэгч"
 
@@ -113,6 +113,7 @@ msgid "Status"
 msgstr "Статус"
 
 #: books/models.py:68 books/models.py:97 books/models.py:158
+#: gallery/models.py:9
 msgid "Title"
 msgstr "Гарчиг"
 
@@ -190,7 +191,7 @@ msgstr "Үгнүүд"
 msgid "Contributor"
 msgstr "Илгээсэн"
 
-#: dictionary/models.py:22
+#: dictionary/models.py:22 gallery/models.py:11
 msgid "Date added"
 msgstr "Нэмэгдсэн"
 
@@ -205,6 +206,18 @@ msgstr "Санал"
 #: dictionary/models.py:30
 msgid "Suggestions"
 msgstr "Саналууд"
+
+#: gallery/models.py:14
+msgid "Photo"
+msgstr "Зураг"
+
+#: gallery/models.py:15
+msgid "Photos"
+msgstr "Зурагнууд"
+
+#: gallery/templates/photo_list.html:28
+msgid "Upload"
+msgstr "Илгээх"
 
 #: pinax_theme_bootstrap/templates/404.html:5
 msgid "Not Found"
@@ -769,7 +782,7 @@ msgstr "EPUB форматаар татах"
 msgid "Read"
 msgstr "Унших"
 
-#: templates/books/bookmark_list.html:23
+#: templates/books/bookmark_list.html:24
 msgid "You have no bookmarks yet"
 msgstr "Та ямар нэгэн хуудсанд хавчуурга хийгээгүй байна."
 

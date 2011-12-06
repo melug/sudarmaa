@@ -4,7 +4,7 @@ from books.models import Book, Page, Shelf, Author
 class BookForm(forms.ModelForm):
     class Meta:
         model = Book
-        fields = ('title', 'category', 'icon', 'description', 'authors', 'language')
+        fields = ('title', 'category', 'photo', 'description', 'authors', 'language')
         exclude = ('creator', 'status')
         widgets = {
             'description': forms.Textarea(attrs={'rows': 15, 'class':'span6'}),

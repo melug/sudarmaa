@@ -5,6 +5,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from djangoratings.fields import RatingField
 from djangoratings.models import Vote
+from gallery.models import MPhoto
 
 #########################################
 #             BookManager               #
@@ -33,7 +34,7 @@ class Author(models.Model):
     email = models.EmailField(_('E-mail address'), blank=True)
     biography_short = models.CharField(_('Biography short'), max_length=100)
     biography = models.TextField(_('Biography'), blank=True)
-    image = models.ImageField(_('Image'), upload_to='author_icons')
+    photo = models.ForeignKey(MPhoto, verbose_name=_('Image'))
     # the user who added author information,
     # only the user can edit.
     user = models.ForeignKey(User, null=True, verbose_name=_('User'))
@@ -62,7 +63,7 @@ class Book(models.Model):
     category = models.ForeignKey(Category, verbose_name=_('Category'))
     creator = models.ForeignKey(User, null=True, verbose_name=_('Sender'))
     description = models.TextField(_('Description'), blank=True)
-    icon = models.ImageField(_('Icon'), upload_to='book_icons', null=True)
+    photo = models.ForeignKey(MPhoto, verbose_name=_('Icon'), null=True, help_text=_('You may upload the picture'))
     rating = RatingField(_('Rating'), range=5)
     status = models.IntegerField(_('Status'), choices=STATUS_CHOICES, default=1)
     title = models.CharField(_('Title'), max_length=255)
