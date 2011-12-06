@@ -14,6 +14,8 @@
         text-align: center;
     }
 </style>
+<script type='text/javascript' src='{{ STATIC_URL }}js/gallery.js'>
+</script>
 {% endblock %}
 
 {% block body %}
@@ -26,6 +28,10 @@
                     <td><h3> Create new book </h3></td>
                 </tr>
                 {{ form.as_table }}
+                <tr>
+                    <td><div id="image-id"></div></td>
+                    <td><a href='#' onclick="display_picture_form('{% url choose-image %}');">Choose picture</a></td>
+                </tr>
                 <tr>
                     <td colspan="2">
                         <div class='author-help'>

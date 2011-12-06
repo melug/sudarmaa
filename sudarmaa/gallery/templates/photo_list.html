@@ -1,12 +1,32 @@
-<form enctype="multipart/form-data" action='{% url upload-image %}' method='POST'>
-    {% csrf_token %}
-    <table>
-    {{ form.as_table }}
-    </table>
-    <input type='submit' value='upload'>
-</form>
-<ul>
-{% for o in object_list %}
-    <li><img src='{{ o.get_thumbnail_url }}'></li>
-{% endfor %}
-</ul>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <link rel="shortcut icon" href="{{ STATIC_URL }}img/favicon.ico" />
+        <link rel="stylesheet" href="{{ STATIC_URL }}css/bootstrap.css">
+        <link rel="stylesheet" href="{{ STATIC_URL }}css/extra.css">
+        <script src="{{ STATIC_URL }}js/jquery-1.5.2.min.js"></script>
+        <style type='text/css'>
+            label {
+                width: auto;
+            }
+        </style>
+        <script type='text/javascript'>
+        </script>
+    </head>
+    <body>
+    {% block body %}
+        <form enctype="multipart/form-data" action='{% url upload-image %}' method='POST'>
+            {% csrf_token %}
+            <table>
+            {{ form.as_table }}
+            </table>
+            <input type='submit' value='upload'>
+        </form>
+        <ul>
+        {% for o in object_list %}
+            <li><img src='{{ o.get_thumbnail_url }}' onclick='chosen_image("{{ o }}");'></li>
+        {% endfor %}
+        </ul>
+    {% endblock %}
+    </body>
+</html>
