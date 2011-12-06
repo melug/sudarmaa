@@ -1,3 +1,4 @@
+{% load i18n %}
 <html>
     <head>
         <meta charset="utf-8" />
@@ -8,6 +9,10 @@
         <style type='text/css'>
             label {
                 width: auto;
+            }
+            body {
+                margin: 50px;
+                padding: 0px;
             }
         </style>
         <script type='text/javascript'>
@@ -20,9 +25,9 @@
             <table>
             {{ form.as_table }}
             </table>
-            <input type='submit' value='upload'>
+            <input type='submit' value='{% trans "Upload" %}'>
         </form>
-        <ul>
+        <ul class='media-grid'>
         {% for o in object_list %}
             <li><img src='{{ o.get_thumbnail_url }}' onclick='chosen_image("{{ o }}");'></li>
         {% endfor %}

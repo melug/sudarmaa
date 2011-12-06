@@ -6,9 +6,9 @@ from photologue.models import ImageModel
 
 class MPhoto(ImageModel):
 
-    title = models.CharField(max_length=100)
+    title = models.CharField(_('Title'), max_length=100)
     user = models.ForeignKey(User, related_name='photos', null=True, verbose_name=_('User'))
-    date_added = models.DateTimeField(auto_now_add=True)
+    date_added = models.DateTimeField(_('Date added'), auto_now_add=True)
 
     class Meta:
         verbose_name = _('Photo')
