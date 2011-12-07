@@ -15,6 +15,7 @@ setup(
     install_requires=[
         'Django',
         'pinax',
+        'pinax-theme-bootstrap',
         'django_debug_toolbar',
         'django_compressor',
         'django_staticfiles',
