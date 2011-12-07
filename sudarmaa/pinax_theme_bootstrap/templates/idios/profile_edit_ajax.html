@@ -3,7 +3,7 @@
 
 <div class="modal-header">
     <h3>{% trans "Edit Profile" %}</h3>
-    <a href="#" class="close">&times;</a>
+    <a href="#" class="close modal-close">&times;</a>
 </div>
 
 <form class="ajax" method="POST" action="{% url profile_edit %}">
@@ -17,6 +17,6 @@
     
     <div class="modal-footer">
         <button type="submit" class="btn primary">Update</button>
-        <a href="#" class="btn close">Cancel</a>
+        <a href="#" class="btn modal-close">Cancel</a>
     </div>
 </form>

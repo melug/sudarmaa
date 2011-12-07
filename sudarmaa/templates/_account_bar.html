@@ -1,0 +1,25 @@
+{% load i18n %}
+<ul class="secondary-nav">
+    {% if user.is_authenticated %}
+        <li>
+            <a href="#" class="menu">{{ user }}</a>
+            <ul class="menu-dropdown">
+                <li><a href="{% url acct_email %}">{% trans "Account" %}</a></li>
+                <li><a href='{% url bookmark-index %}'> {% trans "My bookmarks" %} </a></li>
+                <li><a href='{% url shelf-index %}'> {% trans "My books" %} </a></li>
+                {% if user.is_staff %}
+                    <li><a href="/admin/">{% trans "Admin" %}</a></li>
+                {% endif %}
+                {% if perms.books.add_book %}
+                    <li><a href='{% url published-books %}'> {% trans "Publish" %} </a></li>
+                {% endif %}
+                <li class="divider"></li>
+                <li><a href="{% url acct_logout %}">{% trans "Log Out" %}</a></li>
+            </ul>
+        </li>
+    {% else %}
+        <li><a href="{% url acct_login %}">{% trans "Log In" %}</a></li>
+        <li><p>or</p></li>
+        <li><a href="{% url acct_signup %}">{% trans "Sign Up" %}</a></li>
+    {% endif %}
+</ul>

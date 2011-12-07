@@ -5,6 +5,8 @@ from django.views.generic.simple import direct_to_template
 from django.contrib import admin
 admin.autodiscover()
 
+from pinax.apps.account.openid_consumer import PinaxConsumer
+
 
 handler500 = "pinax.views.server_error"
 
@@ -13,25 +15,17 @@ urlpatterns = patterns("",
     url(r"", include('books.urls')),
     url(r"", include('dictionary.urls')),
     url(r"", include('gallery.urls')),
-    url(r'comments/', include('django.contrib.comments.urls')),
-    # social auth
-    url(r"", include('social_auth.urls')),
-    # accounts
-    url(r'accounts/login/$', 'django.contrib.auth.views.login', {
-        'template_name': 'registration/login.html',
-    }, name='login'),
-    url(r'accounts/logout/$', 'django.contrib.auth.views.logout', {
-        'next_page': '/'
-    }, name='logout'),
-    # admin
+    url(r'^comments/', include('django.contrib.comments.urls')),
     url(r'^photologue/', include('photologue.urls')),
+    url(r"^admin/invite_user/$", "pinax.apps.signup_codes.views.admin_invite_user", name="admin_invite_user"),
     url(r"^admin/", include(admin.site.urls)),
+    url(r"^about/", include("about.urls")),
+    url(r"^account/", include("pinax.apps.account.urls")),
+    url(r"^openid/", include(PinaxConsumer().urls)),
+    # social auth
+    url(r"^", include('social_auth.urls')),
 )
 
-if 'rosetta' in settings.INSTALLED_APPS:
-    urlpatterns += patterns('',
-        url(r'^rosetta/', include('rosetta.urls')),
-    )
 
 if settings.SERVE_MEDIA:
     urlpatterns += patterns("",

@@ -63,7 +63,7 @@ class Book(models.Model):
     category = models.ForeignKey(Category, verbose_name=_('Category'))
     creator = models.ForeignKey(User, null=True, verbose_name=_('Sender'))
     description = models.TextField(_('Description'), blank=True)
-    photo = models.ForeignKey(MPhoto, verbose_name=_('Icon'), null=True, help_text=_('You may upload the picture'))
+    photo = models.ForeignKey(MPhoto, verbose_name=_('Icon'), null=True)
     rating = RatingField(_('Rating'), range=5)
     status = models.IntegerField(_('Status'), choices=STATUS_CHOICES, default=1)
     title = models.CharField(_('Title'), max_length=255)

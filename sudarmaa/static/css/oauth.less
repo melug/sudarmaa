@@ -1,0 +1,20 @@
+.transparent {
+    opacity: 0.1;
+    filter: alpha(opacity=10);
+}
+.oauth(@image_url) {
+    height: 22px;
+    background: url(@image_url) no-repeat 0 0;
+    &:hover {
+        background: url(@image_url) no-repeat 0 -24px;
+    }
+    &:active {
+        background: url(@image_url) no-repeat 0 -48px;
+    }
+}
+div.twitter-pic {
+    .oauth('/site_media/static/images/signin_twitter.png')
+}
+div.facebook-pic {
+    .oauth('/site_media/static/images/signin_facebook.png')
+}

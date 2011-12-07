@@ -355,7 +355,7 @@ msgstr ""
 #: pinax_theme_bootstrap/templates/account/login.html:20
 #, python-format
 msgid "Don't have an account? <a href=\"%(signup_url)s\">Sign up</a>!"
-msgstr ""
+msgstr "Бүртгэлгүй юу? <a href=\"%(signup_url)s\">бүртгүүлэх</a>!"
 
 #: pinax_theme_bootstrap/templates/account/login.html:23
 msgid "Forgot password?"

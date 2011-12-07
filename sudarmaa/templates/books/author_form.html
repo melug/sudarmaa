@@ -1,4 +1,6 @@
 {% extends "site_base.html" %}
+{% load bootstrap_tags %}
+{% load i18n %}
 {% block extra_head %}
 <style type='text/css'>
     table.form {
@@ -16,20 +18,11 @@
 {% block body %}
     <form enctype="multipart/form-data" action='' method="POST">
         {% csrf_token %}
-        <div class='form'>
-            <table class='form'>
-                <tr>
-                    <td> </td>
-                    <td><h3> Create Author </h3></td>
-                </tr>
-                {{ form.as_table }}
-                <tr>
-                    <td> </td>
-                    <td>
-                        <input type='submit' value='Create Author'>
-                    </td>
-                </tr>
-            </table>
+        <fieldset>
+            {{ form|as_bootstrap }}
+        </fieldset>
+        <div class='actions'>
+            <button type='submit' class='btn primary'>{% trans "Submit" %}</button>
         </div>
     </form>
 {% endblock %}

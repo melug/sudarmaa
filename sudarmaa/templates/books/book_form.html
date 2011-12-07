@@ -1,4 +1,6 @@
 {% extends "site_base.html" %}
+{% load bootstrap_tags %}
+{% load i18n %}
 {% block extra_head %}
 <style type='text/css'>
     table.form {
@@ -21,31 +23,14 @@
 {% block body %}
     <form enctype="multipart/form-data" action='' method="POST">
         {% csrf_token %}
-        <div class='form'>
-            <table class='form'>
-                <tr>
-                    <td> </td>
-                    <td><h3> Create new book </h3></td>
-                </tr>
-                {{ form.as_table }}
-                <tr>
-                    <td><div id="image-id"></div></td>
-                    <td><a href='#' onclick="display_picture_form('{% url choose-image %}');">Choose picture</a></td>
-                </tr>
-                <tr>
-                    <td colspan="2">
-                        <div class='author-help'>
-                        If author is not listed here, you may <a href="{% url create-author %}">create</a>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td> </td>
-                    <td>
-                        <input type='submit' value='Create Book'>
-                    </td>
-                </tr>
-            </table>
+        <fieldset>
+            {{ form|as_bootstrap }}
+        </fieldset>
+        <div class='actions'>
+            <button type='submit' class='btn primary'>{% trans "Submit" %}</button>
         </div>
     </form>
+    <div>
+        <a href="{% url create-author %}"> Create author </a>
+    </div>
 {% endblock %}

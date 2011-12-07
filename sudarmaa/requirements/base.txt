@@ -13,4 +13,11 @@ django-debug-toolbar==0.8.4
 django-staticfiles==1.1.2
 django_compressor==1.0.1
 
+django-mailer==0.2a1.dev3
+django-email-confirmation==0.2.dev6
+django-timezones==0.2.dev2
+pytz==2011h
+django-openid==0.2.3.dev1
+python-openid==2.2.5
+
 -e git+http://github.com/pinax/pinax-theme-bootstrap.git#egg=pinax-theme-bootstrap

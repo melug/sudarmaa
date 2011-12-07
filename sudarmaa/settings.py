@@ -1,13 +1,11 @@
 # -*- coding: utf-8 -*-
-# Django settings for sudarmaa project.
+# Django settings for account project
 
 import os.path
 import posixpath
 
 PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
 
-LOGIN_URL = '/accounts/login/'
-LOGIN_REDIRECT_URL = '/'
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
@@ -101,7 +99,7 @@ ADMIN_MEDIA_PREFIX = posixpath.join(STATIC_URL, "admin/")
 COMPRESS_OUTPUT_DIR = "cache"
 
 # Make this unique, and don't share it with anybody.
-SECRET_KEY = "iw*82!w2)phk7=1qj2rz4^3l7yrwv+$s4vut9d5p%%$c%2vok)"
+SECRET_KEY = "*b6=sjf6^n!i9q+i++y107se+j=x^orb78r34x__ibcd&_=x%5"
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = [
@@ -114,7 +112,9 @@ MIDDLEWARE_CLASSES = [
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
+    "django_openid.consumer.SessionConsumer",
     "django.contrib.messages.middleware.MessageMiddleware",
+    "pinax.apps.account.middleware.LocaleMiddleware",
     "pinax.middleware.security.HideSensistiveFieldsMiddleware",
     "debug_toolbar.middleware.DebugToolbarMiddleware",
 ]
@@ -136,6 +136,8 @@ TEMPLATE_CONTEXT_PROCESSORS = [
     "staticfiles.context_processors.static",
     
     "pinax.core.context_processors.pinax_settings",
+    
+    "pinax.apps.account.context_processors.account",
 ]
 
 INSTALLED_APPS = [
@@ -147,37 +149,36 @@ INSTALLED_APPS = [
     "django.contrib.sites",
     "django.contrib.messages",
     "django.contrib.humanize",
-    "django.contrib.comments",
     
     "pinax.templatetags",
-    
-    # theme
-    "pinax_theme_bootstrap",
     
     # external
     "staticfiles",
     "compressor",
     "debug_toolbar",
-    "djangoratings",
+    "mailer",
+    "django_openid",
+    "timezones",
+    "emailconfirmation",
     "social_auth",
+    "djangoratings",
     "django_extensions",
     "photologue",
     
+    # theme
+    "pinax_theme_bootstrap",
+    
     # Pinax
+    "pinax.apps.account",
+    "pinax.apps.analytics",
+    "pinax.apps.signup_codes",
     
     # project
+    "about",
     "books",
     "dictionary",
     "gallery",
 ]
-
-if DEBUG:
-    INSTALLED_APPS.append('rosetta')
-
-AUTHENTICATION_BACKENDS = (
-    'social_auth.backends.twitter.TwitterBackend',
-    'django.contrib.auth.backends.ModelBackend',
-)
 
 FIXTURE_DIRS = [
     os.path.join(PROJECT_ROOT, "fixtures"),
@@ -186,6 +187,26 @@ FIXTURE_DIRS = [
 MESSAGE_STORAGE = "django.contrib.messages.storage.session.SessionStorage"
 
 EMAIL_BACKEND = "mailer.backend.DbBackend"
+
+ACCOUNT_OPEN_SIGNUP = True
+ACCOUNT_REQUIRED_EMAIL = False
+ACCOUNT_EMAIL_VERIFICATION = False
+ACCOUNT_EMAIL_AUTHENTICATION = False
+ACCOUNT_UNIQUE_EMAIL = EMAIL_CONFIRMATION_UNIQUE_EMAIL = False
+
+AUTHENTICATION_BACKENDS = [
+    "pinax.apps.account.auth_backends.AuthenticationBackend",
+    "social_auth.backends.twitter.TwitterBackend",
+    "social_auth.backends.facebook.FacebookBackend",
+]
+
+LOGIN_URL = "/account/login/" # @@@ any way this can be a url name?
+LOGIN_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URLNAME = "what_next"
+LOGOUT_REDIRECT_URLNAME = "home"
+
+EMAIL_CONFIRMATION_DAYS = 2
+EMAIL_DEBUG = DEBUG
 
 DEBUG_TOOLBAR_CONFIG = {
     "INTERCEPT_REDIRECTS": False,

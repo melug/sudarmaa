@@ -1,19 +1,19 @@
 {% extends "theme_base.html" %}
+
+{% load analytics_tags %}
 {% load i18n %}
 
-{% block account_bar %}{% endblock %}
-
-{% block nav %}
-    <form class="pull-left">
-        <input type="text" placeholder="{% trans "Search" %}">
-    </form>
-    {% if user.is_authenticated %}
-        {% include "registration/drop_menu.html" %}
-    {% else %}
-        <ul class='pull-right' style="left: none;"><li><a href='{% url login %}'> {% trans "Login" %} </a></li></ul>
-    {% endif %}
+{% block extra_head_base %}
+    {% block extra_head %}{% endblock %}
 {% endblock %}
 
 {% block footer %}
+<div class="legal">
     {% include "_footer.html" %}
+</div>
+{% endblock %}
+
+{% block extra_body_base %}
+    {% analytics %}
+    {% block extra_body %}{% endblock %}
 {% endblock %}
