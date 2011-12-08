@@ -26,7 +26,7 @@
     function page_clicked() {
         if(current_li!=null) {
             current_li.css('color', 'black');
-            if(current_li.attr('pageid')==$(this).attr('pageid')) {
+            if(current_li.prop('pageid')==$(this).prop('pageid')) {
                 current_li = null;
                 page_unavailable();
             } else {
@@ -41,10 +41,10 @@
         }
     }
     function page_unavailable() {
-        $("div.buttons-holder input").attr("disabled", "disabled");
+        $("div.buttons-holder input").prop("disabled", "disabled");
     };
     function page_available() {
-        $("div.buttons-holder input").attr("disabled", "");
+        $("div.buttons-holder input").prop("disabled", "");
     };
     function move_up() {
         next = current_li.prevAll('li:first');
@@ -63,7 +63,7 @@
         if(current_li != null) {
             $.post("{% url edit-page %}", {
                 action: 'addpage',
-                parent_page: current_li.attr('pageid'),
+                parent_page: current_li.prop('pageid'),
                 book_id: {{ book.id }},
                 title: title
             }, insert_element_succeeded)
@@ -86,7 +86,7 @@
         page_id = html;
         page_li = $('div.toc-list li[pageid=' + page_id + ']');
         page_ul = page_li.next();
-        if(current_li.attr('pageid')==page_li.attr('pageid')) {
+        if(current_li.prop('pageid')==page_li.prop('pageid')) {
             page_unavailable();
             current_li = null;
         }

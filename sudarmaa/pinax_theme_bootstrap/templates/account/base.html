@@ -12,6 +12,8 @@
 {% block subnav %}
     <h1>{% trans "Account" %}</h1>
     <ul>
+        <li><a href='{% url bookmark-index %}'> {% trans "My bookmarks" %} </a></li>
+        <li><a href='{% url shelf-index %}'> {% trans "My books" %} </a></li>
         <li><a href="{% url acct_email %}">{% trans "Email Addresses" %}</a></li>
         {% ifsetting ACCOUNT_USE_OPENID %}
             <li><a href="/openid/associations/">{% trans "OpenID Associations" %}</a></li>

@@ -8,8 +8,8 @@ class UserMix(TestCase):
         self.user = User.objects.create_user('testuser', 'test@test.mn', 'testuser')
         self.category = Category.objects.create(title='Test category')
         self.book = Book.objects.create(title='Title - 1', \
-            category=self.category, icon=None, creator=self.user, \
-            description='Test description', status=2)
+            category=self.category, photo=None, creator=self.user, \
+            description='Test description', status=2, language=2)
         self.page1 = Page.objects.create(parent_page=None, book=self.book,
         title='Chapter-1', content='Content - 1', siblings_order=1)
         self.page2 = Page.objects.create(parent_page=None, book=self.book,

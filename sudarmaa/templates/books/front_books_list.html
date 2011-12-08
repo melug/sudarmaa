@@ -3,7 +3,7 @@
     <li>
         <div class='span3'>
             <a href='{% url book-detail pk=book.id %}'>
-                <img src='{{ book.icon.url }}' height='100px;'>
+                <img src='{{ book.photo.get_thumbnail_url }}' height='100px;'>
                 <div>{{ book.title|truncatewords:4 }}</div>
             </a>
         </div>

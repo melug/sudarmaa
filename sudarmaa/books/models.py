@@ -157,7 +157,7 @@ class Bookmark(models.Model):
 class Shelf(models.Model):
 
     title = models.CharField(_('Title'), max_length=255)
-    user = models.ForeignKey(User, related_name='shelves', verbose_name=_('User'))
+    user = models.ForeignKey(User, related_name='shelves', verbose_name=_('User'), null=True)
     books = models.ManyToManyField(Book, verbose_name=_('Books'))
     is_public = models.BooleanField(default=True, verbose_name=_('Is public'))
 
