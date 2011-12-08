@@ -8,170 +8,182 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-12-06 01:49-0500\n"
+"POT-Creation-Date: 2011-12-08 21:32+0800\n"
 "PO-Revision-Date: 2011-12-01 00:48\n"
 "Last-Translator:   <ls@ls.ls>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: \n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 "X-Translated-Using: django-rosetta 0.6.2\n"
 
-#: books/models.py:20
+#: books/forms.py:8 gallery/models.py:14
+msgid "Photo"
+msgstr "Зураг"
+
+#: books/forms.py:8
+msgid "Or choose an image from below"
+msgstr "Эсвэл зургаа доороос сонгоно уу"
+
+#: books/forms.py:22
+msgid "Image required"
+msgstr "Зураг оруулах хэрэгтэй"
+
+#: books/models.py:21
 msgid "name"
 msgstr "Нэр"
 
-#: books/models.py:26 books/models.py:62
+#: books/models.py:27 books/models.py:63
 msgid "Category"
 msgstr "Ангилал"
 
-#: books/models.py:27 templates/books/home.html:35
+#: books/models.py:28 templates/books/home.html:35
 msgid "Categories"
 msgstr "Ангилалууд"
 
-#: books/models.py:31
+#: books/models.py:32
 msgid "First name"
 msgstr "Нэр"
 
-#: books/models.py:32
+#: books/models.py:33
 msgid "Last name"
 msgstr "Овог"
 
-#: books/models.py:33
+#: books/models.py:34
 msgid "E-mail address"
 msgstr "Э-Шуудан"
 
-#: books/models.py:34
+#: books/models.py:35
 msgid "Biography short"
 msgstr "Статус"
 
-#: books/models.py:35
+#: books/models.py:36
 msgid "Biography"
 msgstr "Мэдээлэл"
 
-#: books/models.py:36
+#: books/models.py:37
 msgid "Image"
 msgstr "Зураг"
 
-#: books/models.py:39 books/models.py:132 books/models.py:145
-#: books/models.py:159 gallery/models.py:10
+#: books/models.py:40 books/models.py:133 books/models.py:146
+#: books/models.py:160 gallery/models.py:10
 msgid "User"
 msgstr "Хэрэглэгч"
 
-#: books/models.py:45
+#: books/models.py:46
 msgid "Author"
 msgstr "Зохиолч"
 
-#: books/models.py:46 books/models.py:69
+#: books/models.py:47 books/models.py:70
 msgid "Authors"
 msgstr "Зохиолчид"
 
-#: books/models.py:49
+#: books/models.py:50
 msgid "Draft"
 msgstr "Ноорог"
 
-#: books/models.py:50
+#: books/models.py:51
 msgid "Published"
 msgstr "Хэвлэгдсэн"
 
-#: books/models.py:51
+#: books/models.py:52
 msgid "Violates terms"
 msgstr "Гэрээ зөрчсөн"
 
-#: books/models.py:55
+#: books/models.py:56
 msgid "Mongolia"
 msgstr "Монгол"
 
-#: books/models.py:56
+#: books/models.py:57
 msgid "English"
 msgstr "Англи"
 
-#: books/models.py:61 books/models.py:146
+#: books/models.py:62 books/models.py:147
 msgid "Added date"
 msgstr "Нэмэгдсэн огноо"
 
-#: books/models.py:63
+#: books/models.py:64
 msgid "Sender"
 msgstr "Илгээсэн"
 
-#: books/models.py:64
+#: books/models.py:65
 msgid "Description"
 msgstr "Тайлбар"
 
-#: books/models.py:65
+#: books/models.py:66
 msgid "Icon"
 msgstr "Зураг"
 
-#: books/models.py:66
+#: books/models.py:67
 msgid "Rating"
 msgstr "Рэйтинг"
 
-#: books/models.py:67
+#: books/models.py:68
 msgid "Status"
 msgstr "Статус"
 
-#: books/models.py:68 books/models.py:97 books/models.py:158
+#: books/models.py:69 books/models.py:98 books/models.py:159
 #: gallery/models.py:9
 msgid "Title"
 msgstr "Гарчиг"
 
-#: books/models.py:70 pinax_theme_bootstrap/templates/account/base.html:28
+#: books/models.py:71 pinax_theme_bootstrap/templates/account/base.html:30
 #: pinax_theme_bootstrap/templates/account/language_change.html:6
 #: pinax_theme_bootstrap/templates/account/language_change.html:9
 msgid "Language"
 msgstr "Хэл"
 
-#: books/models.py:90 books/models.py:96 books/models.py:133
+#: books/models.py:91 books/models.py:97 books/models.py:134
 msgid "Book"
 msgstr "Ном"
 
-#: books/models.py:91 books/models.py:160
+#: books/models.py:92 books/models.py:161
 msgid "Books"
 msgstr "Номнууд"
 
-#: books/models.py:98
+#: books/models.py:99
 msgid "Content"
 msgstr "Агуулга"
 
-#: books/models.py:99 books/models.py:134
+#: books/models.py:100 books/models.py:135
 msgid "Order"
 msgstr "Дараалал"
 
-#: books/models.py:127 books/models.py:147
+#: books/models.py:128 books/models.py:148
 msgid "Page"
 msgstr "Хуудас"
 
-#: books/models.py:128
+#: books/models.py:129
 msgid "Pages"
 msgstr "Хуудаснууд"
 
-#: books/models.py:140
+#: books/models.py:141
 msgid "Pick"
 msgstr "Онцлох"
 
-#: books/models.py:141
+#: books/models.py:142
 msgid "Picks"
 msgstr "Онцлох"
 
-#: books/models.py:153 templates/books/read_page.html:62
+#: books/models.py:154 templates/books/read_page.html:62
 msgid "Bookmark"
 msgstr "Номын хавчуурга"
 
-#: books/models.py:154
+#: books/models.py:155
 msgid "Bookmarks"
 msgstr "Номын хавчуурганууд"
 
-#: books/models.py:161
+#: books/models.py:162
 msgid "Is public"
 msgstr "Хүмүүс хандах"
 
-#: books/models.py:173
+#: books/models.py:174
 msgid "Shelf"
 msgstr "Номын тавиур"
 
-#: books/models.py:174
+#: books/models.py:175
 msgid "Shelves"
 msgstr "Номын тавиурнууд"
 
@@ -207,15 +219,11 @@ msgstr "Санал"
 msgid "Suggestions"
 msgstr "Саналууд"
 
-#: gallery/models.py:14
-msgid "Photo"
-msgstr "Зураг"
-
 #: gallery/models.py:15
 msgid "Photos"
 msgstr "Зурагнууд"
 
-#: gallery/templates/photo_list.html:28
+#: gallery/templates/photo_list.html:30
 msgid "Upload"
 msgstr "Илгээх"
 
@@ -241,20 +249,29 @@ msgstr ""
 
 #: pinax_theme_bootstrap/templates/account/base.html:13
 #: pinax_theme_bootstrap/templates/account/email.html:6
+#: templates/_account_bar.html:7
 msgid "Account"
 msgstr "Хэрэглэгч"
 
 #: pinax_theme_bootstrap/templates/account/base.html:15
+msgid "My bookmarks"
+msgstr "Хавчуургадсан номнууд"
+
+#: pinax_theme_bootstrap/templates/account/base.html:16
+msgid "My books"
+msgstr "Миний номнууд"
+
+#: pinax_theme_bootstrap/templates/account/base.html:17
 #: pinax_theme_bootstrap/templates/account/email.html:9
 msgid "Email Addresses"
 msgstr "Э-Шуудангийн хаяг"
 
-#: pinax_theme_bootstrap/templates/account/base.html:17
+#: pinax_theme_bootstrap/templates/account/base.html:19
 #: pinax_theme_bootstrap/templates/django_openid/associations.html:5
 msgid "OpenID Associations"
 msgstr ""
 
-#: pinax_theme_bootstrap/templates/account/base.html:20
+#: pinax_theme_bootstrap/templates/account/base.html:22
 #: pinax_theme_bootstrap/templates/account/password_change.html:6
 #: pinax_theme_bootstrap/templates/account/password_change.html:9
 #: pinax_theme_bootstrap/templates/account/password_reset_from_key.html:5
@@ -262,19 +279,19 @@ msgstr ""
 msgid "Change Password"
 msgstr "Нууц үг солих"
 
-#: pinax_theme_bootstrap/templates/account/base.html:22
+#: pinax_theme_bootstrap/templates/account/base.html:24
 #: pinax_theme_bootstrap/templates/account/password_set.html:6
 #: pinax_theme_bootstrap/templates/account/password_set.html:9
 msgid "Set Password"
 msgstr "Нууц үг тохируулах"
 
-#: pinax_theme_bootstrap/templates/account/base.html:25
+#: pinax_theme_bootstrap/templates/account/base.html:27
 #: pinax_theme_bootstrap/templates/account/password_delete.html:5
 #: pinax_theme_bootstrap/templates/account/password_delete.html:8
 msgid "Delete Password"
 msgstr "Нууц үг устгах"
 
-#: pinax_theme_bootstrap/templates/account/base.html:30
+#: pinax_theme_bootstrap/templates/account/base.html:32
 #: pinax_theme_bootstrap/templates/account/timezone_change.html:6
 #: pinax_theme_bootstrap/templates/account/timezone_change.html:9
 msgid "Timezone"
@@ -329,43 +346,62 @@ msgstr "Хэл солих"
 
 #: pinax_theme_bootstrap/templates/account/login.html:8
 #: pinax_theme_bootstrap/templates/django_openid/login.html:8
-#: templates/site_base.html:13 templates/registration/login.html:23
 msgid "Login"
 msgstr "Нэвтрэх"
 
-#: pinax_theme_bootstrap/templates/account/login.html:12
-#: pinax_theme_bootstrap/templates/account/signup.html:14
+#: pinax_theme_bootstrap/templates/account/login.html:16
+#: pinax_theme_bootstrap/templates/account/signup.html:15
 #: pinax_theme_bootstrap/templates/django_openid/login.html:20
+#: templates/_account_bar.html:19
 msgid "Log In"
 msgstr "Нэвтрэх"
 
-#: pinax_theme_bootstrap/templates/account/login.html:16
+#: pinax_theme_bootstrap/templates/account/login.html:20
 #: pinax_theme_bootstrap/templates/account/password_reset.html:13
 #: pinax_theme_bootstrap/templates/account/password_reset_done.html:12
 msgid "Note"
 msgstr "Тэмдэглэл"
 
-#: pinax_theme_bootstrap/templates/account/login.html:16
+#: pinax_theme_bootstrap/templates/account/login.html:20
 #: pinax_theme_bootstrap/templates/account/password_reset.html:13
 #: pinax_theme_bootstrap/templates/account/password_reset_done.html:12
 #, python-format
 msgid "you are already logged in as %(user_display)s."
 msgstr ""
 
-#: pinax_theme_bootstrap/templates/account/login.html:20
+#: pinax_theme_bootstrap/templates/account/login.html:24
 #, python-format
 msgid "Don't have an account? <a href=\"%(signup_url)s\">Sign up</a>!"
 msgstr "Бүртгэлгүй юу? <a href=\"%(signup_url)s\">бүртгүүлэх</a>!"
 
-#: pinax_theme_bootstrap/templates/account/login.html:23
+#: pinax_theme_bootstrap/templates/account/login.html:27
 msgid "Forgot password?"
 msgstr "Нууц үгээ мартсан уу?"
 
-#: pinax_theme_bootstrap/templates/account/login.html:36
+#: pinax_theme_bootstrap/templates/account/login.html:40
+#: pinax_theme_bootstrap/templates/account/login.html:85
+#: pinax_theme_bootstrap/templates/account/signup.html:51
 msgid "Log in"
 msgstr "Нэвтрэх"
 
-#: pinax_theme_bootstrap/templates/account/login.html:44
+#: pinax_theme_bootstrap/templates/account/login.html:45
+msgid "Login with your existing account"
+msgstr "Бусад сайт дээрх эрхээр нэвтрэх"
+
+#: pinax_theme_bootstrap/templates/account/login.html:49
+msgid "Login with twitter account"
+msgstr "Твиттер дээрх эрхээр нэвтрэх"
+
+#: pinax_theme_bootstrap/templates/account/login.html:55
+msgid "Login with facebook account"
+msgstr "Фэйсбүүк дээрх эрхээр нэвтрэх"
+
+#: pinax_theme_bootstrap/templates/account/login.html:65
+#: pinax_theme_bootstrap/templates/account/signup.html:31
+msgid "Or sign in with your OpenID"
+msgstr ""
+
+#: pinax_theme_bootstrap/templates/account/login.html:95
 #: pinax_theme_bootstrap/templates/django_openid/login.html:28
 #, python-format
 msgid ""
@@ -374,7 +410,6 @@ msgid ""
 msgstr ""
 
 #: pinax_theme_bootstrap/templates/account/logout.html:5
-#: templates/registration/drop_menu.html:15
 msgid "Logout"
 msgstr "Гарах"
 
@@ -399,28 +434,29 @@ msgstr "миний нууц үгийг устга"
 #: pinax_theme_bootstrap/templates/account/password_delete_done.html:5
 #: pinax_theme_bootstrap/templates/account/password_delete_done.html:8
 msgid "Password Deleted"
-msgstr ""
+msgstr "Нууц үг устгагдлаа"
 
 #: pinax_theme_bootstrap/templates/account/password_delete_done.html:10
 msgid "Your password has been deleted."
-msgstr ""
+msgstr "Нууц үг устгагдлаа."
 
 #: pinax_theme_bootstrap/templates/account/password_reset.html:7
 #: pinax_theme_bootstrap/templates/account/password_reset.html:10
 #: pinax_theme_bootstrap/templates/account/password_reset_done.html:6
 #: pinax_theme_bootstrap/templates/account/password_reset_done.html:9
 msgid "Password Reset"
-msgstr ""
+msgstr "Нууц үгээ шинэчлэх"
 
 #: pinax_theme_bootstrap/templates/account/password_reset.html:16
 msgid ""
 "Forgotten your password? Enter your email address below, and we'll send you "
 "an email allowing you to reset it."
-msgstr ""
+msgstr "Нууц үгээ мартсан бол э-шуудангийн хаягаа оруулна уу, сэргээх зааврыг
+илгээх болно"
 
 #: pinax_theme_bootstrap/templates/account/password_reset.html:24
 msgid "Reset my password"
-msgstr ""
+msgstr "Нууц үгээ шинэчлэх"
 
 #: pinax_theme_bootstrap/templates/account/password_reset.html:28
 #, python-format
@@ -452,25 +488,26 @@ msgstr ""
 msgid "set password"
 msgstr ""
 
-#: pinax_theme_bootstrap/templates/account/signup.html:6
+#: pinax_theme_bootstrap/templates/account/signup.html:7
 msgid "Signup"
-msgstr ""
+msgstr "Бүртгүүлэх"
 
-#: pinax_theme_bootstrap/templates/account/signup.html:9
-#: pinax_theme_bootstrap/templates/account/signup.html:25
+#: pinax_theme_bootstrap/templates/account/signup.html:10
+#: pinax_theme_bootstrap/templates/account/signup.html:26
 #: pinax_theme_bootstrap/templates/django_openid/register.html:23
+#: templates/_account_bar.html:21
 msgid "Sign Up"
-msgstr ""
+msgstr "Бүртгүүлэх"
 
-#: pinax_theme_bootstrap/templates/account/signup.html:12
+#: pinax_theme_bootstrap/templates/account/signup.html:13
 msgid "You are already logged in."
 msgstr ""
 
-#: pinax_theme_bootstrap/templates/account/signup.html:14
+#: pinax_theme_bootstrap/templates/account/signup.html:15
 msgid "Already have an account?"
-msgstr ""
+msgstr "Танд хэрэглэгчийн эрх байгаа юу?"
 
-#: pinax_theme_bootstrap/templates/account/signup.html:31
+#: pinax_theme_bootstrap/templates/account/signup.html:59
 #, python-format
 msgid ""
 "By clicking \"Sign Up\", you are indicating that you have read and agree to "
@@ -478,7 +515,7 @@ msgid ""
 "\">Privacy Policy</a>."
 msgstr ""
 
-#: pinax_theme_bootstrap/templates/account/signup.html:33
+#: pinax_theme_bootstrap/templates/account/signup.html:61
 #: pinax_theme_bootstrap/templates/django_openid/register.html:32
 #, python-format
 msgid ""
@@ -499,15 +536,15 @@ msgstr ""
 #: pinax_theme_bootstrap/templates/account/verification_sent.html:5
 #: pinax_theme_bootstrap/templates/account/verification_sent.html:8
 msgid "Verify your email address"
-msgstr ""
+msgstr "Э-Шуудангийн хаягаа баталгаажуулна уу"
 
 #: pinax_theme_bootstrap/templates/account/verification_sent.html:10
 #, python-format
 msgid ""
 "We have sent you an email to <b>%(email)s</b> for verification. Follow the "
 "link provided to finalize the signup process. If you do not receive it "
-"within a few minutes, contact us at <a href=\"mailto:%(CONTACT_EMAIL)s\">"
-"%(CONTACT_EMAIL)s</a>."
+"within a few minutes, contact us at <a href=\"mailto:%(CONTACT_EMAIL)s\">%"
+"(CONTACT_EMAIL)s</a>."
 msgstr ""
 
 #: pinax_theme_bootstrap/templates/django_openid/already_logged_in.html:5
@@ -565,11 +602,11 @@ msgstr ""
 #: pinax_theme_bootstrap/templates/django_openid/register.html:6
 #: pinax_theme_bootstrap/templates/django_openid/register.html:9
 msgid "Choose a Username"
-msgstr ""
+msgstr "Хэрэглэгчийн нэрээ сонго"
 
 #: pinax_theme_bootstrap/templates/django_openid/register.html:12
 msgid "Please correct the errors below:"
-msgstr ""
+msgstr "Доорх алдаануудыг засварлана уу"
 
 #: pinax_theme_bootstrap/templates/django_openid/register.html:15
 msgid ""
@@ -588,14 +625,14 @@ msgstr ""
 #, python-format
 msgid ""
 "By clicking &quot;Sign Up&quot;, you are indicating that you have read and "
-"agree to the <a href=\"%(terms_url)s\">Terms of Use</a> and <a href="
-"\"%(privacy_url)s\">Privacy Policy</a>."
+"agree to the <a href=\"%(terms_url)s\">Terms of Use</a> and <a href=\"%"
+"(privacy_url)s\">Privacy Policy</a>."
 msgstr ""
 
 #: pinax_theme_bootstrap/templates/django_openid/registration_closed.html:5
 #: pinax_theme_bootstrap/templates/django_openid/registration_closed.html:8
 msgid "Signup closed"
-msgstr ""
+msgstr "Бүртгэл хаагдсан"
 
 #: pinax_theme_bootstrap/templates/django_openid/registration_closed.html:10
 msgid ""
@@ -605,28 +642,28 @@ msgstr ""
 
 #: pinax_theme_bootstrap/templates/emailconfirmation/confirm_email.html:6
 msgid "Confirm Email"
-msgstr ""
+msgstr "Шуудангийн хаягаа баталгаажуул"
 
 #: pinax_theme_bootstrap/templates/emailconfirmation/confirm_email.html:10
 msgid "Email Confirmed"
-msgstr ""
+msgstr "Таны хаяг баталгаажлаа"
 
 #: pinax_theme_bootstrap/templates/emailconfirmation/confirm_email.html:12
 #, python-format
 msgid ""
-"You have confirmed that %(email)s is an email address for user "
-"'%(user_display)s'."
+"You have confirmed that %(email)s is an email address for user '%"
+"(user_display)s'."
 msgstr ""
 
 #: pinax_theme_bootstrap/templates/emailconfirmation/confirm_email.html:14
 msgid "Invalid confirmation key."
 msgstr ""
 
-#: pinax_theme_bootstrap/templates/idios/base.html:14
+#: pinax_theme_bootstrap/templates/idios/base.html:10
 msgid "Your Profile"
 msgstr ""
 
-#: pinax_theme_bootstrap/templates/idios/base.html:15
+#: pinax_theme_bootstrap/templates/idios/base.html:11
 #: pinax_theme_bootstrap/templates/idios/profiles.html:7
 #: pinax_theme_bootstrap/templates/idios/profiles.html:10
 msgid "All Profiles"
@@ -648,19 +685,18 @@ msgstr ""
 msgid "Success!"
 msgstr ""
 
-#: pinax_theme_bootstrap/templates/notification/base.html:13
-#: pinax_theme_bootstrap/templates/notification/base.html:15
+#: pinax_theme_bootstrap/templates/notification/base.html:12
+#: pinax_theme_bootstrap/templates/notification/base.html:14
 #: pinax_theme_bootstrap/templates/notification/notices.html:8
 msgid "Notices"
 msgstr ""
 
-#: pinax_theme_bootstrap/templates/notification/base.html:16
-#: pinax_theme_bootstrap/templates/notification/notice_settings.html:10
-#: templates/registration/drop_menu.html:8
+#: pinax_theme_bootstrap/templates/notification/base.html:15
+#: pinax_theme_bootstrap/templates/notification/notice_settings.html:9
 msgid "Settings"
 msgstr "Тохиргоо"
 
-#: pinax_theme_bootstrap/templates/notification/notice_settings.html:5
+#: pinax_theme_bootstrap/templates/notification/notice_settings.html:6
 msgid "Notification Settings"
 msgstr ""
 
@@ -676,17 +712,21 @@ msgstr ""
 #: pinax_theme_bootstrap/templates/notification/notice_settings.html:21
 #, python-format
 msgid ""
-"You do not have a verified email address to which notices can be sent. You "
-"can add one by going to <a    href=\"%(email_url)s\">Account</a>."
+"\n"
+"                You do not have a verified email address to which notices "
+"can be sent.\n"
+"                You can add one by going to <a href=\"%(email_url)s"
+"\">Account</a>.\n"
+"                "
 msgstr ""
 
-#: pinax_theme_bootstrap/templates/notification/notice_settings.html:29
+#: pinax_theme_bootstrap/templates/notification/notice_settings.html:32
 msgid "Notification Type"
 msgstr ""
 
-#: pinax_theme_bootstrap/templates/notification/notice_settings.html:47
+#: pinax_theme_bootstrap/templates/notification/notice_settings.html:50
 msgid "Change"
-msgstr ""
+msgstr "Өөрчлөх"
 
 #: pinax_theme_bootstrap/templates/notification/notices.html:15
 msgid "Mark all unseen notices seen"
@@ -712,19 +752,33 @@ msgstr "Өмнөх"
 msgid "Next"
 msgstr "Дараагийн"
 
+#: templates/_account_bar.html:9
+msgid "Admin"
+msgstr "Удирдлага"
+
+#: templates/_account_bar.html:12
+#, fuzzy
+msgid "My publishes"
+msgstr "Хэвлэгдсэн"
+
+#: templates/_account_bar.html:15
+#, fuzzy
+msgid "Log Out"
+msgstr "Гарах"
+
 #: templates/_footer.html:3
-msgid "&copy; 2011 Sudarmaa"
+msgid "&copy; 2011 &lt;your company here&gt;"
 msgstr ""
 
-#: templates/homepage.html:5
+#: templates/homepage.html:6
 msgid "Welcome"
-msgstr ""
+msgstr "Тавтай морил"
 
-#: templates/homepage.html:11
+#: templates/homepage.html:12
 msgid "Welcome to Pinax"
 msgstr ""
 
-#: templates/homepage.html:14
+#: templates/homepage.html:15
 msgid ""
 "\n"
 "        <b>Pinax</b> is a <a href=\"http://djangoproject.com/\">Django</a>\n"
@@ -735,7 +789,7 @@ msgid ""
 "        "
 msgstr ""
 
-#: templates/homepage.html:24
+#: templates/homepage.html:25
 msgid ""
 "\n"
 "        For more information about Pinax, see\n"
@@ -743,11 +797,11 @@ msgid ""
 "        "
 msgstr ""
 
-#: templates/homepage.html:30
+#: templates/homepage.html:31
 msgid "About this project"
 msgstr ""
 
-#: templates/homepage.html:33
+#: templates/homepage.html:34
 msgid ""
 "\n"
 "        This project lays the foundation for all other Pinax starter "
@@ -758,9 +812,42 @@ msgid ""
 "        "
 msgstr ""
 
-#: templates/site_base.html:8
-msgid "Search"
-msgstr "Хайх"
+#: templates/homepage.html:44
+#, python-format
+msgid "Wondering <a href=\"%(what_next_url)s\">What Next</a>?"
+msgstr ""
+
+#: templates/homepage.html:49
+#, python-format
+msgid ""
+"You can <a href=\"%(signup_url)s\">Sign up</a> and <a href=\"%(login_url)s"
+"\">Log in</a> to try out the site."
+msgstr ""
+
+#: templates/homepage.html:51
+#, python-format
+msgid "You can <a href=\"%(login_url)s\">Log in</a> to try out the site."
+msgstr ""
+
+#: templates/about/what_next.html:6 templates/about/what_next.html.py:9
+msgid "What Next?"
+msgstr ""
+
+#: templates/about/what_next.html:32
+#, python-format
+msgid ""
+"Start by <a href=\"%(signup_url)s\">signing up</a> and <a href=\"%(login_url)"
+"s\">logging in</a>."
+msgstr ""
+
+#: templates/about/what_next.html:34
+#, python-format
+msgid "Start by <a href=\"%(login_url)s\">logging in</a>."
+msgstr ""
+
+#: templates/books/author_form.html:25 templates/books/book_form.html:30
+msgid "Submit"
+msgstr ""
 
 #: templates/books/book_detail.html:41
 msgid "by"
@@ -819,29 +906,20 @@ msgstr "Дараагийн хуудас"
 msgid "Previous page"
 msgstr "Өмнөх хуудас"
 
-#: templates/registration/drop_menu.html:4
-msgid "Profile"
-msgstr "Профайл"
+#~ msgid "Search"
+#~ msgstr "Хайх"
 
-#: templates/registration/drop_menu.html:6
-msgid "Hello"
-msgstr "Сайн байна уу"
+#~ msgid "Profile"
+#~ msgstr "Профайл"
 
-#: templates/registration/drop_menu.html:7
-msgid "My bookmarks"
-msgstr "Хавчуургадсан номнууд"
+#~ msgid "Hello"
+#~ msgstr "Сайн байна уу"
 
-#: templates/registration/drop_menu.html:9
-msgid "My books"
-msgstr "Миний номнууд"
+#~ msgid "Publish"
+#~ msgstr "Хэвлэгдсэн"
 
-#: templates/registration/drop_menu.html:12
-msgid "Publish"
-msgstr "Хэвлэгдсэн"
-
-#: templates/registration/login.html:7
-msgid "Your username and password didn't match. Please try again."
-msgstr "Таны нэр, нууц үг буруу байна."
+#~ msgid "Your username and password didn't match. Please try again."
+#~ msgstr "Таны нэр, нууц үг буруу байна."
 
 #~ msgid "read"
 #~ msgstr "Уншсан"
