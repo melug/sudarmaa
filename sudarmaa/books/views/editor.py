@@ -9,6 +9,7 @@ from django.views.generic import TemplateView, CreateView, DetailView, View, Upd
 from django.shortcuts import get_object_or_404
 
 from books.models import Book, Category, Pick, Page
+from gallery.models import MPhoto
 from books.forms import BookForm, PageForm, AuthorForm
 
 class CreateBook(CreateView):
@@ -20,6 +21,20 @@ class CreateBook(CreateView):
         book.creator = self.request.user
         book.save()
         return reverse('my-books-show', kwargs={'pk':book.id})
+
+    def get_form(self, form_class):
+        form = super(CreateBook, self).get_form(form_class)
+        form.fields['photo'].queryset = MPhoto.objects.filter(user=self.request.user)
+        return form
+
+    def form_valid(self, form):
+        r = super(CreateBook, self).form_valid(form)
+        photo = form.cleaned_data['photo']
+        if not photo.user:
+            photo.title = form.cleaned_data['title']
+            photo.user = self.request.user
+            photo.save()
+        return r
 
 class CreateAuthor(CreateView):
     template_name = 'books/author_form.html'

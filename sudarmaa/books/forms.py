@@ -5,7 +5,9 @@ from books.models import Book, Page, Shelf, Author
 from gallery.models import MPhoto
 
 class BookForm(forms.ModelForm):
+    photo = forms.ModelChoiceField(queryset=MPhoto.objects.all(), required=False)
     photo2 = forms.ImageField(label=_('Photo'), help_text=_('Or choose an image from below'), required=False)
+    authors = forms.ModelMultipleChoiceField(queryset=Author.objects.all(), required=False)
 
     class Meta:
         model = Book
