@@ -1,4 +1,5 @@
 {% extends "site_base.html" %}
+{% load i18n %}
 {% block extra_head %}
 <style type='text/css'>
     div.toc li {
@@ -134,16 +135,16 @@
             <p class='description'>{{ book.description }}</p>
         </div>
         <div class='offset1 span6 toc'>
-            <h4> Table of Content editor: </h4>
+            <h4> {% trans "Table of Content editor" %}: </h4>
             <div class='addpage'>
                 <div>
-                    Page name: <input id="page_name" type='text' value=''><input onclick="add_page();" type='button' value='Add'>
+                    {% trans "Page name" %}: <input id="page_name" type='text' value=''><input onclick="add_page();" type='button' value='{% trans "Add" %}'>
                 </div>
                 <div class='buttons-holder'>
-                    <input disabled="disabled" onclick="move_up();" type='button' value="Move Up">
-                    <input disabled="disabled" onclick="move_down();" type='button' value="Move Down">
-                    <input disabled="disabled" onclick="delete_page();" type='button' value="Delete Page">
-                    <input disabled="disabled" onclick="edit_page();" type='button' value="Edit Page">
+                    <input disabled="disabled" onclick="move_up();" type='button' value="{% trans "Move Up" %}">
+                    <input disabled="disabled" onclick="move_down();" type='button' value="{% trans "Move Down" %}">
+                    <input disabled="disabled" onclick="delete_page();" type='button' value="{% trans "Delete Page" %}">
+                    <input disabled="disabled" onclick="edit_page();" type='button' value="{% trans "Edit Page" %}">
                 </div>
             </div>
             <div class='toc-list'>

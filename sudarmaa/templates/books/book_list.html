@@ -1,4 +1,5 @@
 {% extends "site_base.html" %}
+{% load i18n %}
 {% block extra_head %}
     <script type='text/javascript' src='{{ STATIC_URL }}js/publish.js'> </script>
     <script type='text/javascript'>
@@ -13,7 +14,7 @@
 {% block body %}
     <table>
         <tr>
-            <th>Books:</th><th>Publish?</th>
+            <th>{% trans "Books" %}:</th><th>{% trans "Publish" %}?</th>
         </tr>
     {% for book in my_books %}
         <tr class='books'>
@@ -27,9 +28,9 @@
         </tr>
     {% empty %}
         <tr>
-            <td colspan="2">You have no books published</a>
+            <td colspan="2">{% trans "You have no books published" %}</a>
         </tr>
     {% endfor %}
     </table>
-    <a href="{% url my-books-create %}"> create one? </a>
+    <a href="{% url my-books-create %}">{% trans "Create one book?" %} </a>
 {% endblock %}
