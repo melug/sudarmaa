@@ -79,7 +79,7 @@
     {% endif %}
     <div class='row'>
     {% autoescape off %}
-        {{ page.content|linebreaksbr|bbcode }}
+        {{ page.content|bbcode|linebreaksbr }}
     {% endautoescape %}
     </div>
 {% endblock %}

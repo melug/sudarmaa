@@ -2,6 +2,14 @@ import re
 from django import template
 register = template.Library()
 
+spacify_pattern = re.compile(r'^\s+', re.M)
+
+def spacify(value):
+    def repl(p):
+        matched_len = len(p.group(0))
+        return '&nbsp;'*matched_len
+    return spacify_pattern.sub(repl, value)
+
 @register.filter
 def bbcode(value):
 
@@ -52,4 +60,4 @@ def bbcode(value):
             temp = temp + '<li>' + i + '</li>'
         value = p.sub(r'<ol type=\1>'+temp+'</ol>', value)
 
-    return value
+    return spacify(value)

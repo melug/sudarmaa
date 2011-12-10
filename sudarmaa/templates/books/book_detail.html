@@ -44,7 +44,7 @@
      {% endfor %}
     <div class='row'>
         <div class='span4'>
-            <div class='row thumbnail'><img src='{{ book.icon.url }}' class='span4'></div>
+            <div class='row thumbnail'><img src='{{ book.photo.get_thumbnail4_url }}' class='span4'></div>
             <div class='row rating-holder'>
                 <div class='row rating-bar'>
                     <div class='star'></div><div class='rating-count'>(<span id='rating-count'>{{ book.count_rating }}</span>)</div>
