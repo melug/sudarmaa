@@ -8,9 +8,6 @@
                 {% if user.is_staff %}
                     <li><a href="/admin/">{% trans "Admin" %}</a></li>
                 {% endif %}
-                {% if perms.books.add_book %}
-                    <li><a href='{% url published-books %}'> {% trans "My publishes" %} </a></li>
-                {% endif %}
                 <li class="divider"></li>
                 <li><a href="{% url acct_logout %}">{% trans "Log Out" %}</a></li>
             </ul>

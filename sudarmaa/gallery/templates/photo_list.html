@@ -1,40 +1,19 @@
+{% extends "account/base.html" %}
 {% load i18n %}
 {% load bootstrap_tags %}
-<html>
-    <head>
-        <meta charset="utf-8" />
-        <link rel="shortcut icon" href="{{ STATIC_URL }}img/favicon.ico" />
-        <link rel="stylesheet" href="{{ STATIC_URL }}css/bootstrap.min.css">
-        <link rel="stylesheet" href="{{ STATIC_URL }}css/extra.css">
-        <script src="{{ STATIC_URL }}js/jquery-1.7.min.js"></script>
-        <style type='text/css'>
-            label {
-                width: auto;
-            }
-            body {
-                margin: 50px;
-                padding: 0px;
-            }
-        </style>
-        <script type='text/javascript'>
-        </script>
-    </head>
-    <body>
-    {% block body %}
-        <form enctype="multipart/form-data" action='{% url upload-image %}' method='POST'>
-            {% csrf_token %}
-            <fieldset>
-                {{ form|as_bootstrap }}
-            </fieldset>
-            <div class="actions">
-                <button type="submit" class="btn primary">{% trans "Upload" %}</button>
-            </div>
-        </form>
-        <ul class='media-grid'>
-        {% for o in object_list %}
-            <li><img src='{{ o.get_thumbnail_url }}' onclick='chosen_image("{{ o }}");'></li>
-        {% endfor %}
-        </ul>
-    {% endblock %}
-    </body>
-</html>
+{% block body %}
+    <form enctype="multipart/form-data" action='{% url upload-image %}' method='POST'>
+        {% csrf_token %}
+        <fieldset>
+            {{ form|as_bootstrap }}
+        </fieldset>
+        <div class="actions">
+            <button type="submit" class="btn primary">{% trans "Upload" %}</button>
+        </div>
+    </form>
+    <ul class='media-grid'>
+    {% for o in object_list %}
+        <li><img src='{{ o.get_thumbnail_url }}' onclick='chosen_image("{{ o }}");'></li>
+    {% endfor %}
+    </ul>
+{% endblock %}

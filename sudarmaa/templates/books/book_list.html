@@ -1,4 +1,4 @@
-{% extends "site_base.html" %}
+{% extends "account/base.html" %}
 {% load i18n %}
 {% block extra_head %}
     <script type='text/javascript' src='{{ STATIC_URL }}js/publish.js'> </script>
@@ -14,7 +14,7 @@
 {% block body %}
     <table>
         <tr>
-            <th>{% trans "Books" %}:</th><th>{% trans "Publish" %}?</th>
+            <th style="width:100%;">{% trans "Books" %}:</th><th>{% trans "Publish" %}?</th>
         </tr>
     {% for book in my_books %}
         <tr class='books'>
