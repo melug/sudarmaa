@@ -4,6 +4,9 @@ from epub import ez_epub
 from sendfile import sendfile
 
 from books.models import Book
+from books.templatetags.bbcode import bbcode2html
+
+b2h = bbcode2html
 
 class DownloadPage(DetailView):
     model = Book
@@ -25,10 +28,10 @@ class DownloadBook(BaseDetailView):
         for chapter in self.object.top_pages():
             section = ez_epub.Section()
             section.title = chapter.title
-            section.text.append(chapter.content)
+            section.text.append(b2h(chapter.content))
             sections.append(section)
         book.sections = sections
         filename = self.temp_filename.format(self.object.id)
         book.make(filename)
-        return sendfile(request, filename)
+        return sendfile(request, filename + '.epub')
 

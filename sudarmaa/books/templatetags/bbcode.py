@@ -10,9 +10,7 @@ def spacify(value):
         return '&nbsp;'*matched_len
     return spacify_pattern.sub(repl, value)
 
-@register.filter
-def bbcode(value):
-
+def bbcode2html(value):
     bbdata = [
         (r'\[url\](.+?)\[/url\]', r'<a href="\1">\1</a>'),
         (r'\[url=(.+?)\](.+?)\[/url\]', r'<a href="\1">\2</a>'),
@@ -61,3 +59,8 @@ def bbcode(value):
         value = p.sub(r'<ol type=\1>'+temp+'</ol>', value)
 
     return spacify(value)
+
+@register.filter
+def bbcode(value):
+    return bbcode2html(value)
+
