@@ -1,0 +1,59 @@
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/!svn/ver/16/trunk/chinese-books/templates
+END
+container.xml
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/!svn/ver/16/trunk/chinese-books/templates/container.xml
+END
+ez-section.html
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/!svn/ver/16/trunk/chinese-books/templates/ez-section.html
+END
+image.html
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/!svn/ver/16/trunk/chinese-books/templates/image.html
+END
+toc.html
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/!svn/ver/16/trunk/chinese-books/templates/toc.html
+END
+jtcsjj-title.html
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/!svn/ver/16/trunk/chinese-books/templates/jtcsjj-title.html
+END
+jtcsjj.html
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/!svn/ver/16/trunk/chinese-books/templates/jtcsjj.html
+END
+toc.ncx
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/!svn/ver/16/trunk/chinese-books/templates/toc.ncx
+END
+content.opf
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/!svn/ver/16/trunk/chinese-books/templates/content.opf
+END
+title-page.html
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/!svn/ver/16/trunk/chinese-books/templates/title-page.html
+END

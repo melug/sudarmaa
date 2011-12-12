@@ -1,9 +1,12 @@
 var DictionaryHolder;
+
 $(function() {
   var dictHolder;
   return dictHolder = new DictionaryHolder($('div.dictionary'));
 });
+
 DictionaryHolder = (function() {
+
   function DictionaryHolder(dom) {
     var result, width;
     this.dom = dom;
@@ -26,6 +29,11 @@ DictionaryHolder = (function() {
         });
       }
     });
+    this.dictionary_text.focusout(function() {
+      return dom.animate({
+        right: "-" + width
+      });
+    });
     this.dictionary_text.keyup(function() {
       return $.get(dictionary_url, {
         w: $(this).val()
@@ -34,5 +42,7 @@ DictionaryHolder = (function() {
       });
     });
   }
+
   return DictionaryHolder;
+
 })();

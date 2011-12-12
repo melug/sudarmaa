@@ -5,7 +5,7 @@ from books.views import (HomeView, MyBooksView, BooksInCategory, BookDetail,
     CreateBook, ShowMyBook, EditPage, EditPageContent, PagePreview, 
     BookTOC, ReadPage, ShelfView, ShelfList, ShelfCreate, AddRating,
     PublishBook, BookShelfAction, BookmarkAdd, BookmarkRemove, BookmarksView,
-    StaffPicks, LatestBooks, CreateAuthor, AuthorView)
+    StaffPicks, LatestBooks, CreateAuthor, AuthorView, DownloadPage, DownloadBook)
 
 # general use case
 urlpatterns = patterns("",
@@ -73,4 +73,12 @@ urlpatterns += patterns("",
     name='bookmark-remove'),
     url(r"^bookmark/", login_required(BookmarksView.as_view()),
     name='bookmark-index'),
+)
+
+# downloading
+urlpatterns += patterns("",
+    url(r"download/(?P<pk>\d+)/$", login_required(DownloadPage.as_view()),
+    name='download-page'),
+    url(r"download/book/(?P<pk>\d+)/$", login_required(DownloadBook.as_view()),
+    name='download-book'),
 )

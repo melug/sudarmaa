@@ -20,9 +20,12 @@ setup(
         'django_compressor',
         'django_staticfiles',
         'django_extensions',
-        'PIL',
         'django-social-auth',
         'django-rosetta',
         'django-photologue',
+        'django-sendfile',
+        'Genshi',
+        'lxml',
+        'PIL',
     ],
 )

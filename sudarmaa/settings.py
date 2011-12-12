@@ -11,6 +11,7 @@ TEMPLATE_DEBUG = DEBUG
 
 # tells Pinax to serve media through the staticfiles app.
 SERVE_MEDIA = DEBUG
+SENDFILE_BACKEND = 'sendfile.backends.development'
 
 # social auth
 SOCIAL_AUTH_ENABLED_BACKENDS = ('twitter', 'facebook',)
@@ -165,6 +166,7 @@ INSTALLED_APPS = [
     "djangoratings",
     "django_extensions",
     "photologue",
+    "sendfile",
     
     # theme
     "pinax_theme_bootstrap",

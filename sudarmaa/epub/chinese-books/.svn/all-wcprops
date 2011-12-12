@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 36
+/svn/!svn/ver/17/trunk/chinese-books
+END
+THIS_DIRECTORY_IS_FOR_PRIVATE_USE_ONLY.txt
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/!svn/ver/17/trunk/chinese-books/THIS_DIRECTORY_IS_FOR_PRIVATE_USE_ONLY.txt
+END
+pdf_converter.py
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/!svn/ver/16/trunk/chinese-books/pdf_converter.py
+END
+pdf_customizers.py
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/!svn/ver/16/trunk/chinese-books/pdf_customizers.py
+END
+html_to_epub.py
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/!svn/ver/16/trunk/chinese-books/html_to_epub.py
+END
+zjyx_books.py
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/16/trunk/chinese-books/zjyx_books.py
+END
+converter.py.bak
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/!svn/ver/16/trunk/chinese-books/converter.py.bak
+END
+jtcsjj_books.py
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/!svn/ver/16/trunk/chinese-books/jtcsjj_books.py
+END
+converter.py
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/16/trunk/chinese-books/converter.py
+END

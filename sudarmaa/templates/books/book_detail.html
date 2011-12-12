@@ -69,7 +69,7 @@
         </div>
         <div class='span4'>
             <div><a href="#">{% trans "Share" %} </a></div>
-            <div><a href="#">{% trans "Download as epub" %} </a></div>
+            <div><a href="{% url download-page pk=object.id %}">{% trans "Download as epub" %} </a></div>
             <div><a href="{% url book-toc pk=object.id %}">{% trans "Read" %} </a></div>
             <h4> In this category: </h4>
             <ul>

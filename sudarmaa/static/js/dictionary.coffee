@@ -14,6 +14,8 @@ class DictionaryHolder
                 dom.animate { right: "0px" }
             else
                 dom.animate { right: "-#{width}" }
+        @dictionary_text.focusout ->
+            dom.animate { right: "-#{width}" }
         @dictionary_text.keyup ->
             $.get dictionary_url, { w: $(this).val() }, (data) ->
                 result.html(data)

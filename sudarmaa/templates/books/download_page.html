@@ -1,0 +1,5 @@
+{% extends "site_base.html" %}
+{% load i18n %}
+{% block body %}
+    {% trans "You are about to download the book" %} "{{ object.title }}", <a href="{% url download-book pk=object.id %}">link</a>
+{% endblock %}
