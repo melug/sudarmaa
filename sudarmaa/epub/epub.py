@@ -146,9 +146,9 @@ class EpubBook:
         _, ext = os.path.splitext(srcPath)
         destPath = 'cover%s' % ext
         self.coverImage = self.addImage(srcPath, destPath)
-        #coverPage = self.addHtmlForImage(self.coverImage)
-        #self.addSpineItem(coverPage, False, -300)
-        #self.addGuideItem(coverPage.destPath, 'Cover', 'cover')
+        coverPage = self.addHtmlForImage(self.coverImage)
+        self.addSpineItem(coverPage, False, -300)
+        self.addGuideItem(coverPage.destPath, 'Cover', 'cover')
         
     def __makeTitlePage(self):
         assert self.titlePage
@@ -246,7 +246,6 @@ class EpubBook:
     
     def __writeItems(self):
         for item in self.getAllItems():
-            print item.id, item.destPath
             if item.html:
                 fout = open(os.path.join(self.rootDir, 'OEBPS', item.destPath), 'w')
                 fout.write(item.html)

@@ -53,4 +53,4 @@ class Book:
         self.__addSection(root, 's', 0)
         self.impl.createBook(outputDir)
         self.impl.createArchive(outputDir, outputFile)
-        self.impl.checkEpub('epubcheck-1.0.5.jar', outputFile)
+

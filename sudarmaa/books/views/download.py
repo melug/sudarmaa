@@ -1,5 +1,9 @@
+import re
+import os
+
 from django.views.generic import DetailView
 from django.views.generic.detail import BaseDetailView
+from django.conf import settings
 from epub import ez_epub
 from sendfile import sendfile
 
@@ -24,11 +28,18 @@ class DownloadBook(BaseDetailView):
         book = ez_epub.Book()
         book.title = self.object.title
         book.authors = [ '{0} {1}'.format(author.firstname, author.lastname) for author in book.authors ]
+        if self.object.photo:
+            photo_path = os.path.join(settings.MEDIA_ROOT,
+                self.object.photo.image.name)
+            print photo_path
+            book.cover = photo_path
         sections = []
         for chapter in self.object.top_pages():
             section = ez_epub.Section()
             section.title = chapter.title
-            section.text.append(b2h(chapter.content))
+            for para in re.split('[\n\r]+', chapter.content):
+                if para:
+                    section.text.append(b2h(para))
             sections.append(section)
         book.sections = sections
         filename = self.temp_filename.format(self.object.id)
