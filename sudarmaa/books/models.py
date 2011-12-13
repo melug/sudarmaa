@@ -1,12 +1,19 @@
+import re
+import os.path
+import datetime
+
 from django.db import models
 from django.contrib.auth.models import User, Group, Permission
 from django.contrib.contenttypes.models import ContentType
+from django.conf import settings
 from django.utils.translation import ugettext_lazy as _
 
+from epub import ez_epub
 from djangoratings.fields import RatingField
 from djangoratings.models import Vote
 from gallery.models import MPhoto
 
+from books.templatetags.bbcode import bbcode2html
 #########################################
 #             BookManager               #
 #########################################
@@ -60,6 +67,7 @@ LANGUAGE_CHOICES = (
 class Book(models.Model):
 
     added = models.DateTimeField(_('Added date'), auto_now_add=True)
+    modification = models.DateTimeField(_('Modified date'), null=True)
     category = models.ForeignKey(Category, verbose_name=_('Category'))
     creator = models.ForeignKey(User, null=True, verbose_name=_('Sender'))
     description = models.TextField(_('Description'), blank=True)
@@ -69,9 +77,38 @@ class Book(models.Model):
     title = models.CharField(_('Title'), max_length=255)
     authors = models.ManyToManyField(Author, related_name='books', verbose_name=_('Authors'))
     language = models.IntegerField(_('Language'), choices=LANGUAGE_CHOICES)
+    epub_file = models.CharField(_('Path to file'), max_length=255, blank=True)
+    epub_creation = models.DateTimeField(_('Epub creation date'), null=True)
     
     objects = models.Manager()
     publish = PublishManager()
+
+    def get_epub_file(self):
+        ''' returns epub file '''
+        if self.epub_creation and (not self.modification or self.epub_creation>self.modification):
+            return os.path.join(settings.BOOKS_DIR, self.epub_file)
+        book = ez_epub.Book()
+        book.title = self.title
+        book.authors = [ '{0} {1}'.format(author.firstname, author.lastname) for author in book.authors ]
+        if self.photo:
+            photo_path = os.path.join(settings.MEDIA_ROOT,
+                self.photo.image.name)
+            book.cover = photo_path
+        sections = []
+        for chapter in self.top_pages():
+            section = ez_epub.Section()
+            section.title = chapter.title
+            for para in re.split('[\n\r]+', chapter.content):
+                if para:
+                    section.text.append(bbcode2html(para))
+            sections.append(section)
+        book.sections = sections
+        filename = os.path.join(settings.BOOKS_DIR, str(self.id))
+        book.make(filename)
+        self.epub_file = filename+'.epub'
+        self.epub_creation = datetime.datetime.now()
+        self.save()
+        return self.epub_file
 
     def is_published(self):
         return self.status == 2
