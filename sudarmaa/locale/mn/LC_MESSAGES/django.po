@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-12-10 15:52+0800\n"
+"POT-Creation-Date: 2011-12-14 13:32+0800\n"
 "PO-Revision-Date: 2011-12-01 00:48\n"
 "Last-Translator:   <ls@ls.ls>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,7 +25,7 @@ msgstr "Нууц үг"
 
 #: account/forms.py:47
 msgid "Remember Me"
-msgstr ""
+msgstr "Намайг сана"
 
 #: account/forms.py:48
 msgid "If checked you will stay logged in for 3 weeks"
@@ -34,7 +34,7 @@ msgstr ""
 #: account/forms.py:59 account/forms.py:134 account/forms.py:289
 #: account/forms.py:374
 msgid "Email"
-msgstr ""
+msgstr "Э-Шуудан"
 
 #: account/forms.py:64 account/forms.py:112
 msgid "Username"
@@ -42,15 +42,15 @@ msgstr "Нэр"
 
 #: account/forms.py:92
 msgid "This account is currently inactive."
-msgstr ""
+msgstr "Таны хэрэглэгчийн эрх идэвхгүй байна."
 
 #: account/forms.py:95
 msgid "The email address and/or password you specified are not correct."
-msgstr ""
+msgstr "Таны э-шуудан/нууц үг буруу байна"
 
 #: account/forms.py:97
 msgid "The username and/or password you specified are not correct."
-msgstr ""
+msgstr "Таны хэрэглэгчийн нэр, нууц үгний хослол буруу байна"
 
 #: account/forms.py:121 account/forms.py:356
 msgid "Password (again)"
@@ -58,34 +58,34 @@ msgstr "Нууц үг (дахин)"
 
 #: account/forms.py:137
 msgid "Email (optional)"
-msgstr ""
+msgstr "Э-Шуудан"
 
 #: account/forms.py:142
 msgid "Usernames can only contain letters, numbers and underscores."
-msgstr ""
+msgstr "Хэрэглэгчийн нэрэнд зөвхөн тэмдэгт, тоо, доогуур зураас орж болно."
 
 #: account/forms.py:147
 msgid "This username is already taken. Please choose another."
-msgstr ""
+msgstr "Энэ хэрэглэгчийн нэртэй хэрэглэгч байна. Өөрийг сонгоно уу."
 
 #: account/forms.py:156
 msgid "A user is registered with this email address."
-msgstr ""
+msgstr "Хэрэглэгч энэ э-хаягаар бүртгэгдсэн байна"
 
 #: account/forms.py:162 account/forms.py:342 account/forms.py:363
 #: account/forms.py:431
 msgid "You must type the same password each time."
-msgstr ""
+msgstr "Ижилхэн нууц үг бичих хэрэгтэй"
 
 #: account/forms.py:210
 msgid "Your email address has already been verified"
-msgstr ""
+msgstr "Таны э-шуудангийн хаяг баталгаажсан байна"
 
 #: account/forms.py:220 account/forms.py:230 account/views.py:184
 #: account/views.py:199
 #, python-format
 msgid "Confirmation email sent to %(email)s"
-msgstr ""
+msgstr "Баталгаажуулах линк %(email)s хаяг руу илгээгдлээ"
 
 #: account/forms.py:297
 msgid "This email address already associated with this account."
@@ -109,7 +109,7 @@ msgstr "Дахин оруул"
 
 #: account/forms.py:336
 msgid "Please type your current password."
-msgstr ""
+msgstr "Одоо хэрэглэж буй нууц үгээ оруулна уу."
 
 #: account/forms.py:381
 msgid "Email address not verified for any user account"
@@ -119,14 +119,14 @@ msgstr ""
 msgid "Password reset email sent"
 msgstr "Нууц үгээ шинэчлэх"
 
-#: account/forms.py:445 pinax_theme_bootstrap/templates/account/base.html:32
+#: account/forms.py:445 pinax_theme_bootstrap/templates/account/base.html:36
 #: pinax_theme_bootstrap/templates/account/timezone_change.html:6
 #: pinax_theme_bootstrap/templates/account/timezone_change.html:9
 msgid "Timezone"
 msgstr "Цагийн бүс"
 
-#: account/forms.py:459 books/models.py:71
-#: pinax_theme_bootstrap/templates/account/base.html:30
+#: account/forms.py:459 books/models.py:79
+#: pinax_theme_bootstrap/templates/account/base.html:34
 #: pinax_theme_bootstrap/templates/account/language_change.html:6
 #: pinax_theme_bootstrap/templates/account/language_change.html:9
 msgid "Language"
@@ -134,7 +134,7 @@ msgstr "Хэл"
 
 #: account/models.py:19 account/models.py:48
 msgid "user"
-msgstr ""
+msgstr "хэрэглэгч"
 
 #: account/models.py:21
 msgid "timezone"
@@ -168,7 +168,7 @@ msgstr ""
 
 #: account/views.py:255 account/views.py:382
 msgid "Password successfully changed."
-msgstr ""
+msgstr "Нууц үг амжилттай солигдлоо."
 
 #: account/views.py:285
 msgid "Password successfully set."
@@ -194,153 +194,165 @@ msgstr "Эсвэл зургаа доороос сонгоно уу"
 msgid "Image required"
 msgstr "Зураг оруулах хэрэгтэй"
 
-#: books/models.py:21
+#: books/models.py:28
 msgid "name"
 msgstr "Нэр"
 
-#: books/models.py:27 books/models.py:63
+#: books/models.py:34 books/models.py:71
 msgid "Category"
 msgstr "Ангилал"
 
-#: books/models.py:28 templates/books/home.html:35
+#: books/models.py:35 templates/books/home.html:35
 msgid "Categories"
 msgstr "Ангилалууд"
 
-#: books/models.py:32
+#: books/models.py:39
 msgid "First name"
 msgstr "Нэр"
 
-#: books/models.py:33
+#: books/models.py:40
 msgid "Last name"
 msgstr "Овог"
 
-#: books/models.py:34
+#: books/models.py:41
 msgid "E-mail address"
 msgstr "Э-Шуудан"
 
-#: books/models.py:35
+#: books/models.py:42
 msgid "Biography short"
 msgstr "Статус"
 
-#: books/models.py:36
+#: books/models.py:43
 msgid "Biography"
 msgstr "Мэдээлэл"
 
-#: books/models.py:37
+#: books/models.py:44
 msgid "Image"
 msgstr "Зураг"
 
-#: books/models.py:40 books/models.py:133 books/models.py:146
-#: books/models.py:160 gallery/models.py:10
+#: books/models.py:47 books/models.py:170 books/models.py:183
+#: books/models.py:197 gallery/models.py:10
 msgid "User"
 msgstr "Хэрэглэгч"
 
-#: books/models.py:46
+#: books/models.py:53
 msgid "Author"
 msgstr "Зохиолч"
 
-#: books/models.py:47 books/models.py:70
+#: books/models.py:54 books/models.py:78
 msgid "Authors"
 msgstr "Зохиолчид"
 
-#: books/models.py:50
+#: books/models.py:57
 msgid "Draft"
 msgstr "Ноорог"
 
-#: books/models.py:51
+#: books/models.py:58
 msgid "Published"
 msgstr "Хэвлэгдсэн"
 
-#: books/models.py:52
+#: books/models.py:59
 msgid "Violates terms"
 msgstr "Гэрээ зөрчсөн"
 
-#: books/models.py:56
+#: books/models.py:63
 msgid "Mongolia"
 msgstr "Монгол"
 
-#: books/models.py:57
+#: books/models.py:64
 msgid "English"
 msgstr "Англи"
 
-#: books/models.py:62 books/models.py:147
+#: books/models.py:69 books/models.py:184
 msgid "Added date"
 msgstr "Нэмэгдсэн огноо"
 
-#: books/models.py:64
+#: books/models.py:70
+msgid "Modified date"
+msgstr "Нэмэгдсэн огноо"
+
+#: books/models.py:72
 msgid "Sender"
 msgstr "Илгээсэн"
 
-#: books/models.py:65
+#: books/models.py:73
 msgid "Description"
 msgstr "Тайлбар"
 
-#: books/models.py:66
+#: books/models.py:74
 msgid "Icon"
 msgstr "Зураг"
 
-#: books/models.py:67
+#: books/models.py:75
 msgid "Rating"
 msgstr "Рэйтинг"
 
-#: books/models.py:68
+#: books/models.py:76
 msgid "Status"
 msgstr "Статус"
 
-#: books/models.py:69 books/models.py:98 books/models.py:159
+#: books/models.py:77 books/models.py:135 books/models.py:196
 #: gallery/models.py:9
 msgid "Title"
 msgstr "Гарчиг"
 
-#: books/models.py:91 books/models.py:97 books/models.py:134
+#: books/models.py:80
+msgid "Path to file"
+msgstr "Файлын зам"
+
+#: books/models.py:81
+msgid "Epub creation date"
+msgstr "EPUB файл үүсгэсэн огноо"
+
+#: books/models.py:128 books/models.py:134 books/models.py:171
 msgid "Book"
 msgstr "Ном"
 
-#: books/models.py:92 books/models.py:161 templates/books/book_list.html:17
+#: books/models.py:129 books/models.py:198 templates/books/book_list.html:17
 msgid "Books"
 msgstr "Номнууд"
 
-#: books/models.py:99
+#: books/models.py:136
 msgid "Content"
 msgstr "Агуулга"
 
-#: books/models.py:100 books/models.py:135
+#: books/models.py:137 books/models.py:172
 msgid "Order"
 msgstr "Дараалал"
 
-#: books/models.py:128 books/models.py:148
+#: books/models.py:165 books/models.py:185
 msgid "Page"
 msgstr "Хуудас"
 
-#: books/models.py:129
+#: books/models.py:166
 msgid "Pages"
 msgstr "Хуудаснууд"
 
-#: books/models.py:141
+#: books/models.py:178
 msgid "Pick"
 msgstr "Онцлох"
 
-#: books/models.py:142
+#: books/models.py:179
 msgid "Picks"
 msgstr "Онцлох"
 
-#: books/models.py:154 templates/books/read_page.html:62
+#: books/models.py:191 templates/books/read_page.html:62
 msgid "Bookmark"
 msgstr "Номын хавчуурга"
 
-#: books/models.py:155
+#: books/models.py:192
 msgid "Bookmarks"
 msgstr "Номын хавчуурганууд"
 
-#: books/models.py:162
+#: books/models.py:199
 msgid "Is public"
 msgstr "Хүмүүс хандах"
 
-#: books/models.py:174
+#: books/models.py:211
 msgid "Shelf"
 msgstr "Номын тавиур"
 
-#: books/models.py:175
+#: books/models.py:212
 msgid "Shelves"
 msgstr "Номын тавиурнууд"
 
@@ -380,7 +392,7 @@ msgstr "Саналууд"
 msgid "Photos"
 msgstr "Зурагнууд"
 
-#: gallery/templates/photo_list.html:30
+#: gallery/templates/photo_list.html:11
 msgid "Upload"
 msgstr "Илгээх"
 
@@ -424,11 +436,19 @@ msgid "Email Addresses"
 msgstr "Э-Шуудангийн хаяг"
 
 #: pinax_theme_bootstrap/templates/account/base.html:19
+msgid "My publishes"
+msgstr "Миний оруулсан номнууд"
+
+#: pinax_theme_bootstrap/templates/account/base.html:20
+msgid "My uploaded images"
+msgstr "Зурагнууд"
+
+#: pinax_theme_bootstrap/templates/account/base.html:23
 #: pinax_theme_bootstrap/templates/django_openid/associations.html:5
 msgid "OpenID Associations"
 msgstr ""
 
-#: pinax_theme_bootstrap/templates/account/base.html:22
+#: pinax_theme_bootstrap/templates/account/base.html:26
 #: pinax_theme_bootstrap/templates/account/password_change.html:6
 #: pinax_theme_bootstrap/templates/account/password_change.html:9
 #: pinax_theme_bootstrap/templates/account/password_reset_from_key.html:5
@@ -436,13 +456,13 @@ msgstr ""
 msgid "Change Password"
 msgstr "Нууц үг солих"
 
-#: pinax_theme_bootstrap/templates/account/base.html:24
+#: pinax_theme_bootstrap/templates/account/base.html:28
 #: pinax_theme_bootstrap/templates/account/password_set.html:6
 #: pinax_theme_bootstrap/templates/account/password_set.html:9
 msgid "Set Password"
 msgstr "Нууц үг тохируулах"
 
-#: pinax_theme_bootstrap/templates/account/base.html:27
+#: pinax_theme_bootstrap/templates/account/base.html:31
 #: pinax_theme_bootstrap/templates/account/password_delete.html:5
 #: pinax_theme_bootstrap/templates/account/password_delete.html:8
 msgid "Delete Password"
@@ -478,6 +498,8 @@ msgid ""
 "You should really add an email address so you can receive notifications, "
 "reset your password if you forget it, etc."
 msgstr ""
+"Таныг нууц үгээ мартсан тохиолдолд бид э-шуудангийн хаягийг ашиглах тул "
+"э-шуудангийн хаягийг заавал оруулах хэрэгтэй."
 
 #: pinax_theme_bootstrap/templates/account/email.html:63
 msgid "Add Email Address"
@@ -503,7 +525,7 @@ msgstr "Нэвтрэх"
 #: pinax_theme_bootstrap/templates/account/login.html:16
 #: pinax_theme_bootstrap/templates/account/signup.html:15
 #: pinax_theme_bootstrap/templates/django_openid/login.html:20
-#: templates/_account_bar.html:19
+#: templates/_account_bar.html:16
 msgid "Log In"
 msgstr "Нэвтрэх"
 
@@ -647,7 +669,7 @@ msgstr "Бүртгүүлэх"
 #: pinax_theme_bootstrap/templates/account/signup.html:10
 #: pinax_theme_bootstrap/templates/account/signup.html:26
 #: pinax_theme_bootstrap/templates/django_openid/register.html:23
-#: templates/_account_bar.html:21
+#: templates/_account_bar.html:18
 msgid "Sign Up"
 msgstr "Бүртгүүлэх"
 
@@ -909,10 +931,6 @@ msgid "Admin"
 msgstr "Удирдлага"
 
 #: templates/_account_bar.html:12
-msgid "My publishes"
-msgstr "Миний оруулсан номнууд"
-
-#: templates/_account_bar.html:15
 msgid "Log Out"
 msgstr "Гарах"
 
@@ -1024,7 +1042,6 @@ msgid "Publish"
 msgstr "Хэвлэгдсэн"
 
 #: templates/books/book_list.html:31
-#, fuzzy
 msgid "You have no books published"
 msgstr "Та ямар нэгэн хуудсанд хавчуурга хийгээгүй байна."
 
@@ -1041,6 +1058,10 @@ msgstr "Та ямар нэгэн хуудсанд хавчуурга хийгэ�
 msgid "more"
 msgstr "илүү"
 
+#: templates/books/download_page.html:4
+msgid "You are about to download the book"
+msgstr ""
+
 #: templates/books/home.html:27
 msgid "New books"
 msgstr "Шинэ номнууд"
@@ -1049,36 +1070,35 @@ msgstr "Шинэ номнууд"
 msgid "Staff picks"
 msgstr "Сайтын онцлох"
 
-#: templates/books/my_book.html:138
-#, fuzzy
-msgid "Table of Content editor"
-msgstr "Гарчиг"
-
-#: templates/books/my_book.html:141
-#, fuzzy
-msgid "Page name"
-msgstr "Овог"
-
-#: templates/books/my_book.html:141
-#, fuzzy
-msgid "Add"
-msgstr "нэмэх"
-
-#: templates/books/my_book.html:144
-msgid "Move Up"
-msgstr ""
-
-#: templates/books/my_book.html:145
-msgid "Move Down"
+#: templates/books/my_book.html:135
+msgid "edit"
 msgstr ""
 
 #: templates/books/my_book.html:146
-#, fuzzy
+msgid "Table of Content editor"
+msgstr "Гарчиг"
+
+#: templates/books/my_book.html:149
+msgid "Page name"
+msgstr "Хуудасны гарчиг"
+
+#: templates/books/my_book.html:149
+msgid "Add"
+msgstr "нэмэх"
+
+#: templates/books/my_book.html:152
+msgid "Move Up"
+msgstr "Дээшлүүлэх"
+
+#: templates/books/my_book.html:153
+msgid "Move Down"
+msgstr "Доошлуулах"
+
+#: templates/books/my_book.html:154
 msgid "Delete Page"
 msgstr "Нууц үг устгах"
 
-#: templates/books/my_book.html:147
-#, fuzzy
+#: templates/books/my_book.html:155
 msgid "Edit Page"
 msgstr "Хуудас"
 
@@ -1092,7 +1112,7 @@ msgstr ""
 
 #: templates/books/page_form.html:32
 msgid "Save"
-msgstr ""
+msgstr "Хадгалах"
 
 #: templates/books/page_form.html:33
 msgid "Preview"
@@ -1120,9 +1140,6 @@ msgstr "Өмнөх хуудас"
 
 #~ msgid "Search"
 #~ msgstr "Хайх"
-
-#~ msgid "Profile"
-#~ msgstr "Профайл"
 
 #~ msgid "Hello"
 #~ msgstr "Сайн байна уу"
