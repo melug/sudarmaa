@@ -1,7 +1,7 @@
 from django import forms
 from django.utils.translation import ugettext_lazy as _
 
-from books.models import Book, Page, Shelf, Author
+from books.models import Book, Page, Author
 from gallery.models import MPhoto
 
 class BookForm(forms.ModelForm):
@@ -42,9 +42,4 @@ class PageForm(forms.ModelForm):
             'content': forms.Textarea(attrs={'rows': 25, 'class':'span14'}),
             'title': forms.TextInput(attrs={'class': 'span6'})
         }
-
-class ShelfForm(forms.ModelForm):
-    class Meta:
-        model = Shelf
-        exclude = ('is_public', 'books')
 

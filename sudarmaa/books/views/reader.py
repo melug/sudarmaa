@@ -4,7 +4,7 @@ from django.views.generic import DetailView, View, ListView
 from django.http import HttpResponse
 from djangoratings.views import AddRatingFromModel
 
-from books.models import Book, Page, Bookmark
+from books.models import Book, Page, AccessHistory
 
 class BookDetail(DetailView):
 
@@ -38,14 +38,19 @@ class ReadPage(DetailView):
 
     def get_context_data(self, *args, **kw):
         data = super(ReadPage, self).get_context_data(*args, **kw)
-        try:
-            bookmark = Bookmark.objects.get(user=self.request.user, page=self.object)
-        except Bookmark.DoesNotExist:
-            bookmark = None
         data.update({
             'book': self.object.book,
-            'bookmark': bookmark
         })
+        try:
+            history = AccessHistory.objects.get(
+                user=self.request.user,
+                page__book=self.object.book)
+            history.page = self.object
+            history.save()
+        except AccessHistory.DoesNotExist:
+            AccessHistory.objects.create(
+                user=self.request.user,
+                page=self.object)
         return data
         
 class AddRating(View):
@@ -64,40 +69,4 @@ class AddRating(View):
 
     def get(self, request, *args, **kwargs):
         return self.post(request, *args, **kwargs)
-
-class BookmarkAdd(View):
-
-    def post(self, request, *args, **kwargs):
-        try:
-            page_id = int(kwargs['page_id'])
-            page = Page.objects.get(pk=page_id)
-            book = page.book
-            if book.status == 2:
-                bookmarks = Bookmark.objects.filter(user=request.user, page=page)
-                if bookmarks.count() == 0:
-                    bookmark = Bookmark.objects.create(user=request.user, page=page)
-                    return HttpResponse(json.dumps({'status': 'ok'}))
-                else:
-                    return HttpResponse(json.dumps({'error': 'already created'}))
-            else:
-                return HttpResponse(json.dumps({'error': 9}))
-        except Exception, e:
-            return HttpResponse(json.dumps({'error': 10}))
-
-class BookmarkRemove(View):
-
-    def post(self, request, *args, **kwargs):
-        try:
-            page_id = int(kwargs['page_id'])
-            page = Page.objects.get(pk=page_id)
-            bookmark = Bookmark.objects.get(user=request.user, page=page)
-            bookmark.delete()
-            return HttpResponse(json.dumps({'status': 'deleted'}))
-        except:
-            return HttpResponse(json.dumps({'error': 10}))
-
-class BookmarksView(ListView):
-    
-    def get_queryset(self, *args, **kw):
-        return Bookmark.objects.filter(user=self.request.user)
 

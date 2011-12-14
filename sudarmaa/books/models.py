@@ -178,51 +178,17 @@ class Pick(models.Model):
         verbose_name = _('Pick')
         verbose_name_plural = _('Picks')
 
-class Bookmark(models.Model):
+class AccessHistory(models.Model):
 
     user = models.ForeignKey(User, verbose_name=_('User'))
-    added = models.DateTimeField(_('Added date'), auto_now_add=True)
+    first_access = models.DateTimeField(_('First access date'), auto_now_add=True)
+    last_access = models.DateTimeField(_('Last access date'), auto_now=True)
     page = models.ForeignKey(Page, verbose_name=_('Page'))
 
     def __unicode__(self):
         return self.user.username + ":" + self.page.title
 
     class Meta:
-        verbose_name = _('Bookmark')
-        verbose_name_plural = _('Bookmarks')
-
-class Shelf(models.Model):
-
-    title = models.CharField(_('Title'), max_length=255)
-    user = models.ForeignKey(User, related_name='shelves', verbose_name=_('User'), null=True)
-    books = models.ManyToManyField(Book, verbose_name=_('Books'))
-    is_public = models.BooleanField(default=True, verbose_name=_('Is public'))
-
-    def __unicode__(self):
-        return self.user.username + ':' + self.title
-
-    def books_count(self):
-        return self.books.filter(status=2).count()
-
-    def books_published(self):
-        return self.books.filter(status=2)
-
-    class Meta:
-        verbose_name = _('Shelf')
-        verbose_name_plural = _('Shelves')
-
-#########################################
-#               Signals                 #
-#########################################
-from django.db.models.signals import post_save
-from django.dispatch import receiver
-
-DEFAULT_SHELVES = ('read', 'to-read', 'currently-reading')
-
-@receiver(post_save, sender=User)
-def create_default_shelves(sender, **kwargs):
-    user, created = kwargs['instance'], kwargs['created']
-    if created:
-        for shelve_title in DEFAULT_SHELVES:
-            shelf = Shelf.objects.create(title=shelve_title, user=user)
+        verbose_name = _('Access history')
+        verbose_name_plural = _('Access histories')
 

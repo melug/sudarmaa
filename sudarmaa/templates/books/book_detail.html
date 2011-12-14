@@ -4,12 +4,10 @@
 {% block extra_head %}
     <script type="text/javascript" src="{{ STATIC_URL }}raty/js/jquery.raty.min.js"></script>
     <script type="text/javascript" src="{{ STATIC_URL }}js/rating.js"></script>
-    <script type="text/javascript" src="{{ STATIC_URL }}js/shelf-add.js"></script>
     <script type="text/javascript">
         var static_root = "{{ STATIC_URL }}", 
             start_rating = {{ book.rating.get_rating }}, 
             this_url = "{% url book-detail pk=book.id %}", 
-            add_book = "{% url shelf-action %}",
             book_id = {{ book.id }};
     </script>
     <style type='text/css'>

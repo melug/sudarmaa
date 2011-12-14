@@ -1096,11 +1096,11 @@ msgstr "Доошлуулах"
 
 #: templates/books/my_book.html:154
 msgid "Delete Page"
-msgstr "Нууц үг устгах"
+msgstr "Устгах"
 
 #: templates/books/my_book.html:155
 msgid "Edit Page"
-msgstr "Хуудас"
+msgstr "Засварлах"
 
 #: templates/books/page_form.html:23
 msgid "What is BBcode?"

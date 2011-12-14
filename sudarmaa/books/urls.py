@@ -3,8 +3,8 @@ from django.views.generic.simple import direct_to_template
 from django.contrib.auth.decorators import login_required, permission_required
 from books.views import (HomeView, MyBooksView, BooksInCategory, BookDetail,
     CreateBook, ShowMyBook, EditPage, EditPageContent, PagePreview, 
-    BookTOC, ReadPage, ShelfView, ShelfList, ShelfCreate, AddRating,
-    PublishBook, BookShelfAction, BookmarkAdd, BookmarkRemove, BookmarksView,
+    BookTOC, ReadPage, AddRating,
+    PublishBook, AccessHistoryList,
     StaffPicks, LatestBooks, CreateAuthor, AuthorView, DownloadPage, DownloadBook,
     UpdateBook)
 
@@ -20,6 +20,12 @@ urlpatterns = patterns("",
     name="latest-books"),
     url(r"^author/(?P<pk>\d+)/$", AuthorView.as_view(), 
     name="author-show"),
+)
+
+# for account info
+urlpatterns += patterns("",
+    url(r"^history/$", login_required(AccessHistoryList.as_view()), 
+    name="history-list"),
 )
 
 # for publishers
@@ -44,18 +50,6 @@ urlpatterns += patterns("",
     name="create-author"),
 )
 
-# maintaining shelf
-urlpatterns += patterns("",
-    url(r"^shelf/(?P<pk>\d+)/$", login_required(ShelfView.as_view()),
-    name="shelf-detail"),
-    url(r"^shelf/$", login_required(ShelfList.as_view()),
-    name="shelf-index"),
-    url(r"^shelf/create/$", login_required(ShelfCreate.as_view()),
-    name="shelf-create"),
-    url(r"^shelf/add/book/$", login_required(BookShelfAction.as_view()),
-    name="shelf-action"),
-)
-
 # reading through books, rating etc...
 urlpatterns += patterns("", 
     url(r"^book/(?P<pk>\d+)/$", BookDetail.as_view(),
@@ -66,16 +60,6 @@ urlpatterns += patterns("",
     name="read-page"),
     url(r"^book/(?P<object_id>\d+)/rate/(?P<score>\d+)/$", AddRating.as_view(), 
     name="book-rate"),
-)
-
-# bookmarking
-urlpatterns += patterns("",
-    url(r"^bookmark/add/(?P<page_id>\d+)/", login_required(BookmarkAdd.as_view()), 
-    name='bookmark-add'),
-    url(r"^bookmark/remove/(?P<page_id>\d+)/", login_required(BookmarkRemove.as_view()),
-    name='bookmark-remove'),
-    url(r"^bookmark/", login_required(BookmarksView.as_view()),
-    name='bookmark-index'),
 )
 
 # downloading

@@ -6,8 +6,7 @@ from django.shortcuts import redirect
 from django.core.urlresolvers import reverse
 from django.http import HttpResponse
 
-from books.models import Book, Category, Shelf, Author
-from books.forms import ShelfForm
+from books.models import Book, Category, Author, AccessHistory
 
 class HomeView(TemplateView):
     
@@ -64,62 +63,13 @@ class LatestBooks(BooksInCategory):
     def get_queryset(self):
         return super(LatestBooks, self).get_queryset().order_by('-added')[:self.books_size]
 
-class ShelfView(DetailView):
-    template_name = 'books/shelf_detail.html'
-    context_object_name = 'shelf'
-    
-    def get_queryset(self):
-        return Shelf.objects.filter(is_public=True)
-
-    def get_context_data(self, *args, **kw):
-        data = super(ShelfView, self).get_context_data(*args, **kw)
-        data.update({
-            'books' : self.object.books,
-            'shelf_form': ShelfForm()
-        })
-        return data
-
-class ShelfList(View):
-
-    def dispatch(self, request, *args, **kw):
-        default_shelf = request.user.shelves.get(title='read')
-        return redirect(reverse('shelf-detail', kwargs={ 'pk' : default_shelf.id }))
-
-class ShelfCreate(View):
-
-    def post(self, request, *args, **kw):
-        title = request.POST['title']
-        try:
-            shelf = Shelf.objects.create(title=title, user=self.request.user)
-            return HttpResponse('OK')
-        except:
-            return HttpResponse('Fail')
-
-class BookShelfAction(View):
-
-    def post(self, request, *args, **kw):
-        try:
-            action = request.REQUEST.get('a', '')
-            book_id = int(request.REQUEST.get('b', 0))
-            book = Book.objects.get(status=2, pk=book_id)
-            shelf_id = int(request.REQUEST.get('s', 0))
-            shelf = Shelf.objects.get(user=request.user, pk=shelf_id)
-            if action == 'add':
-                if shelf.books.filter(pk=book.id).count() == 0:
-                    shelf.books.add(book)
-                    return HttpResponse(json.dumps({'status': 'ok'}))
-                return HttpResponse(json.dumps({'status': 'already added'}))
-            elif action == 'remove':
-                if shelf.books.filter(pk=book.id).count != 0:
-                    shelf.books.remove(book)
-                    return HttpResponse(json.dumps({'status': 'ok'}))
-                return HttpResponse(json.dumps({'status': 'not in the shelf'}))
-        except (ValueError, Book.DoesNotExist), e:
-            return HttpResponse(json.dumps({'error': 9}))
-        return HttpResponse('')
-
 class AuthorView(DetailView):
     model = Author
     template_name = 'books/author_detail.html'
     template_object_name = 'author'
+
+class AccessHistoryList(ListView):
+
+    def get_queryset(self):
+        return AccessHistory.objects.filter(user=self.request.user).order_by('-last_access')
 

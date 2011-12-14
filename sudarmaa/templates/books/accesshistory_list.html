@@ -1,0 +1,28 @@
+{% extends "account/base.html" %}
+{% load i18n %}
+{% block body %}
+    <table>
+        <thead>
+            <tr>
+                <th> </th>
+                <th>{% trans "Book name" %}</th>
+                <th>{% trans "Chapter" %}</th>
+                <th>{% trans "Date" %}</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for ah in object_list %}
+            <tr>
+                <td class='span2'><img src="{{ ah.page.book.photo.get_thumbnail2_url }}"></td>
+                <td>{{ ah.page.book }}</td>
+                <td><a href="{% url read-page pk=ah.id %}">{{ ah.page }}</a></td>
+                <td>{{ ah.last_access }}</td>
+            </tr>
+        {% empty %}
+            <tr>
+                <td colspan="4">{% trans "You are currently reading no book," %}<a href="{% url home %}">explore</a></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

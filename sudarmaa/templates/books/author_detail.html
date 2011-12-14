@@ -24,7 +24,7 @@
 {% block body %}
     <div class='row'>
         <div class='span4'>
-            <img src="{{ author.image.url }}" style="width:100%;">
+            <img src="{{ author.photo.get_thumbnail4_url }}" style="width:100%;">
             <div class='row'>
                 <p class='biography-short'>{{ author.biography_short }}</p>
             </div>
