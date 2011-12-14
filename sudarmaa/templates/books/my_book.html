@@ -131,8 +131,16 @@
 {% block body %}
     <div class='row'>
         <div class='span8'>
-            <h4>{{ book.title }}</h4>
-            <p class='description'>{{ book.description }}</p>
+            <h3>{{ book.title }}</h3>
+            <h5><a href='{% url update-book pk=book.id %}'>{% trans "edit" %}</a></h5>
+            <div class='row' style='margin-top:40px;'>
+                <div class='span2'>
+                    <img src="{{ book.photo.get_thumbnail2_url }}">
+                </div>
+                <div class='span6'>
+                    <p class='description'>{{ book.description }}</p>
+                </div>
+            </div>
         </div>
         <div class='offset1 span6 toc'>
             <h4> {% trans "Table of Content editor" %}: </h4>

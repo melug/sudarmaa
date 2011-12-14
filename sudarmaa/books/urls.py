@@ -5,7 +5,8 @@ from books.views import (HomeView, MyBooksView, BooksInCategory, BookDetail,
     CreateBook, ShowMyBook, EditPage, EditPageContent, PagePreview, 
     BookTOC, ReadPage, ShelfView, ShelfList, ShelfCreate, AddRating,
     PublishBook, BookShelfAction, BookmarkAdd, BookmarkRemove, BookmarksView,
-    StaffPicks, LatestBooks, CreateAuthor, AuthorView, DownloadPage, DownloadBook)
+    StaffPicks, LatestBooks, CreateAuthor, AuthorView, DownloadPage, DownloadBook,
+    UpdateBook)
 
 # general use case
 urlpatterns = patterns("",
@@ -28,7 +29,9 @@ urlpatterns += patterns("",
     url(r"^publisher/book/$", permission_required('books.add_book')(MyBooksView.as_view()), 
     name="published-books"),
     url(r"^publisher/book/create/$", permission_required('books.add_book')(CreateBook.as_view()), 
-    name="my-books-create"),
+    name="create-book"),
+    url(r"^publisher/book/update/(?P<pk>\d+)/$", permission_required('books.add_book')(UpdateBook.as_view()), 
+    name="update-book"),
     url(r"^publisher/book/edit/(?P<pk>\d+)/$", permission_required('books.add_book')(ShowMyBook.as_view()), 
     name="my-books-show"),
     url(r"^publisher/page/preview/$", permission_required('books.add_book')(PagePreview.as_view()), 

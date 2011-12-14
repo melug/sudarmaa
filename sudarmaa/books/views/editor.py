@@ -36,6 +36,30 @@ class CreateBook(CreateView):
             photo.save()
         return r
 
+class UpdateBook(UpdateView):
+    template_name = 'books/book_form.html'
+    form_class = BookForm
+
+    def get_queryset(self):
+        return self.request.user.book_set.all()
+
+    def get_success_url(self):
+        return reverse('my-books-show', kwargs={'pk':self.object.id})
+
+    def get_form(self, form_class):
+        form = super(UpdateBook, self).get_form(form_class)
+        form.fields['photo'].queryset = MPhoto.objects.filter(user=self.request.user)
+        return form
+
+    def form_valid(self, form):
+        r = super(UpdateBook, self).form_valid(form)
+        photo = form.cleaned_data['photo']
+        if not photo.user:
+            photo.title = form.cleaned_data['title']
+            photo.user = self.request.user
+            photo.save()
+        return r
+
 class CreateAuthor(CreateView):
     template_name = 'books/author_form.html'
     form_class = AuthorForm
@@ -44,7 +68,7 @@ class CreateAuthor(CreateView):
         author = self.object
         author.user = self.request.user
         author.save()
-        return reverse('my-books-create')
+        return reverse('create-book')
 
 class ShowMyBook(DetailView):
     context_object_name = 'book'
