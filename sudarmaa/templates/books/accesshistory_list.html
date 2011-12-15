@@ -14,8 +14,8 @@
         {% for ah in object_list %}
             <tr>
                 <td class='span2'><img src="{{ ah.page.book.photo.get_thumbnail2_url }}"></td>
-                <td>{{ ah.page.book }}</td>
-                <td><a href="{% url read-page pk=ah.id %}">{{ ah.page }}</a></td>
+                <td><a href="{% url book-detail pk=ah.page.book.id %}">{{ ah.page.book }}</a></td>
+                <td><a href="{% url read-page pk=ah.page.id %}">{{ ah.page }}</a></td>
                 <td>{{ ah.last_access }}</td>
             </tr>
         {% empty %}

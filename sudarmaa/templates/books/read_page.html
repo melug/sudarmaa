@@ -43,8 +43,7 @@
 <script type='text/javascript' src='{{ STATIC_URL }}js/reader.js'> </script>
 <script type='text/javascript' src='{{ STATIC_URL }}js/dictionary.js'> </script>
 <script type='text/javascript'>
-    var dictionary_url = "{% url get-word %}", 
-        page_id = {{ page.id }},
+    var dictionary_url = "{% url get-word %}", page_id = {{ page.id }};
 </script>
 {% endblock %}
 
