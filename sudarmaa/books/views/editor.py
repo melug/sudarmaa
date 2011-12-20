@@ -146,7 +146,6 @@ class PublishBook(View):
         try:
             pk = int(request.REQUEST.get('pk', None))
             pu = int(request.REQUEST.get('pu', None))
-            print pk, pu
             if pk:
                 book = Book.objects.get(creator=request.user, pk=pk)
                 if pu:

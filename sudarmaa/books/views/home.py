@@ -33,8 +33,6 @@ class BooksInCategory(ListView):
 
     def get_queryset(self):
         category_id = self.request.GET.get('cat', None)
-        latest = self.request.GET.get('latest', None)
-        staff_pick = self.request.GET.get('staff_pick', None)
         if category_id:
             query_set = Book.publish.filter(category__id=category_id)
         else:
