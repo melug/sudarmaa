@@ -12,14 +12,14 @@ class HomeTests(TestCase):
     def testHomePage(self):
         client = Client()
         response = client.get(reverse('home'))
-        self.assertEquals(len(response.context['new_books']), 2)
+        self.assertEquals(len(response.context['new_books']), 4)
         picked_book = Book.objects.get(pk=2)
         self.assertEquals(response.context['picked_books'][0], picked_book)
 
     def testCategoryPage(self):
         client = Client()
         response = client.get(reverse('books-in-category'))
-        self.assertEquals(response.context['books'].count(), 2)
+        self.assertEquals(response.context['books'].count(), 4)
         response = client.get(reverse('books-in-category')+'?cat=7')
         self.assertEquals(response.context['books'].count(), 1)
         self.assertEquals(response.context['category'].id, 7)
@@ -50,7 +50,7 @@ class HomeTests(TestCase):
         client = Client()
         response = client.get(reverse('author-show', kwargs={'pk':1}))
         self.assertEquals(response.status_code, 200)
-        response = client.get(reverse('author-show', kwargs={'pk':2}))
+        response = client.get(reverse('author-show', kwargs={'pk':999999}))
         self.assertEquals(response.status_code, 404)
 
     def testHistoryPage(self):
