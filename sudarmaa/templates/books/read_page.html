@@ -45,6 +45,7 @@
 <script type='text/javascript'>
     var dictionary_url = "{% url get-word %}", page_id = {{ page.id }};
 </script>
+<link rel="stylesheet/less" type="text/css" href="{{ STATIC_URL }}css/reader.less">
 {% endblock %}
 
 {% block topbar %}
@@ -72,9 +73,12 @@
     {% if page.prev_page %}
         <a href="{% url read-page pk=page.prev_page.id %}"><div class='book-navi prev span2'>{% trans "Previous page" %}</div></a>
     {% endif %}
-    <div class='row'>
-    {% autoescape off %}
-        {{ page.content|bbcode|linebreaksbr }}
-    {% endautoescape %}
+    <div class='row content'>
+        <div class='text'>
+        {% autoescape off %}
+            {{ page.content|bbcode|linebreaksbr }}
+        {% endautoescape %}
+        </div>
     </div>
 {% endblock %}
+{% block footer %}{% endblock %}

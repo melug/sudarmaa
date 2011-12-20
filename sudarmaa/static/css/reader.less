@@ -1,0 +1,24 @@
+.column-count(@count) {
+    -moz-column-count: @count;
+    -webkit-column-count: @count;
+    column-count: @count;
+}
+.column-width(@width) {
+    -moz-column-width: @width;
+    -webkit-column-width: @width;
+    column-width: @width;
+}
+.column-rule {
+    -webkit-column-rule-color: #cc0000;
+    -moz-column-rule-color: #cc0000;
+    -webkit-column-rule-style: solid;
+    -moz-column-rule-style: solid;
+    -webkit-column-rule-width: 10px;
+    -moz-column-rule-width: 10px;
+}
+div.text {
+    .column-width(960px);
+    .column-rule;
+    height: 500px;
+    overflow-x: auto;
+}
