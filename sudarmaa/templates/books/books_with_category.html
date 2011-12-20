@@ -16,11 +16,23 @@
 {% block body %}
     <div class='row'>
         <div class='span4'>
+            <h3><a href="{% url books-in-category %}">{% trans "Category" %}</a></h3>
+        {% if category %}
+            <h4> {{ category.title }} </h4>
+            <ul>
+                {% for author in authors %}
+                <li><a href="{% url books-in-category %}?cat={{ category.id }}{% if author %}&amp;aut={{ author.id }}{% endif %}">
+                    {{ author.first_name }} {{ author.last_name }}
+                </a></li>
+                {% endfor %}
+            </ul>
+        {% else %}
             <ul>
                 {% for category in categories %}
                 <li><a href="{% url books-in-category %}?cat={{ category.id }}">{{ category.title }}</a></li>
                 {% endfor %}
             </ul>
+        {% endif %}
         </div>
         <div class='span8'>
             {% with books.count as number_of_books %}

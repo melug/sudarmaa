@@ -33,10 +33,13 @@ class BooksInCategory(ListView):
 
     def get_queryset(self):
         category_id = self.request.GET.get('cat', None)
+        author_id = self.request.GET.get('aut', None)
         if category_id:
             query_set = Book.publish.filter(category__id=category_id)
         else:
             query_set = Book.publish.all()
+        if author_id:
+            query_set = query_set.filter(authors__id=author_id)
         return query_set
 
     def get_context_data(self, **kwargs):
@@ -45,7 +48,18 @@ class BooksInCategory(ListView):
             'categories' : Category.objects.all()
         })
         category_id = self.request.GET.get('cat', None)
-        if category_id: context.update({ 'cat' : category_id })
+        author_id = self.request.GET.get('aut', None)
+        if category_id: 
+            category = Category.objects.get(pk=category_id)
+            context.update({ 
+                'category' : category,
+                'authors' : Author.objects.filter(books__category=category)
+            })
+        if author_id:
+            author = Author.objects.get(pk=author_id)
+            context.update({ 
+                'author' : author,
+            })
         return context
 
 class StaffPicks(BooksInCategory):

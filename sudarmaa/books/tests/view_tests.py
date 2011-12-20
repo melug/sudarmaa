@@ -3,7 +3,7 @@ from django.test.client import Client
 from django.core.urlresolvers import reverse
 from django.contrib.auth.models import User
 
-from books.models import Book, Category, AccessHistory, Page
+from books.models import Book, Category, AccessHistory, Page, Author
 
 class HomeTests(TestCase):
     
@@ -22,8 +22,11 @@ class HomeTests(TestCase):
         self.assertEquals(response.context['books'].count(), 2)
         response = client.get(reverse('books-in-category')+'?cat=7')
         self.assertEquals(response.context['books'].count(), 1)
-        self.assertEquals(response.context['cat'], u'7')
+        self.assertEquals(response.context['category'].id, 7)
         self.assertEquals(response.context['categories'].count(), Category.objects.count())
+        response = client.get(reverse('books-in-category')+'?aut=1')
+        author = Author.objects.get(pk=1)
+        self.assertEquals(response.context['author'], author)
 
     def testLatestPage(self):
         client = Client()
