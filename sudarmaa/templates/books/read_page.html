@@ -80,5 +80,16 @@
         {% endautoescape %}
         </div>
     </div>
+    <input onclick='move_left();' type='button' value='prev'>
+    <input onclick='move_right();' type='button' value='next'>
+    <script type='text/javascript'>
+        text = $('div.text');
+        function move_right() {
+            $('div.text').animate({scrollLeft: '+='+text.css('width')}, 'slow');
+        };
+        function move_left() {
+            $('div.text').animate({scrollLeft: '-='+text.css('width')}, 'slow');
+        };
+    </script>
 {% endblock %}
 {% block footer %}{% endblock %}
