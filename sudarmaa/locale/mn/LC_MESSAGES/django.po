@@ -1120,7 +1120,7 @@ msgstr "Урьдчилж харах"
 
 #: templates/books/read_page.html:55
 msgid "Table of Contents"
-msgstr "Гарчиг"
+msgstr "Бүлэг"
 
 #: templates/books/read_page.html:59
 msgid "Controls"

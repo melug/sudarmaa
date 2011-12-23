@@ -85,10 +85,16 @@
     <script type='text/javascript'>
         text = $('div.text');
         function move_right() {
-            $('div.text').animate({scrollLeft: '+='+text.css('width')}, 'slow');
+            text.animate({scrollLeft: '+='+getScrollSize()}, 'slow');
         };
         function move_left() {
-            $('div.text').animate({scrollLeft: '-='+text.css('width')}, 'slow');
+            text.animate({scrollLeft: '-='+getScrollSize()}, 'slow');
+        };
+        function getScrollSize() {
+            textWidth = text.css('width');
+            widthAsStr = textWidth.substring(0, textWidth.length-2);
+            widthAsStr = (parseInt(widthAsStr) + 50) + 'px';
+            return widthAsStr;
         };
     </script>
 {% endblock %}
