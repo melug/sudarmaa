@@ -13,7 +13,7 @@ class HomeView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super(HomeView, self).get_context_data(**kwargs)
         context.update({
-            'new_books' : Book.publish.all()[:4],
+            'new_books' : Book.publish.order_by('-added')[:4],
             'picked_books': Book.publish.filter(
                 pick__isnull=False).order_by('pick__order_number')[:4],
             'categories' : Category.objects.all()
