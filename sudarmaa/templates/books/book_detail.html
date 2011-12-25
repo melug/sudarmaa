@@ -49,14 +49,6 @@
                 </div>
                 <div class='row rating-notification'>Thank you</div>
             </div>
-            <div class='row'>
-                <div id='add-to-shelf'> {% trans "Add to shelf" %} </div>
-                <ul class='shelf-list' style='display:none;'>
-                    {% for shelf in user.shelves.all %}
-                    <li><a href="#" shelf-id={{ shelf.id }}>{{ shelf.title }}</a></li>
-                    {% endfor %}
-                </ul>
-            </div>
         </div>
         <div class='span8'> 
         {% if object.description|length > 0 %}
@@ -69,7 +61,7 @@
             <div><a href="#">{% trans "Share" %} </a></div>
             <div><a href="{% url download-page pk=object.id %}">{% trans "Download as epub" %} </a></div>
             <div><a href="{% url book-toc pk=object.id %}">{% trans "Read" %} </a></div>
-            <h4> In this category: </h4>
+            <h4>{% trans "In this category" %}:</h4>
             <ul>
                 {% for book in books_in_category %}
                 <li><a href="{% url book-detail pk=book.id %}">{{ book.title }}</a></li>

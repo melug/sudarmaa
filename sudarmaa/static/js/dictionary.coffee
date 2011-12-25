@@ -8,6 +8,7 @@ class DictionaryHolder
         @dom.css { right: "-#{@width}"}
         dom = @dom
         width = @width
+        dictionary_text = @dictionary_text
         result = @dom.find('div.dictionary-result')
         @dom.find('img').click ->
             if dom.css('right') is "-#{width}"
@@ -16,6 +17,8 @@ class DictionaryHolder
                 dom.animate { right: "-#{width}" }
         @dictionary_text.focusout ->
             dom.animate { right: "-#{width}" }
+            dictionary_text.val ''
+            result.html ''
         @dictionary_text.keyup ->
             $.get dictionary_url, { w: $(this).val() }, (data) ->
                 result.html(data)
