@@ -1,9 +1,10 @@
-pinax-theme-bootstrap was quite unstable and does not have PyPI index. So it is
-included
+pinax-theme-bootstrap джанго апп тогтворгүй байсан учраас шууд прожект руу оруулсан.
 
-First:
+Эхлээд:
     $ python manage.py develop
 
-PIL library requires python-dev, 
+PIL санг суулгахад python-dev хэрэгтэй 
     $ apt-get install python-dev
 
+PINAX суулгаагүй бол суулгана, virtualenv дотор суулгах хэрэгтэй. 
+    http://pinaxproject.com/
