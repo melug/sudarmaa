@@ -1,10 +1,18 @@
 pinax-theme-bootstrap джанго апп тогтворгүй байсан учраас шууд прожект руу оруулсан.
 
-Эхлээд:
-    $ python manage.py develop
-
-PIL санг суулгахад python-dev хэрэгтэй 
+Пайтоны зургийн "PIL" санг суулгахад python-dev хэрэгтэй 
     $ apt-get install python-dev
 
 PINAX суулгаагүй бол суулгана, virtualenv дотор суулгах хэрэгтэй. 
     http://pinaxproject.com/
+
+virtualenv-ийн талаар дэлгэрэнгүйг:
+    http://pyc-mn.blogspot.com/2010/12/blog-post.html
+    http://mitchfournier.com/2010/06/25/getting-started-with-virtualenv-isolated-python-environments/
+
+Хийсвэр орчинд:
+    $ python setup.py develop
+
+Хамгийн сүүлд нь:
+    $ cd sudarmaa
+    $ python manage.py runserver
