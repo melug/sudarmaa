@@ -5,7 +5,7 @@ def read(fname):
     return open(os.path.join(os.path.dirname(__file__), fname)).read()
 
 setup(
-    name = "Sudarmaa",
+    name = "Sudarmaa- an AMAZING project",
     version = "0.1",
     author = "Tulga",
     author_email = "sw06d103@gmail.com",
@@ -27,5 +27,5 @@ setup(
         'Genshi',
         'lxml',
         'PIL',
-    ],
-)
+                     ],
+    )
