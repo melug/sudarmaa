@@ -1,4 +1,4 @@
-import os
+import os,py 
 from setuptools import setup
 
 def read(fname):
@@ -6,7 +6,7 @@ def read(fname):
 
 setup(
     name = "Sudarmaa",
-    version = "0.1",
+    version = "0.2",
     author = "Tulga",
     author_email = "sw06d103@gmail.com",
     description = ("Sudarmaa project"),
